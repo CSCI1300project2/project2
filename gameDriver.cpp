@@ -185,10 +185,10 @@ int main(){
                     getline(cin, inputName);
                     player1.setName(inputName);
                     player1.setAge(rand() % (20 - 1 + 1) + 1);
-                    player1.setStamina(rand() % (20000 - 100 + 1) + 100);
-                    player1.setWisdom(rand() % (20000 - 100 + 1) + 100);
-                    player1.setStrength(rand() % (20000 - 100 + 1) + 100);
-                    player1.setPridePoints(rand() % (20000 - 100 + 1) + 100);
+                    player1.setStamina((rand() % 200 + 1) * 100);
+                    player1.setWisdom((rand() % 200 + 1) * 100);
+                    player1.setStrength((rand() % 200 + 1) * 100);
+                    player1.setPridePoints(20000);
                     break;
             }
             break;
@@ -264,10 +264,10 @@ int main(){
                     getline(cin, inputName);
                     player2.setName(inputName);
                     player2.setAge(rand() % (20 - 1 + 1) + 1);
-                    player2.setStamina(rand() % (20000 - 100 + 1) + 100);
-                    player2.setWisdom(rand() % (20000 - 100 + 1) + 100);
-                    player2.setStrength(rand() % (20000 - 100 + 1) + 100);
-                    player2.setPridePoints(rand() % (20000 - 100 + 1) + 100);
+                    player2.setStamina((rand() % 200 + 1) * 100);
+                    player2.setWisdom((rand() % 200 + 1) * 100);
+                    player2.setStrength((rand() % 200 + 1) * 100);
+                    player2.setPridePoints(20000);
                     break;
             }
             break;
@@ -304,6 +304,8 @@ int main(){
             cout << "Invalid Input. Please enter a valid option." << endl;
         }
     }
+
+    player1.printStats();
 
     cout << endl; //skip a line
     //initialize both boards and display them
