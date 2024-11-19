@@ -185,9 +185,9 @@ int main(){
                     getline(cin, inputName);
                     player1.setName(inputName);
                     player1.setAge(rand() % (20 - 1 + 1) + 1);
-                    player1.setStamina((rand() % 200 + 1) * 100);
-                    player1.setWisdom((rand() % 200 + 1) * 100);
-                    player1.setStrength((rand() % 200 + 1) * 100);
+                    player1.setStamina((rand() % 10 + 1) * 100);
+                    player1.setWisdom((rand() % 10 + 1) * 100);
+                    player1.setStrength((rand() % 10 + 1) * 100);
                     player1.setPridePoints(20000);
                     break;
             }
@@ -264,9 +264,9 @@ int main(){
                     getline(cin, inputName);
                     player2.setName(inputName);
                     player2.setAge(rand() % (20 - 1 + 1) + 1);
-                    player2.setStamina((rand() % 200 + 1) * 100);
-                    player2.setWisdom((rand() % 200 + 1) * 100);
-                    player2.setStrength((rand() % 200 + 1) * 100);
+                    player2.setStamina((rand() % 10 + 1) * 100);
+                    player2.setWisdom((rand() % 10 + 1) * 100);
+                    player2.setStrength((rand() % 10 + 1) * 100);
                     player2.setPridePoints(20000);
                     break;
             }
@@ -283,9 +283,11 @@ int main(){
     while(cin >> choice){
         if(choice == '1'){
             player1.setPridelands(true);
+            player1.toPrideLands();
             break;
         } else if(choice == '2'){
             player1.setPridelands(false);
+            player1.trainCub();
             break;
         } else {
             cout << "Invalid Input. Please enter a valid option." << endl;
@@ -295,17 +297,17 @@ int main(){
     cout << player2.getName() << ", pridelands (1) or Cub Training (2)?" << endl;
     while(cin >> choice){
         if(choice == '1'){
-            player1.setPridelands(true);
+            player2.setPridelands(true);
+            player2.toPrideLands();
             break;
         } else if(choice == '2'){
-            player1.setPridelands(false);
+            player2.setPridelands(false);
+            player2.trainCub();
             break;
         } else {
             cout << "Invalid Input. Please enter a valid option." << endl;
         }
     }
-
-    player1.printStats();
 
     cout << endl; //skip a line
     //initialize both boards and display them
@@ -316,7 +318,6 @@ int main(){
     //testBoard.movePlayer(1, 2);
     //testBoard.displayBoard();
 
-//test
     return 0;
 }
 

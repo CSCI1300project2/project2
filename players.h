@@ -21,7 +21,7 @@ class Player{
     void setWisdom(int wisdom);
     void setPridePoints(int pride_points);
     void setAge(int age);
-    void trainCub(int strength, int stamina, int wisdom);
+    void trainCub();
     void toPrideLands();
     void printStats();
     void setPridelands(bool isPridelands);
