@@ -1,0 +1,6 @@
+playerName|Power|Description
+Rafiki|Invisibility|the ability to become un-seen
+Nala|Night Vision|the ability to see clearly in darkness
+Sarabi|Energy Manipulation|the ability to shape and control the properties of energy
+Zazu|Weather Control|the ability to influence and manipulate weather patterns
+Sarafina|Super Speed|the ability to run 4x faster than the maximum speed of lions
