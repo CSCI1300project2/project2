@@ -103,7 +103,6 @@ for (const auto& character : charactersVector) {
 
     cout << endl; //skip a line
     //set both players names to user input
-    char choice;
     string playerName;
     cout << "Enter Player 1's name: " << endl;
     cin >> playerName;
@@ -115,8 +114,154 @@ for (const auto& character : charactersVector) {
     player2.setName(playerName);
 
     cout << endl; //skip a line
+    char characterChoice;
+    cout << player1.getName() << ", choose your character. Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), or name your own character with random attributes(6)" << endl;
+    for (const auto& character : charactersVector) {
+        cout << "Name: " << character.name
+                  << ", Age: " << character.age
+                  << ", Strength: " << character.strength
+                  << ", Stamina: " << character.stamina
+                  << ", Wisdom: " << character.wisdom
+                  << ", PridePoints: " << character.pridePoints
+                  << endl;
+    }
+    while(cin >> characterChoice){
+        if(characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5' || characterChoice == '6'){
+            switch(characterChoice){
+                case '1': 
+                    player1.setName(charactersVector[0].name);
+                    player1.setAge(charactersVector[0].age);
+                    player1.setStamina(charactersVector[0].stamina);
+                    player1.setWisdom(charactersVector[0].wisdom);
+                    player1.setStrength(charactersVector[0].strength);
+                    player1.setPridePoints(charactersVector[0].pridePoints);
+                    break;
+                case '2': 
+                    player1.setName(charactersVector[1].name);
+                    player1.setAge(charactersVector[1].age);
+                    player1.setStamina(charactersVector[1].stamina);
+                    player1.setWisdom(charactersVector[1].wisdom);
+                    player1.setStrength(charactersVector[1].strength);
+                    player1.setPridePoints(charactersVector[1].pridePoints);
+                    break;
+                case '3': 
+                    player1.setName(charactersVector[2].name);
+                    player1.setAge(charactersVector[2].age);
+                    player1.setStamina(charactersVector[2].stamina);
+                    player1.setWisdom(charactersVector[2].wisdom);
+                    player1.setStrength(charactersVector[2].strength);
+                    player1.setPridePoints(charactersVector[2].pridePoints);
+                    break;
+                case '4': 
+                    player1.setName(charactersVector[3].name);
+                    player1.setAge(charactersVector[3].age);
+                    player1.setStamina(charactersVector[3].stamina);
+                    player1.setWisdom(charactersVector[3].wisdom);
+                    player1.setStrength(charactersVector[3].strength);
+                    player1.setPridePoints(charactersVector[3].pridePoints);
+                    break;
+                case '5': 
+                    player1.setName(charactersVector[4].name);
+                    player1.setAge(charactersVector[4].age);
+                    player1.setStamina(charactersVector[4].stamina);
+                    player1.setWisdom(charactersVector[4].wisdom);
+                    player1.setStrength(charactersVector[4].strength);
+                    player1.setPridePoints(charactersVector[4].pridePoints);
+                    break;
+                case '6':
+                    string inputName;
+                    cout << "Enter character name: " << endl;
+                    getline(cin, inputName);
+                    player1.setName(inputName);
+                    player1.setAge(rand() % (20 - 1 + 1) + 1);
+                    player1.setStamina(rand() % (20000 - 100 + 1) + 100);
+                    player1.setWisdom(rand() % (20000 - 100 + 1) + 100);
+                    player1.setStrength(rand() % (20000 - 100 + 1) + 100);
+                    player1.setPridePoints(rand() % (20000 - 100 + 1) + 100);
+                    break;
+            }
+            break;
+        }else{
+            cout << "Invalid Input. Please enter a valid option." << endl;
+        }
+    }
+
+    cout << endl; //skip a line
+    cout << player2.getName() << ", choose your character. Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), or name your own character with random attributes(6)" << endl;
+    for (const auto& character : charactersVector) {
+        cout << "Name: " << character.name
+                  << ", Age: " << character.age
+                  << ", Strength: " << character.strength
+                  << ", Stamina: " << character.stamina
+                  << ", Wisdom: " << character.wisdom
+                  << ", PridePoints: " << character.pridePoints
+                  << endl;
+    }
+    while(cin >> characterChoice){
+        if(characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5' || characterChoice == '6'){
+            switch(characterChoice){
+                case '1': 
+                    player2.setName(charactersVector[0].name);
+                    player2.setAge(charactersVector[0].age);
+                    player2.setStamina(charactersVector[0].stamina);
+                    player2.setWisdom(charactersVector[0].wisdom);
+                    player2.setStrength(charactersVector[0].strength);
+                    player2.setPridePoints(charactersVector[0].pridePoints);
+                    break;
+                case '2': 
+                    player2.setName(charactersVector[1].name);
+                    player2.setAge(charactersVector[1].age);
+                    player2.setStamina(charactersVector[1].stamina);
+                    player2.setWisdom(charactersVector[1].wisdom);
+                    player2.setStrength(charactersVector[1].strength);
+                    player2.setPridePoints(charactersVector[1].pridePoints);
+                    break;
+                case '3': 
+                    player2.setName(charactersVector[2].name);
+                    player2.setAge(charactersVector[2].age);
+                    player2.setStamina(charactersVector[2].stamina);
+                    player2.setWisdom(charactersVector[2].wisdom);
+                    player2.setStrength(charactersVector[2].strength);
+                    player2.setPridePoints(charactersVector[2].pridePoints);
+                    break;
+                case '4': 
+                    player2.setName(charactersVector[3].name);
+                    player2.setAge(charactersVector[3].age);
+                    player2.setStamina(charactersVector[3].stamina);
+                    player2.setWisdom(charactersVector[3].wisdom);
+                    player2.setStrength(charactersVector[3].strength);
+                    player2.setPridePoints(charactersVector[3].pridePoints);
+                    break;
+                case '5': 
+                    player2.setName(charactersVector[4].name);
+                    player2.setAge(charactersVector[4].age);
+                    player2.setStamina(charactersVector[4].stamina);
+                    player2.setWisdom(charactersVector[4].wisdom);
+                    player2.setStrength(charactersVector[4].strength);
+                    player2.setPridePoints(charactersVector[4].pridePoints);
+                    break;
+                case '6':
+                    string inputName;
+                    cout << "Enter character name: " << endl;
+                    getline(cin, inputName);
+                    player2.setName(inputName);
+                    player2.setAge(rand() % (20 - 1 + 1) + 1);
+                    player2.setStamina(rand() % (20000 - 100 + 1) + 100);
+                    player2.setWisdom(rand() % (20000 - 100 + 1) + 100);
+                    player2.setStrength(rand() % (20000 - 100 + 1) + 100);
+                    player2.setPridePoints(rand() % (20000 - 100 + 1) + 100);
+                    break;
+            }
+            break;
+        }else{
+            cout << "Invalid Input. Please enter a valid option." << endl;
+        }
+    }
+
+    cout << endl; //skip a line
     //ask each player if they would like to go to pridelands or cub training
-    cout << player1.getName() << " Pridelands (1) or Cub Training (2)?" << endl;
+    cout << player1.getName() << ", pridelands (1) or Cub Training (2)?" << endl;
+    char choice;
     while(cin >> choice){
         if(choice == '1'){
             player1.setPridelands(true);
@@ -128,7 +273,7 @@ for (const auto& character : charactersVector) {
             cout << "Invalid Input. Please enter a valid option." << endl;
         }
     }
-    cout << player2.getName() << " Pridelands (1) or Cub Training (2)?" << endl;
+    cout << player2.getName() << ", pridelands (1) or Cub Training (2)?" << endl;
     while(cin >> choice){
         if(choice == '1'){
             player1.setPridelands(true);
