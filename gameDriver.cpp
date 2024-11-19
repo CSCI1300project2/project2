@@ -10,8 +10,6 @@
 
 using namespace std;
 
-struct characters;
-
 //split function for reading from txt files
 int split(string input_string, char separator, string arr[], const int ARR_SIZE){
     int lastDelimiter = 0;
@@ -45,21 +43,8 @@ int main(){
         int pridePoints;
     };
 
-    characters Apollo;
-    characters Mane;
-    characters Elsa;
-    characters Zuri;
-    characters Roary;
-
     vector <characters> charactersVector;
-    string characters[6];
-
-   charactersVector.push_back(Apollo);
-   charactersVector.push_back(Mane);
-   charactersVector.push_back(Elsa);
-   charactersVector.push_back(Zuri);
-   charactersVector.push_back(Roary);
-
+    string charactersString[6];
 
     string characterLine;
     ifstream file("characters.txt");
@@ -70,34 +55,39 @@ int main(){
     }
     while(getline(file, characterLine)){
         if(!firstLine){
-            split(characterLine, '|', characters, 6);
-            for(int i = 0; i < 5; i++){
-                for(unsigned int j = 0; j < charactersVector.size(); j++){
-                    switch (j){
-                        case 0:
-                            charactersVector[i].name = characters[j];
-                            break;
-                        case 1:
-                            charactersVector[i].age = stoi(characters[j]);
-                            break;
-                        case 2:
-                            charactersVector[i].strength = stoi(characters[j]);
-                            break;
-                        case 3:
-                            charactersVector[i].stamina = stoi(characters[j]);
-                            break;
-                        case 4:
-                            charactersVector[i].wisdom = stoi(characters[j]);
-                            break;
-                        case 5:
-                            charactersVector[i].pridePoints = stoi(characters[j]);
-                            break;
-                    }
-                }
+            split(characterLine, '|', charactersString, 6);
+           characters tempCharacter;
+
+        for (unsigned int j = 0; j < 6; j++) {
+            switch (j) {
+                case 0:
+                    tempCharacter.name = charactersString[j];
+                    break;
+                case 1:
+                    tempCharacter.age = stoi(charactersString[j]);
+                    break;
+                case 2:
+                    tempCharacter.strength = stoi(charactersString[j]);
+                    break;
+                case 3:
+                    tempCharacter.stamina = stoi(charactersString[j]);
+                    break;
+                case 4:
+                    tempCharacter.wisdom = stoi(charactersString[j]);
+                    break;
+                case 5:
+                    tempCharacter.pridePoints = stoi(charactersString[j]);
+                    break;
             }
         }
-        firstLine = false;
+
+        // Add the new character to the vector
+        charactersVector.push_back(tempCharacter);
     }
+    firstLine = false;
+}
+
+/*
 for (const auto& character : charactersVector) {
         cout << "Name: " << character.name
                   << ", Age: " << character.age
@@ -106,7 +96,9 @@ for (const auto& character : charactersVector) {
                   << ", Wisdom: " << character.wisdom
                   << ", PridePoints: " << character.pridePoints
                   << endl;
-    }
+}
+*/
+
     srand(time(0)); //seed random function
 
     cout << endl; //skip a line
