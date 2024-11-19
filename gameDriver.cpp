@@ -135,6 +135,10 @@ for (const auto& character : charactersVector) {
                     player1.setWisdom(charactersVector[0].wisdom);
                     player1.setStrength(charactersVector[0].strength);
                     player1.setPridePoints(charactersVector[0].pridePoints);
+                    for(unsigned int i = 0; i < charactersVector.size() - 1; i++){
+                        charactersVector[i] = charactersVector[i+1];
+                    }
+                    charactersVector.pop_back();
                     break;
                 case '2': 
                     player1.setName(charactersVector[1].name);
@@ -143,6 +147,10 @@ for (const auto& character : charactersVector) {
                     player1.setWisdom(charactersVector[1].wisdom);
                     player1.setStrength(charactersVector[1].strength);
                     player1.setPridePoints(charactersVector[1].pridePoints);
+                     for(unsigned int i = 1; i < charactersVector.size() - 1; i++){
+                        charactersVector[i] = charactersVector[i+1];
+                    }
+                    charactersVector.pop_back();
                     break;
                 case '3': 
                     player1.setName(charactersVector[2].name);
@@ -151,6 +159,10 @@ for (const auto& character : charactersVector) {
                     player1.setWisdom(charactersVector[2].wisdom);
                     player1.setStrength(charactersVector[2].strength);
                     player1.setPridePoints(charactersVector[2].pridePoints);
+                     for(unsigned int i = 2; i < charactersVector.size() - 1; i++){
+                        charactersVector[i] = charactersVector[i+1];
+                    }
+                    charactersVector.pop_back();
                     break;
                 case '4': 
                     player1.setName(charactersVector[3].name);
@@ -159,6 +171,10 @@ for (const auto& character : charactersVector) {
                     player1.setWisdom(charactersVector[3].wisdom);
                     player1.setStrength(charactersVector[3].strength);
                     player1.setPridePoints(charactersVector[3].pridePoints);
+                     for(unsigned int i = 3; i < charactersVector.size() - 1; i++){
+                        charactersVector[i] = charactersVector[i+1];
+                    }
+                    charactersVector.pop_back();
                     break;
                 case '5': 
                     player1.setName(charactersVector[4].name);
@@ -167,6 +183,10 @@ for (const auto& character : charactersVector) {
                     player1.setWisdom(charactersVector[4].wisdom);
                     player1.setStrength(charactersVector[4].strength);
                     player1.setPridePoints(charactersVector[4].pridePoints);
+                     for(unsigned int i = 4; i < charactersVector.size() - 1; i++){
+                        charactersVector[i] = charactersVector[i+1];
+                    }
+                    charactersVector.pop_back();
                     break;
                 case '6':
                     string inputName;
