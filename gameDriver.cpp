@@ -105,7 +105,7 @@ int main(){
     cout << endl; //skip a line
     char characterChoice;
     cout << player1.getName() << ", choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), or name your own character with random attributes(6)" << endl;
-    for (int i = 0; i < charactersVector.size(); i++) {
+    for (unsigned int i = 0; i < charactersVector.size(); i++) {
         cout << "Name: " << charactersVector[i].name
                   << ", Age: " << charactersVector[i].age
                   << ", Strength: " << charactersVector[i].strength
@@ -199,12 +199,12 @@ int main(){
 
     cout << endl; //skip a line
     cout << player2.getName() << ", choose your character: "; 
-    for(int i = 0; i < charactersVector.size(); i++){
+    for(unsigned int i = 0; i < charactersVector.size(); i++){
         cout << charactersVector[i].name << " (" << i + 1 << "), ";
     }
     cout << "or name your own character with random attributes(6)" << endl; 
 
-    for (int i = 0; i < charactersVector.size(); i++) {
+    for (unsigned int i = 0; i < charactersVector.size(); i++) {
         cout << "Name: " << charactersVector[i].name
                   << ", Age: " << charactersVector[i].age
                   << ", Strength: " << charactersVector[i].strength
