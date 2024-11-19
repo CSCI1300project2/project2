@@ -4,10 +4,15 @@
 #include <iostream>
 using namespace std;
 
-struct Tile{
-    char color;
-    string type;
+class tileType{
+    private:
+        char color;
+        string type;
+    public:
+        tileType();
+        char getColor();
+        string getType();
+        void setColor(char c);
 };
-
 #endif
 

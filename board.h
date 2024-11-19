@@ -6,7 +6,7 @@ using namespace std;
 class Board{
     private:
         static const int _BOARD_SIZE = 52;
-        Tile _tiles[2][_BOARD_SIZE];
+        tileType _tiles[2][_BOARD_SIZE];
         static const int _MAX_PLAYERS = 2;
         int _player_count;
         int _player_position[_MAX_PLAYERS];

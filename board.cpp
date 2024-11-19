@@ -22,7 +22,7 @@ void Board::initializeBoard(){
 }
 
 void Board::initializeTiles(int player_index){
-    Tile temp;
+    tileType temp;
     int green_count = 0;
     int total_tiles = _BOARD_SIZE;
     // Keep track of green tile positions to ensure we place exactly 30 greens
@@ -31,16 +31,16 @@ void Board::initializeTiles(int player_index){
         if (i == total_tiles - 1)
         {
             // Set the last tile as Orange for "Pride Rock"
-            temp.color = 'O';
+            temp.setColor('O');
         }
         else if (i == 0)
         {
             // Set the last tile as Orange for "Pride Rock"
-            temp.color = 'Y';
+            temp.setColor('Y');
         }
         else if (green_count < 30 && (rand() % (total_tiles - i) < 30 - green_count))
         {
-            temp.color = 'G';
+            temp.setColor('G');
             green_count++;
         }
         else
@@ -50,19 +50,19 @@ void Board::initializeTiles(int player_index){
             switch (color_choice)
             {
             case 0:
-                temp.color = 'B'; // Blue
+                temp.setColor('B'); // Blue
                 break;
             case 1:
-                temp.color = 'P'; // Pink
+                temp.setColor('P'); // Pink
                 break;
             case 2:
-                temp.color = 'N'; // Brown
+                temp.setColor('N'); // Brown
                 break;
             case 3:
-                temp.color = 'R'; // Red
+                temp.setColor('R'); // Red
                 break;
             case 4:
-                temp.color = 'U'; // Purple
+                temp.setColor('U'); // Purple
                 break;
             }
         }
@@ -111,35 +111,35 @@ void Board::displayTile(int player_index, int pos){
     int player = isPlayerOnTile(player_index, pos);
     // Template for displaying a tile: <line filler space> <color start> |<player symbol or blank space>| <reset color> <line filler space> <endl>
     // Determine color to display
-    if (_tiles[player_index][pos].color == 'R')
+    if (_tiles[player_index][pos].getColor() == 'R')
     {
         color = RED;
     }
-    else if (_tiles[player_index][pos].color == 'G')
+    else if (_tiles[player_index][pos].getColor() == 'G')
     {
         color = GREEN;
     }
-    else if (_tiles[player_index][pos].color == 'B')
+    else if (_tiles[player_index][pos].getColor() == 'B')
     {
         color = BLUE;
     }
-    else if (_tiles[player_index][pos].color == 'U')
+    else if (_tiles[player_index][pos].getColor() == 'U')
     {
         color = PURPLE;
     }
-    else if (_tiles[player_index][pos].color == 'N')
+    else if (_tiles[player_index][pos].getColor() == 'N')
     {
         color = BROWN;
     }
-    else if (_tiles[player_index][pos].color == 'P')
+    else if (_tiles[player_index][pos].getColor() == 'P')
     {
         color = PINK;
     }
-    else if (_tiles[player_index][pos].color == 'O')
+    else if (_tiles[player_index][pos].getColor() == 'O')
     {
         color = ORANGE;
     }
-    else if (_tiles[player_index][pos].color == 'Y')
+    else if (_tiles[player_index][pos].getColor() == 'Y')
     {
         color = GREY;
     }
