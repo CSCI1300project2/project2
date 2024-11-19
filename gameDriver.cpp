@@ -53,6 +53,7 @@ int main(){
         cout << "Could not open file." << endl;
         return -1;
     }
+
     while(getline(file, characterLine)){
         if(!firstLine){
             split(characterLine, '|', charactersString, 6);
@@ -87,18 +88,6 @@ int main(){
     firstLine = false;
 }
 
-/*
-for (const auto& character : charactersVector) {
-        cout << "Name: " << character.name
-                  << ", Age: " << character.age
-                  << ", Strength: " << character.strength
-                  << ", Stamina: " << character.stamina
-                  << ", Wisdom: " << character.wisdom
-                  << ", PridePoints: " << character.pridePoints
-                  << endl;
-}
-*/
-
     srand(time(0)); //seed random function
 
     cout << endl; //skip a line
@@ -115,16 +104,17 @@ for (const auto& character : charactersVector) {
 
     cout << endl; //skip a line
     char characterChoice;
-    cout << player1.getName() << ", choose your character. Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), or name your own character with random attributes(6)" << endl;
-    for (const auto& character : charactersVector) {
-        cout << "Name: " << character.name
-                  << ", Age: " << character.age
-                  << ", Strength: " << character.strength
-                  << ", Stamina: " << character.stamina
-                  << ", Wisdom: " << character.wisdom
-                  << ", PridePoints: " << character.pridePoints
+    cout << player1.getName() << ", choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), or name your own character with random attributes(6)" << endl;
+    for (int i = 0; i < charactersVector.size(); i++) {
+        cout << "Name: " << charactersVector[i].name
+                  << ", Age: " << charactersVector[i].age
+                  << ", Strength: " << charactersVector[i].strength
+                  << ", Stamina: " << charactersVector[i].stamina
+                  << ", Wisdom: " << charactersVector[i].wisdom
+                  << ", PridePoints: " << charactersVector[i].pridePoints
                   << endl;
     }
+
     while(cin >> characterChoice){
         if(characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5' || characterChoice == '6'){
             switch(characterChoice){
@@ -190,6 +180,7 @@ for (const auto& character : charactersVector) {
                     break;
                 case '6':
                     string inputName;
+                    cin.ignore();
                     cout << "Enter character name: " << endl;
                     getline(cin, inputName);
                     player1.setName(inputName);
@@ -207,16 +198,22 @@ for (const auto& character : charactersVector) {
     }
 
     cout << endl; //skip a line
-    cout << player2.getName() << ", choose your character. Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), or name your own character with random attributes(6)" << endl;
-    for (const auto& character : charactersVector) {
-        cout << "Name: " << character.name
-                  << ", Age: " << character.age
-                  << ", Strength: " << character.strength
-                  << ", Stamina: " << character.stamina
-                  << ", Wisdom: " << character.wisdom
-                  << ", PridePoints: " << character.pridePoints
+    cout << player2.getName() << ", choose your character: "; 
+    for(int i = 0; i < charactersVector.size(); i++){
+        cout << charactersVector[i].name << " (" << i + 1 << "), ";
+    }
+    cout << "or name your own character with random attributes(6)" << endl; 
+
+    for (int i = 0; i < charactersVector.size(); i++) {
+        cout << "Name: " << charactersVector[i].name
+                  << ", Age: " << charactersVector[i].age
+                  << ", Strength: " << charactersVector[i].strength
+                  << ", Stamina: " << charactersVector[i].stamina
+                  << ", Wisdom: " << charactersVector[i].wisdom
+                  << ", PridePoints: " << charactersVector[i].pridePoints
                   << endl;
     }
+
     while(cin >> characterChoice){
         if(characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5' || characterChoice == '6'){
             switch(characterChoice){
@@ -262,6 +259,7 @@ for (const auto& character : charactersVector) {
                     break;
                 case '6':
                     string inputName;
+                    cin.ignore();
                     cout << "Enter character name: " << endl;
                     getline(cin, inputName);
                     player2.setName(inputName);
@@ -280,8 +278,8 @@ for (const auto& character : charactersVector) {
 
     cout << endl; //skip a line
     //ask each player if they would like to go to pridelands or cub training
-    cout << player1.getName() << ", pridelands (1) or Cub Training (2)?" << endl;
     char choice;
+    cout << player1.getName() << ", pridelands (1) or Cub Training (2)?" << endl;
     while(cin >> choice){
         if(choice == '1'){
             player1.setPridelands(true);
@@ -293,6 +291,7 @@ for (const auto& character : charactersVector) {
             cout << "Invalid Input. Please enter a valid option." << endl;
         }
     }
+
     cout << player2.getName() << ", pridelands (1) or Cub Training (2)?" << endl;
     while(cin >> choice){
         if(choice == '1'){
@@ -306,8 +305,7 @@ for (const auto& character : charactersVector) {
         }
     }
 
-    cout << endl; //skip a line before the boards are displayed
-
+    cout << endl; //skip a line
     //initialize both boards and display them
     Board testBoard(2);
     testBoard.initializeBoard();
