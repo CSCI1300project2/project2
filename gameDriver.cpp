@@ -10,6 +10,8 @@
 
 using namespace std;
 
+struct characters;
+
 //split function for reading from txt files
 int split(string input_string, char separator, string arr[], const int ARR_SIZE){
     int lastDelimiter = 0;
@@ -25,9 +27,9 @@ int split(string input_string, char separator, string arr[], const int ARR_SIZE)
             lastDelimiter = i + 1;
             elements += 1;
         }
-        if(elements == ARR_SIZE && i != input_string.length() - 1){
+       if(elements == ARR_SIZE && i != input_string.length() - 1){
             return -1;
-        }
+        } 
     }
     return elements;
 }
@@ -43,7 +45,14 @@ int main(){
         int pridePoints;
     };
 
-    vector <characters> characters;
+    characters Apollo;
+    characters Mane;
+    characters Elsa;
+    characters Zuri;
+    characters Roary;
+
+    vector <characters> charactersVector;
+    string characters[6];
 
     string characterLine;
     ifstream file("characters.txt");
@@ -54,11 +63,15 @@ int main(){
     }
     while(getline(file, characterLine)){
         if(!firstLine){
-            //split();
+            split(characterLine, '|', characters, 6);
+            for(int i = 0; i < 5; i++){
+                for(int i = 0; i < 6; i++){
+                    
+                }
+            }
         }
+        firstLine = false;
     }
-
-
 
     srand(time(0)); //seed random function
 
@@ -109,7 +122,7 @@ int main(){
     testBoard.initializeBoard();
     testBoard.displayBoard();
 
-    //testBoard.movePlayer(choice - 1, 2);
+    //testBoard.movePlayer(1, 2);
     //testBoard.displayBoard();
 
 //test
