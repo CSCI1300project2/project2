@@ -10,6 +10,18 @@
 
 using namespace std;
 
+//function to print the menu for each turn
+void printMenu(){
+    cout << "Main Menu: Select an option to continue" << endl;
+    cout << "1. Check Player Progress (1)" << endl;
+    cout << "2. Review Character (2)" << endl;
+    cout << "3. Check Position (3)" << endl;
+    cout << "4. Review your Advisor (4)" << endl;
+    cout << "5. Move Forward (5)" << endl;
+    cout endl;
+    cout << "Please choose an option using the corresponding number:" << endl;
+}
+
 //split function for reading from txt files
 int split(string input_string, char separator, string arr[], const int ARR_SIZE){
     int lastDelimiter = 0;
@@ -34,6 +46,7 @@ int split(string input_string, char separator, string arr[], const int ARR_SIZE)
 
 int main(){
 
+//stores the attributes of each character option
     struct characters{
         string name;
         int age;
@@ -41,6 +54,13 @@ int main(){
         int stamina;
         int wisdom;
         int pridePoints;
+    };
+
+//stores the attributes of each advisor option
+    struct advisor{
+        string name;
+        string power;
+        string description;
     };
 
     vector <characters> charactersVector;
