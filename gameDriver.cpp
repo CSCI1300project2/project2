@@ -54,6 +54,13 @@ int main(){
     vector <characters> charactersVector;
     string characters[6];
 
+   charactersVector.push_back(Apollo);
+   charactersVector.push_back(Mane);
+   charactersVector.push_back(Elsa);
+   charactersVector.push_back(Zuri);
+   charactersVector.push_back(Roary);
+
+
     string characterLine;
     ifstream file("characters.txt");
     bool firstLine = true;
@@ -65,14 +72,41 @@ int main(){
         if(!firstLine){
             split(characterLine, '|', characters, 6);
             for(int i = 0; i < 5; i++){
-                for(int i = 0; i < 6; i++){
-                    
+                for(unsigned int j = 0; j < charactersVector.size(); j++){
+                    switch (j){
+                        case 0:
+                            charactersVector[i].name = characters[j];
+                            break;
+                        case 1:
+                            charactersVector[i].age = stoi(characters[j]);
+                            break;
+                        case 2:
+                            charactersVector[i].strength = stoi(characters[j]);
+                            break;
+                        case 3:
+                            charactersVector[i].stamina = stoi(characters[j]);
+                            break;
+                        case 4:
+                            charactersVector[i].wisdom = stoi(characters[j]);
+                            break;
+                        case 5:
+                            charactersVector[i].pridePoints = stoi(characters[j]);
+                            break;
+                    }
                 }
             }
         }
         firstLine = false;
     }
-
+for (const auto& character : charactersVector) {
+        cout << "Name: " << character.name
+                  << ", Age: " << character.age
+                  << ", Strength: " << character.strength
+                  << ", Stamina: " << character.stamina
+                  << ", Wisdom: " << character.wisdom
+                  << ", PridePoints: " << character.pridePoints
+                  << endl;
+    }
     srand(time(0)); //seed random function
 
     cout << endl; //skip a line
