@@ -510,6 +510,7 @@ int main()
         riddlesVector.push_back(tempRiddle);
     }
     riddlesFile.close(); // close the riddles file
+    bool ifMoved = true;
 
     // display board once before printing the first menu
     cout << endl;
@@ -517,18 +518,21 @@ int main()
     player2Board.displayBoard(player2);
     cout << endl;
 
-    while (player1Board.getPlayerPosition() != 52 || player2Board.getPlayerPosition() != 52)
+    while (player1Board.getPlayerPosition() < 52 || player2Board.getPlayerPosition() < 52)
     {
+        ifMoved = false;
         if (turnCount % 2 == 0)
         {
             cout << player1.getName() << "'s turn." << endl;
+            cout << endl;
         }
         else
         {
             cout << player2.getName() << "'s turn." << endl;
+            cout << endl;
         }
         printMenu();
-        while (cin >> menuChoice)
+        while (cin >> menuChoice && !ifMoved)
         {
             cout << endl; // skip a line
             if (turnCount % 2 == 0)
@@ -541,8 +545,8 @@ int main()
                         player1.printStats();
                         break;
                     case '2':
-                        cout << player1.getName() << " name:" << player1.getName() << endl;
-                        cout << player1.getName() << " age:" << player1.getAge() << endl;
+                        cout << player1.getName() << " name: " << player1.getName() << endl;
+                        cout << player1.getName() << " age: " << player1.getAge() << endl;
                         break;
                     case '3':
                         cout << player1.getName() << " your position is: " << player1Board.getPlayerPosition() << endl;
@@ -656,6 +660,7 @@ int main()
                         case 'G': // green
                             break;
                         }
+                        ifMoved = true;
                         break;
                     }
                     break;
@@ -675,8 +680,8 @@ int main()
                         player2.printStats();
                         break;
                     case '2':
-                        cout << player2.getName() << " name:" << player2.getName() << endl;
-                        cout << player2.getName() << " age:" << player2.getAge() << endl;
+                        cout << player2.getName() << " name: " << player2.getName() << endl;
+                        cout << player2.getName() << " age: " << player2.getAge() << endl;
                         break;
                     case '3':
                         cout << player2.getName() << " your position is: " << player2Board.getPlayerPosition() << endl;
@@ -693,9 +698,104 @@ int main()
                         }
                         break;
                     case '5':
+                        tempPosition = player2Board.getPlayerPosition();
                         randSpace = (rand() % 6) + 1;
                         player2Board.movePlayer(randSpace);
                         cout << player2.getName() << " moved " << randSpace << " spaces." << endl;
+                        switch (player2Board.getPositionTile(player2Board.getPlayerPosition()).getColor())
+                        {
+                        case 'R': // red
+                            cout << endl;
+                            player1Board.displayBoard(player1);
+                            player2Board.displayBoard(player2);
+                            cout << endl;
+                            cout << "Uh-oh, you’ve stumbled into the Graveyard! You will move back 10 tiles and lose 100 Stamina, Strength, and Wisdom Points" << endl;
+                            player2.setStrength(player2.getStrength() - 100);
+                            player2.setWisdom(player2.getWisdom() - 100);
+                            player2.setStamina(player2.getStamina() - 100);
+                            player2Board.setPlayerPos(player2Board.getPlayerPosition() - 10);
+                            cout << endl; // skip a line
+                            break;
+                        case 'B': // blue
+                            cout << "You’ve found a peaceful oasis! You will be granted an extra turn to keep moving forward, so take a deep breath and relax; you also gain 200 Stamina, Strength, and Wisdom Points." << endl;
+                            player2.setStrength(player2.getStrength() + 200);
+                            player2.setWisdom(player2.getWisdom() + 200);
+                            player2.setStamina(player2.getStamina() + 200);
+                            cout << endl; // skip a line
+                            break;
+                        case 'P': // pink
+                            cout << "Welcome to the land of enrichment - when landing on this tile, your Stamina, Strength, and Wisdom Points increase by 300, and you get to choose an advisor from the available list of advisors. If you already have an advisor, you can switch your advisor out for a different one from the list or keep your original advisor. Don’t forget - an advisor can protect you from random events that negatively impact your Pride Points." << endl;
+                            player2.setStrength(player2.getStrength() + 300);
+                            player2.setWisdom(player2.getWisdom() + 300);
+                            player2.setStamina(player2.getStamina() + 300);
+                            cout << endl; // skip a line
+                            if (player1.getHasAdvisor())
+                            {
+                                int player2ChangeAdvisor;
+                                cout << "Would you like to view your advsior (1), change your advisor (2), or keep your advisor (3)?" << endl;
+                                while (cin >> player2ChangeAdvisor)
+                                {
+                                    if (player2ChangeAdvisor == 1)
+                                    {
+                                        cout << endl; // skip a line
+                                        player2.printAdvisor();
+                                    }
+                                    else if (player2ChangeAdvisor == 2)
+                                    {
+                                        settingAdvisor(player2, characterChoice, advisorsVector);
+                                        break;
+                                    }
+                                    else if (player2ChangeAdvisor == 3)
+                                    {
+                                        cout << endl; // skip a line
+                                        cout << "Your advisor is " << player2.getAdvisor().name << "." << endl;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        cout << endl; // skip a line
+                                        cout << "Invalid Input. Try again." << endl;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                settingAdvisor(player2, characterChoice, advisorsVector);
+                            }
+                            cout << endl; // skip a line
+                            break;
+                        case 'N': // brown
+                            cout << endl;
+                            player1Board.displayBoard(player1);
+                            player2Board.displayBoard(player2);
+                            cout << endl;
+                            cout << "Hyenas are on the prowl! They drag you back to where you were last, and the journey comes at a cost. You will be returned to your previous position. In addition, your Stamina Points decrease by 300 Points." << endl;
+                            player2.setStamina(player2.getStamina() - 300);
+                            player2Board.setPlayerPos(tempPosition);
+                            cout << endl; // skip a line
+                            break;
+                        case 'U': // purple
+                            cout << "Time for a test of wits! Answer correctly, and you’ll earn a boost of 500 Wisdom Points. Think carefully, your cleverness will pay off!" << endl;
+                            cout << endl; // skip a line
+                            randomRiddleIndex = rand() % riddlesVector.size();
+                            cout << "Answer with one word in all lowercase: " << riddlesVector[randomRiddleIndex].riddleQuestion << endl;
+                            cin >> riddleAnswer;
+                            cout << endl; // skip a line
+                            if (riddleAnswer == riddlesVector[randomRiddleIndex].answer)
+                            {
+                                cout << "Congrats! You answered correctly! +500 Wisdom Points" << endl;
+                                player2.setWisdom(player2.getWisdom() + 500);
+                            }
+                            else
+                            {
+                                cout << "Incorrect. Better luck next time." << endl;
+                            }
+                            cout << endl; // skip a line
+                            break;
+                        case 'G': // green
+                            break;
+                        }
+                        ifMoved = true;
                         break;
                     }
                     break;
@@ -710,7 +810,10 @@ int main()
         player1Board.displayBoard(player1);
         player2Board.displayBoard(player2);
         cout << endl;
-        turnCount++;
+        if (ifMoved)
+        {
+            turnCount++;
+        }
     }
 
     return 0;
