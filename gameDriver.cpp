@@ -500,13 +500,14 @@ int main()
 
     cout << endl; // skip a line
     // initialize both boards and display them
-    Board testBoard(1);
+    Board testBoard(2);
     testBoard.initializeBoard();
 
     cout << endl; // skip a line
     cout << endl; // skip a line
     char menuChoice;
     int turnCount = 0;
+    int randSpace = 0;
     while (testBoard.getPlayerPosition(1) != 52 || testBoard.getPlayerPosition(2) != 52)
     {   
         cout<<endl;
@@ -539,7 +540,9 @@ int main()
 
                         break;
                     case '5':
-
+                        randSpace = (rand() % 6) + 1;
+                        testBoard.movePlayer(0,randSpace);
+                        cout<<player1.getName()<<" moved "<< randSpace << " spaces."<<endl;
                         break;
                     }
                     break;
@@ -568,7 +571,9 @@ int main()
 
                         break;
                     case '5':
-
+                        randSpace = (rand() % 6) + 1;
+                        testBoard.movePlayer(1,randSpace);
+                        cout<<player2.getName()<<" moved "<< randSpace << " spaces."<<endl;
                         break;
                     }
                     break;
