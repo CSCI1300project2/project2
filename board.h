@@ -21,6 +21,8 @@ class Board{
         void displayBoard(Player player);
         bool movePlayer(int spaces);
         int getPlayerPosition() const;
+        tileType getPositionTile(int playerPos) const;
+        void setPlayerPos(int pos);
 };
 
 #endif

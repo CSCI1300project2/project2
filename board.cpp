@@ -214,3 +214,15 @@ int Board::getPlayerPosition() const
 {
     return _player_position;
 }
+
+tileType Board::getPositionTile(int playerPos) const{
+    return _tiles[playerPos];
+}
+
+void Board::setPlayerPos(int pos){
+    if(pos >= 0){
+        _player_position = pos;
+    } else {
+        _player_position = 0;
+    }
+}
