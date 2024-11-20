@@ -455,6 +455,36 @@ int main(){
     testBoard.initializeBoard();
     testBoard.displayBoard();
 
+cout << endl; // skip a line
+cout << player1.getName() << "'s turn." << endl;
+cout << endl; // skip a line
+printMenu();
+char menuChoice;
+while (cin >> menuChoice){
+    if (menuChoice == '1' || menuChoice == '2' || menuChoice == '3' || menuChoice == '4' || menuChoice == '5'){
+        switch (menuChoice){
+            case '1':
+                
+                break;
+            case '2':
+                
+                break;
+            case '3':
+                
+                break;
+            case '4':
+                
+                break;
+            case '5':
+                
+                break;
+        }
+        break;
+    }else{
+        cout << "Invalid Input. Please enter a valid option." << endl;
+    }
+}
+
     // testBoard.movePlayer(1, 2);
     // testBoard.displayBoard();
 
