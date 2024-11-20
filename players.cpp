@@ -118,3 +118,6 @@ void Player::setPridelands(bool isPridelands){
     _pridelands = isPridelands;
 }
 
+void Player::setAdvisor(string a){
+    advisor = a;
+}

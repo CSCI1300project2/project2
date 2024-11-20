@@ -369,6 +369,34 @@ int main(){
         }else if (choice == '2'){
             player1.setPridelands(false);
             player1.trainCub();
+            cout << player1.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), Sarafina (5)" << endl;
+            for (unsigned int i = 0; i < advisorsVector.size(); i++){
+                cout << "Name: " << advisorsVector[i].name << ", Power: " << advisorsVector[i].power << ", Description: " << advisorsVector[i].description << endl;
+            }
+            while (cin >> characterChoice){
+                if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5'){
+                    switch (characterChoice){
+                        case '1':
+                            player1.setAdvisor(advisorsVector[0].name);
+                            break;
+                        case '2':
+                            player1.setAdvisor(advisorsVector[1].name);
+                            break;
+                        case '3':
+                            player1.setAdvisor(advisorsVector[2].name);
+                            break;
+                        case '4':
+                            player1.setAdvisor(advisorsVector[3].name);
+                            break;
+                        case '5':
+                            player1.setAdvisor(advisorsVector[4].name);
+                            break;
+                    }
+                    break;
+                }else{
+                    cout << "Invalid Input. Please enter a valid option." << endl;
+                }
+            }
             break;
         }else{
             cout << "Invalid Input. Please enter a valid option." << endl;
@@ -384,6 +412,34 @@ int main(){
         }else if (choice == '2'){
             player2.setPridelands(false);
             player2.trainCub();
+            cout << player2.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), Sarafina (5)" << endl;
+            for (unsigned int i = 0; i < advisorsVector.size(); i++){
+                cout << "Name: " << advisorsVector[i].name << ", Power: " << advisorsVector[i].power << ", Description: " << advisorsVector[i].description << endl;
+            }
+            while (cin >> characterChoice){
+                if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5'){
+                    switch (characterChoice){
+                        case '1':
+                            player2.setAdvisor(advisorsVector[0].name);
+                            break;
+                        case '2':
+                            player2.setAdvisor(advisorsVector[1].name);
+                            break;
+                        case '3':
+                            player2.setAdvisor(advisorsVector[2].name);
+                            break;
+                        case '4':
+                            player2.setAdvisor(advisorsVector[3].name);
+                            break;
+                        case '5':
+                            player2.setAdvisor(advisorsVector[4].name);
+                            break;
+                    }
+                    break;
+                }else{
+                    cout << "Invalid Input. Please enter a valid option." << endl;
+                }
+            }
             break;
         }else{
             cout << "Invalid Input. Please enter a valid option." << endl;

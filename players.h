@@ -25,9 +25,11 @@ class Player{
     void toPrideLands();
     void printStats();
     void setPridelands(bool isPridelands);
+    void setAdvisor(string a);
 
     private:
     string _name;
+    string advisor;
     int _strength, _stamina, _wisdom, _pride_points, _age;
     bool _pridelands;
 
