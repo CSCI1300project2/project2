@@ -1,3 +1,4 @@
+//CSCI1300 Project 2: Sergio Bocci and Grace Bournonille
 #include "board.h"
 #include <cstdlib> // For rand() and srand()
 #include <ctime>   // For time()
@@ -29,6 +30,7 @@ void Board::initializeTiles(Player player)
     int choice = 0;
 
     for (int i = 0; i < _BOARD_SIZE; i++) {
+        temp.setColor('G');
         if (i == 0) {
             // Starting tile
             temp.setColor('Y'); // Grey (Starting tile)

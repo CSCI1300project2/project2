@@ -1,3 +1,4 @@
+//CSCI1300 Project 2: Sergio Bocci and Grace Bournonille
 #include <iostream>
 #include <string>
 #ifndef PLAYERS_H

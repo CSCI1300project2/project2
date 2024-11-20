@@ -1,3 +1,4 @@
+// CSCI1300 Project 2: Sergio Bocci and Grace Bournonille
 #include <iostream>
 #include "players.h"
 #include "board.h"
@@ -23,8 +24,47 @@ void printMenu()
     cout << "Please choose an option using the corresponding number:" << endl;
 }
 
-void coloredTiles(char color, Player player, Board board)
+struct advisors;
+
+void settingAdvisor(Player player, char characterChoice, vector<advisors> advisorsVector)
 {
+    player.setHasAdvisor(true);
+    cout << endl; // skip a line
+    cout << player.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), Sarafina (5)" << endl;
+    cout << endl; // skip a line
+    for (unsigned int i = 0; i < advisorsVector.size(); i++) //printing the advisor options from the array
+    {
+        cout << "Name: " << advisorsVector[i].name << ", Power: " << advisorsVector[i].power << ", Description: " << advisorsVector[i].description << endl;
+    }
+    while (cin >> characterChoice)
+    {
+        if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5')
+        {
+            switch (characterChoice)
+            {
+            case '1':
+                player.setAdvisor(advisorsVector[0]);
+                break;
+            case '2':
+                player.setAdvisor(advisorsVector[1]);
+                break;
+            case '3':
+                player.setAdvisor(advisorsVector[2]);
+                break;
+            case '4':
+                player.setAdvisor(advisorsVector[3]);
+                break;
+            case '5':
+                player.setAdvisor(advisorsVector[4]);
+                break;
+            }
+            break;
+        }
+        else
+        {
+            cout << "Invalid Input. Please enter a valid option." << endl;
+        }
+    }
 }
 
 // split function for reading from txt files
@@ -400,45 +440,9 @@ int main()
         }
         else if (choice == '2')
         {
-            player1.setHasAdvisor(true);
+            settingAdvisor(player1, characterChoice, advisorsVector);
             player1.setPridelands(false);
             player1.trainCub();
-            cout << endl; // skip a line
-            cout << player1.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), Sarafina (5)" << endl;
-            cout << endl; // skip a line
-            for (unsigned int i = 0; i < advisorsVector.size(); i++)
-            {
-                cout << "Name: " << advisorsVector[i].name << ", Power: " << advisorsVector[i].power << ", Description: " << advisorsVector[i].description << endl;
-            }
-            while (cin >> characterChoice)
-            {
-                if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5')
-                {
-                    switch (characterChoice)
-                    {
-                    case '1':
-                        player1.setAdvisor(advisorsVector[0]);
-                        break;
-                    case '2':
-                        player1.setAdvisor(advisorsVector[1]);
-                        break;
-                    case '3':
-                        player1.setAdvisor(advisorsVector[2]);
-                        break;
-                    case '4':
-                        player1.setAdvisor(advisorsVector[3]);
-                        break;
-                    case '5':
-                        player1.setAdvisor(advisorsVector[4]);
-                        break;
-                    }
-                    break;
-                }
-                else
-                {
-                    cout << "Invalid Input. Please enter a valid option." << endl;
-                }
-            }
             break;
         }
         else
@@ -459,45 +463,9 @@ int main()
         }
         else if (choice == '2')
         {
-            player2.setHasAdvisor(true);
+            settingAdvisor(player2, characterChoice, advisorsVector);
             player2.setPridelands(false);
             player2.trainCub();
-            cout << endl; // skip a line
-            cout << player2.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), Sarafina (5)" << endl;
-            cout << endl; // skip a line
-            for (unsigned int i = 0; i < advisorsVector.size(); i++)
-            {
-                cout << "Name: " << advisorsVector[i].name << ", Power: " << advisorsVector[i].power << ", Description: " << advisorsVector[i].description << endl;
-            }
-            while (cin >> characterChoice)
-            {
-                if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5')
-                {
-                    switch (characterChoice)
-                    {
-                    case '1':
-                        player2.setAdvisor(advisorsVector[0]);
-                        break;
-                    case '2':
-                        player2.setAdvisor(advisorsVector[1]);
-                        break;
-                    case '3':
-                        player2.setAdvisor(advisorsVector[2]);
-                        break;
-                    case '4':
-                        player2.setAdvisor(advisorsVector[3]);
-                        break;
-                    case '5':
-                        player2.setAdvisor(advisorsVector[4]);
-                        break;
-                    }
-                    break;
-                }
-                else
-                {
-                    cout << "Invalid Input. Please enter a valid option." << endl;
-                }
-            }
             break;
         }
         else
@@ -540,8 +508,9 @@ int main()
         // Add the new riddle to the vector
         riddlesVector.push_back(tempRiddle);
     }
+    riddlesFile.close(); // close the riddles file
 
-    //display board once before printing the first menu
+    // display board once before printing the first menu
     cout << endl;
     player1Board.displayBoard(player1);
     player2Board.displayBoard(player2);
@@ -615,6 +584,27 @@ int main()
                             player1.setStrength(player1.getStrength() + 300);
                             player1.setWisdom(player1.getWisdom() + 300);
                             player1.setStamina(player1.getStamina() + 300);
+                            cout << endl; // skip a line
+                            if(player1.getHasAdvisor()){
+                                int player1ChangeAdvisor;
+                                cout << "Would you like to view your advsior (1), change your advisor (2), or keep your advisor (3)?" << endl;
+                                while (cin >> player1ChangeAdvisor){
+                                    if(player1ChangeAdvisor == 1){
+                                        
+                                        break;
+                                    } else if(player1ChangeAdvisor == 2){
+                                        settingAdvisor(player1, characterChoice, advisorsVector);
+                                        break;
+                                    } else if(player1ChangeAdvisor == 3){
+                                        
+                                        break;
+                                    }else{
+                                        cout << "Invalid Input. Try again." << endl;
+                                    }
+                                }
+                            } else{
+                                settingAdvisor(player1, characterChoice, advisorsVector);
+                            }
                             cout << endl; // skip a line
                             break;
                         case 'N': // brown
