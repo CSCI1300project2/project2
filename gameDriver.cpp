@@ -29,10 +29,9 @@ struct advisors;
 void settingAdvisor(Player player, char characterChoice, vector<advisors> advisorsVector)
 {
     player.setHasAdvisor(true);
-    cout << endl; // skip a line
     cout << player.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), Sarafina (5)" << endl;
-    cout << endl; // skip a line
-    for (unsigned int i = 0; i < advisorsVector.size(); i++) //printing the advisor options from the array
+    cout << endl;                                            // skip a line
+    for (unsigned int i = 0; i < advisorsVector.size(); i++) // printing the advisor options from the array
     {
         cout << "Name: " << advisorsVector[i].name << ", Power: " << advisorsVector[i].power << ", Description: " << advisorsVector[i].description << endl;
     }
@@ -440,6 +439,7 @@ int main()
         }
         else if (choice == '2')
         {
+            cout << endl; // skip a line
             settingAdvisor(player1, characterChoice, advisorsVector);
             player1.setPridelands(false);
             player1.trainCub();
@@ -463,6 +463,7 @@ int main()
         }
         else if (choice == '2')
         {
+            cout << endl; // skip a line
             settingAdvisor(player2, characterChoice, advisorsVector);
             player2.setPridelands(false);
             player2.trainCub();
@@ -565,6 +566,10 @@ int main()
                         switch (player1Board.getPositionTile(player1Board.getPlayerPosition()).getColor())
                         {
                         case 'R': // red
+                            cout << endl;
+                            player1Board.displayBoard(player1);
+                            player2Board.displayBoard(player2);
+                            cout << endl;
                             cout << "Uh-oh, you’ve stumbled into the Graveyard! You will move back 10 tiles and lose 100 Stamina, Strength, and Wisdom Points" << endl;
                             player1.setStrength(player1.getStrength() - 100);
                             player1.setWisdom(player1.getWisdom() - 100);
@@ -585,29 +590,46 @@ int main()
                             player1.setWisdom(player1.getWisdom() + 300);
                             player1.setStamina(player1.getStamina() + 300);
                             cout << endl; // skip a line
-                            if(player1.getHasAdvisor()){
+                            if (player1.getHasAdvisor())
+                            {
                                 int player1ChangeAdvisor;
                                 cout << "Would you like to view your advsior (1), change your advisor (2), or keep your advisor (3)?" << endl;
-                                while (cin >> player1ChangeAdvisor){
-                                    if(player1ChangeAdvisor == 1){
-                                        
-                                        break;
-                                    } else if(player1ChangeAdvisor == 2){
+                                while (cin >> player1ChangeAdvisor)
+                                {
+                                    if (player1ChangeAdvisor == 1)
+                                    {
+                                        cout << endl; // skip a line
+                                        player1.printAdvisor();
+                                    }
+                                    else if (player1ChangeAdvisor == 2)
+                                    {
                                         settingAdvisor(player1, characterChoice, advisorsVector);
                                         break;
-                                    } else if(player1ChangeAdvisor == 3){
-                                        
+                                    }
+                                    else if (player1ChangeAdvisor == 3)
+                                    {
+                                        cout << endl; // skip a line
+                                        cout << "Your advisor is " << player1.getAdvisor().name << "." << endl;
                                         break;
-                                    }else{
+                                    }
+                                    else
+                                    {
+                                        cout << endl; // skip a line
                                         cout << "Invalid Input. Try again." << endl;
                                     }
                                 }
-                            } else{
+                            }
+                            else
+                            {
                                 settingAdvisor(player1, characterChoice, advisorsVector);
                             }
                             cout << endl; // skip a line
                             break;
                         case 'N': // brown
+                            cout << endl;
+                            player1Board.displayBoard(player1);
+                            player2Board.displayBoard(player2);
+                            cout << endl;
                             cout << "Hyenas are on the prowl! They drag you back to where you were last, and the journey comes at a cost. You will be returned to your previous position. In addition, your Stamina Points decrease by 300 Points." << endl;
                             player1.setStamina(player1.getStamina() - 300);
                             player1Board.setPlayerPos(tempPosition);
