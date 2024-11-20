@@ -451,15 +451,15 @@ int main(){
 
     cout << endl; // skip a line
     // initialize both boards and display them
-    Board testBoard(2);
+    Board testBoard(1);
     testBoard.initializeBoard();
     testBoard.displayBoard();
 
 cout << endl; // skip a line
 cout << player1.getName() << "'s turn." << endl;
 cout << endl; // skip a line
-printMenu();
 char menuChoice;
+printMenu();
 while (cin >> menuChoice){
     if (menuChoice == '1' || menuChoice == '2' || menuChoice == '3' || menuChoice == '4' || menuChoice == '5'){
         switch (menuChoice){

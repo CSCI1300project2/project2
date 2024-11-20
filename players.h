@@ -25,6 +25,7 @@ class Player{
     void toPrideLands();
     void printStats();
     void setPridelands(bool isPridelands);
+    bool getPridelands();
     void setAdvisor(string a);
 
     private:
