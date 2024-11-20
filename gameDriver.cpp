@@ -594,8 +594,5 @@ int main()
         turnCount++;
     }
 
-    // testBoard.movePlayer(1, 2);
-    // testBoard.displayBoard();
-
     return 0;
 }
