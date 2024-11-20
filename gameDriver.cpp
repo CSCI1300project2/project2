@@ -511,6 +511,7 @@ int main()
     }
     riddlesFile.close(); // close the riddles file
     bool ifMoved = true;
+    bool extraTurn = false;
 
     // display board once before printing the first menu
     cout << endl;
@@ -574,6 +575,7 @@ int main()
                             player1Board.displayBoard(player1);
                             player2Board.displayBoard(player2);
                             cout << endl;
+                            cout << endl; // skip a line
                             cout << "Uh-oh, you’ve stumbled into the Graveyard! You will move back 10 tiles and lose 100 Stamina, Strength, and Wisdom Points" << endl;
                             player1.setStrength(player1.getStrength() - 100);
                             player1.setWisdom(player1.getWisdom() - 100);
@@ -581,14 +583,17 @@ int main()
                             player1Board.setPlayerPos(player1Board.getPlayerPosition() - 10);
                             cout << endl; // skip a line
                             break;
-                        case 'B': // blue
+                        case 'B':         // blue
+                            cout << endl; // skip a line
                             cout << "You’ve found a peaceful oasis! You will be granted an extra turn to keep moving forward, so take a deep breath and relax; you also gain 200 Stamina, Strength, and Wisdom Points." << endl;
                             player1.setStrength(player1.getStrength() + 200);
                             player1.setWisdom(player1.getWisdom() + 200);
                             player1.setStamina(player1.getStamina() + 200);
+                            extraTurn = true;
                             cout << endl; // skip a line
                             break;
-                        case 'P': // pink
+                        case 'P':         // pink
+                            cout << endl; // skip a line
                             cout << "Welcome to the land of enrichment - when landing on this tile, your Stamina, Strength, and Wisdom Points increase by 300, and you get to choose an advisor from the available list of advisors. If you already have an advisor, you can switch your advisor out for a different one from the list or keep your original advisor. Don’t forget - an advisor can protect you from random events that negatively impact your Pride Points." << endl;
                             player1.setStrength(player1.getStrength() + 300);
                             player1.setWisdom(player1.getWisdom() + 300);
@@ -634,12 +639,14 @@ int main()
                             player1Board.displayBoard(player1);
                             player2Board.displayBoard(player2);
                             cout << endl;
+                            cout << endl; // skip a line
                             cout << "Hyenas are on the prowl! They drag you back to where you were last, and the journey comes at a cost. You will be returned to your previous position. In addition, your Stamina Points decrease by 300 Points." << endl;
                             player1.setStamina(player1.getStamina() - 300);
                             player1Board.setPlayerPos(tempPosition);
                             cout << endl; // skip a line
                             break;
-                        case 'U': // purple
+                        case 'U':         // purple
+                            cout << endl; // skip a line
                             cout << "Time for a test of wits! Answer correctly, and you’ll earn a boost of 500 Wisdom Points. Think carefully, your cleverness will pay off!" << endl;
                             cout << endl; // skip a line
                             randomRiddleIndex = rand() % riddlesVector.size();
@@ -709,6 +716,7 @@ int main()
                             player1Board.displayBoard(player1);
                             player2Board.displayBoard(player2);
                             cout << endl;
+                            cout << endl; // skip a line
                             cout << "Uh-oh, you’ve stumbled into the Graveyard! You will move back 10 tiles and lose 100 Stamina, Strength, and Wisdom Points" << endl;
                             player2.setStrength(player2.getStrength() - 100);
                             player2.setWisdom(player2.getWisdom() - 100);
@@ -716,14 +724,17 @@ int main()
                             player2Board.setPlayerPos(player2Board.getPlayerPosition() - 10);
                             cout << endl; // skip a line
                             break;
-                        case 'B': // blue
+                        case 'B':         // blue
+                            cout << endl; // skip a line
                             cout << "You’ve found a peaceful oasis! You will be granted an extra turn to keep moving forward, so take a deep breath and relax; you also gain 200 Stamina, Strength, and Wisdom Points." << endl;
                             player2.setStrength(player2.getStrength() + 200);
                             player2.setWisdom(player2.getWisdom() + 200);
                             player2.setStamina(player2.getStamina() + 200);
+                            extraTurn = true;
                             cout << endl; // skip a line
                             break;
-                        case 'P': // pink
+                        case 'P':         // pink
+                            cout << endl; // skip a line
                             cout << "Welcome to the land of enrichment - when landing on this tile, your Stamina, Strength, and Wisdom Points increase by 300, and you get to choose an advisor from the available list of advisors. If you already have an advisor, you can switch your advisor out for a different one from the list or keep your original advisor. Don’t forget - an advisor can protect you from random events that negatively impact your Pride Points." << endl;
                             player2.setStrength(player2.getStrength() + 300);
                             player2.setWisdom(player2.getWisdom() + 300);
@@ -769,12 +780,14 @@ int main()
                             player1Board.displayBoard(player1);
                             player2Board.displayBoard(player2);
                             cout << endl;
+                            cout << endl; // skip a line
                             cout << "Hyenas are on the prowl! They drag you back to where you were last, and the journey comes at a cost. You will be returned to your previous position. In addition, your Stamina Points decrease by 300 Points." << endl;
                             player2.setStamina(player2.getStamina() - 300);
                             player2Board.setPlayerPos(tempPosition);
                             cout << endl; // skip a line
                             break;
-                        case 'U': // purple
+                        case 'U':         // purple
+                            cout << endl; // skip a line
                             cout << "Time for a test of wits! Answer correctly, and you’ll earn a boost of 500 Wisdom Points. Think carefully, your cleverness will pay off!" << endl;
                             cout << endl; // skip a line
                             randomRiddleIndex = rand() % riddlesVector.size();
@@ -812,7 +825,15 @@ int main()
         cout << endl;
         if (ifMoved)
         {
-            turnCount++;
+            if (extraTurn)
+            {
+                // Do not change the turn; allow the current player to move again
+                extraTurn = false; // Reset extra turn flag after using it
+            }
+            else
+            {
+                turnCount++; // Pass turn to the next player
+            }
         }
     }
 
