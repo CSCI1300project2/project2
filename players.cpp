@@ -10,6 +10,7 @@ Player::Player(){
     _stamina = 100;
     _wisdom = 100;
     _pride_points = 0;
+    hasAdvisor = false;
 }
 
 Player::Player(string name, int stamina, int wisdom, int strenth, int PlayerNumber){
@@ -32,6 +33,7 @@ Player::Player(string name, int stamina, int wisdom, int strenth, int PlayerNumb
     _age = 1;
     _pride_points = 0;
     playerNumber = PlayerNumber;
+    hasAdvisor = false;
 }
 
 string Player::getName(){
@@ -122,6 +124,7 @@ void Player::setPridelands(bool isPridelands){
 
 void Player::setAdvisor(advisors a){
     advisor = a;
+    hasAdvisor = true;
 }
 
 bool Player::getPridelands(){
@@ -133,7 +136,7 @@ advisors Player::getAdvisor(){
 }
 
 void Player::printAdvisor(){
-    cout << "Name: " << getAdvisor().name << ", Power: " << getAdvisor().power << ", Description: " << getAdvisor().description << endl;
+    cout << "Name: " << advisor.name << ", Power: " << advisor.power << ", Description: " << advisor.description << endl;
 }
 
 bool Player::getHasAdvisor(){

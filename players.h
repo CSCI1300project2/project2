@@ -45,7 +45,7 @@ class Player{
     private:
     string _name;
     advisors advisor;
-    bool hasAdvisor = false;
+    bool hasAdvisor;
     int _strength, _stamina, _wisdom, _pride_points, _age;
     bool _pridelands;
     int playerNumber;
