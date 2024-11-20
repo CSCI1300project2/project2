@@ -172,11 +172,13 @@ int main()
     cin >> playerName;
     Player player1;
     player1.setName(playerName);
+    player1.setPlayerNumber(1);
     cout << endl; // skip a line
     cout << "Enter Player 2's name: " << endl;
     cin >> playerName;
     Player player2;
     player2.setName(playerName);
+    player2.setPlayerNumber(2);
 
     cout << endl; // skip a line
     char characterChoice;
@@ -496,16 +498,17 @@ int main()
 
     cout << endl; // skip a line
     // initialize both boards and display them
-    Board testBoard(2);
-    testBoard.initializeBoard();
+    Board player1Board(player1);
+    Board player2Board(player2);
     char menuChoice;
     int turnCount = 0;
     int randSpace = 0;
 
-    while (testBoard.getPlayerPosition(1) != 52 || testBoard.getPlayerPosition(2) != 52)
+    while (player1Board.getPlayerPosition() != 52 || player2Board.getPlayerPosition() != 52)
     {   
         cout<<endl;
-        testBoard.displayBoard();
+        player1Board.displayBoard(player1);
+        player2Board.displayBoard(player2);
         cout<<endl;
         if(turnCount % 2 == 0){
             cout << player1.getName() << "'s turn." << endl;
@@ -530,7 +533,7 @@ int main()
                         cout << player1.getName() << " age:" << player1.getAge() << endl;
                         break;
                     case '3':
-                        cout << player1.getName() << " your position is: " << testBoard.getPlayerPosition(0) << endl;
+                        cout << player1.getName() << " your position is: " << player1Board.getPlayerPosition() << endl;
                         break;
                     case '4':
                         if(player1.getHasAdvisor() == true){
@@ -542,7 +545,7 @@ int main()
                         break;
                     case '5':
                         randSpace = (rand() % 6) + 1;
-                        testBoard.movePlayer(0,randSpace);
+                        player1Board.movePlayer(randSpace);
                         cout<<player1.getName()<<" moved "<< randSpace << " spaces."<<endl;
                         break;
                     }
@@ -567,7 +570,7 @@ int main()
                         cout << player2.getName() << " age:" << player2.getAge() << endl;
                         break;
                     case '3':
-                        cout << player2.getName() << " your position is: " << testBoard.getPlayerPosition(0) << endl;
+                        cout << player2.getName() << " your position is: " << player2Board.getPlayerPosition() << endl;
                         break;
                     case '4':
                         if(player2.getHasAdvisor() == true){
@@ -579,7 +582,7 @@ int main()
                         break;
                     case '5':
                         randSpace = (rand() % 6) + 1;
-                        testBoard.movePlayer(1,randSpace);
+                        player2Board.movePlayer(randSpace);
                         cout<<player2.getName()<<" moved "<< randSpace << " spaces."<<endl;
                         break;
                     }

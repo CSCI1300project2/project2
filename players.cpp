@@ -11,7 +11,7 @@ Player::Player(){
     _pride_points = 0;
 }
 
-Player::Player(string name, int stamina, int wisdom, int strenth){
+Player::Player(string name, int stamina, int wisdom, int strenth, int PlayerNumber){
     if (stamina > 100 && stamina < 1000){
         _stamina = stamina;
     } else {
@@ -30,6 +30,7 @@ Player::Player(string name, int stamina, int wisdom, int strenth){
     _name = name;
     _age = 1;
     _pride_points = 0;
+    playerNumber = PlayerNumber;
 }
 
 string Player::getName(){
@@ -140,4 +141,12 @@ bool Player::getHasAdvisor(){
 
 void Player::setHasAdvisor(bool hasA){
     hasAdvisor = hasA;
+}
+
+int Player::getPlayerNumber(){
+    return playerNumber;
+}
+
+void Player::setPlayerNumber(int p){
+    playerNumber = p;
 }

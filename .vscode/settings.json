@@ -5,6 +5,8 @@
         "vector": "cpp",
         "locale": "cpp",
         "fstream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "ctime": "cpp",
+        "cstdlib": "cpp"
     }
 }

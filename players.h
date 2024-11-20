@@ -15,7 +15,7 @@ class Player{
 
     public:
     Player();
-    Player(string name, int stamina, int wisdom, int strenth);
+    Player(string name, int stamina, int wisdom, int strenth, int PlayerNumber);
     string getName();
     int getStrength();
     int getStamina();
@@ -38,6 +38,8 @@ class Player{
     void printAdvisor();
     bool getHasAdvisor();
     void setHasAdvisor(bool hasA);
+    int getPlayerNumber();
+    void setPlayerNumber(int p);
 
     private:
     string _name;
@@ -45,6 +47,7 @@ class Player{
     bool hasAdvisor = false;
     int _strength, _stamina, _wisdom, _pride_points, _age;
     bool _pridelands;
+    int playerNumber;
 
 };
 
