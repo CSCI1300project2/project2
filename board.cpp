@@ -26,6 +26,7 @@ void Board::initializeTiles(Player player)
 {
     tileType temp;
     int green_count = 0;
+    int choice = 0;
 
     for (int i = 0; i < _BOARD_SIZE; i++) {
         if (i == 0) {
@@ -45,7 +46,7 @@ void Board::initializeTiles(Player player)
             } else if (player.getPridelands()) {
                 // Pride Lands Path: More non-green tiles towards the beginning
                 if (section < 50 && rand() % 3 != 0) { // Increased likelihood for non-green tiles
-                    int choice = rand() % 5;
+                    choice = rand() % 6;
                     if (choice == 0) {
                         temp.setColor('R'); // Red
                     } else if (choice == 1) {
@@ -54,7 +55,20 @@ void Board::initializeTiles(Player player)
                         temp.setColor('P'); // Pink
                     } else if (choice == 3) {
                         temp.setColor('N'); // Brown
-                    } else {
+                    } else if (choice == 4){
+                        temp.setColor('U'); // Purple
+                    }
+                } else if(section > 50 && rand() % 2 != 0){
+                    choice = rand() % 20;
+                    if (choice == 0) {
+                        temp.setColor('R'); // Red
+                    } else if (choice == 1) {
+                        temp.setColor('B'); // Blue
+                    } else if (choice == 2) {
+                        temp.setColor('P'); // Pink
+                    } else if (choice == 3) {
+                        temp.setColor('N'); // Brown
+                    } else if (choice == 4){
                         temp.setColor('U'); // Purple
                     }
                 } else {
@@ -64,7 +78,7 @@ void Board::initializeTiles(Player player)
             } else {
                 // Cub Training Path: More non-green tiles towards the end
                 if (section > 50 && rand() % 3 != 0) { // Increased likelihood for non-green tiles
-                    int choice = rand() % 5;
+                    choice = rand() % 6;
                     if (choice == 0) {
                         temp.setColor('R'); // Red
                     } else if (choice == 1) {
@@ -73,7 +87,20 @@ void Board::initializeTiles(Player player)
                         temp.setColor('P'); // Pink
                     } else if (choice == 3) {
                         temp.setColor('N'); // Brown
-                    } else {
+                    } else if (choice == 4){
+                        temp.setColor('U'); // Purple
+                    }
+                } else if(section < 50 && rand() % 2 != 0){
+                    choice = rand() % 20;
+                    if (choice == 0) {
+                        temp.setColor('R'); // Red
+                    } else if (choice == 1) {
+                        temp.setColor('B'); // Blue
+                    } else if (choice == 2) {
+                        temp.setColor('P'); // Pink
+                    } else if (choice == 3) {
+                        temp.setColor('N'); // Brown
+                    } else if (choice == 4){
                         temp.setColor('U'); // Purple
                     }
                 } else {
