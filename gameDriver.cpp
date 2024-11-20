@@ -156,11 +156,6 @@ int main(){
         firstLine = false;
     }
 
-    // print the attributes of each advisor in the advisors vector
-    for (unsigned int i = 0; i < advisorsVector.size(); i++){
-        cout << "Name: " << advisorsVector[i].name << ", Power: " << advisorsVector[i].power << ", Description: " << advisorsVector[i].description << endl;
-    }
-
     advisorsFile.close(); // close the advisors file
 
     srand(time(0)); // seed random function
@@ -172,6 +167,7 @@ int main(){
     cin >> playerName;
     Player player1;
     player1.setName(playerName);
+    cout << endl; // skip a line
     cout << "Enter Player 2's name: " << endl;
     cin >> playerName;
     Player player2;
@@ -180,6 +176,7 @@ int main(){
     cout << endl; // skip a line
     char characterChoice;
     cout << player1.getName() << ", choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), or name your own character with random attributes(6)" << endl;
+    cout << endl; // skip a line
     // print the attributes of each character in the characters vector
     for (unsigned int i = 0; i < charactersVector.size(); i++){
         cout << "Name: " << charactersVector[i].name
@@ -281,7 +278,7 @@ int main(){
         cout << charactersVector[i].name << " (" << i + 1 << "), ";
     }
     cout << "or name your own character with random attributes(6)" << endl;
-
+    cout << endl; // skip a line
     // print the attributes of each character in the characters vector
     for (unsigned int i = 0; i < charactersVector.size(); i++){
         cout << "Name: " << charactersVector[i].name
@@ -360,7 +357,8 @@ int main(){
     cout << endl; // skip a line
     // ask each player if they would like to go to pridelands or cub training
     char choice;
-    cout << player1.getName() << ", pridelands (1) or Cub Training (2)?" << endl;
+    cout << endl; // skip a line
+    cout << player1.getName() << ", would you like to go to the pridelands (1) or begin Cub Training (2)?" << endl;
     while (cin >> choice){
         if (choice == '1'){
             player1.setPridelands(true);
@@ -369,7 +367,9 @@ int main(){
         }else if (choice == '2'){
             player1.setPridelands(false);
             player1.trainCub();
+            cout << endl; // skip a line
             cout << player1.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), Sarafina (5)" << endl;
+            cout << endl; // skip a line
             for (unsigned int i = 0; i < advisorsVector.size(); i++){
                 cout << "Name: " << advisorsVector[i].name << ", Power: " << advisorsVector[i].power << ", Description: " << advisorsVector[i].description << endl;
             }
@@ -403,7 +403,8 @@ int main(){
         }
     }
 
-    cout << player2.getName() << ", pridelands (1) or Cub Training (2)?" << endl;
+    cout << endl; // skip a line
+    cout << player2.getName() << ", would you like to go to the pridelands (1) or begin Cub Training (2)?" << endl;
     while (cin >> choice){
         if (choice == '1'){
             player2.setPridelands(true);
@@ -412,7 +413,9 @@ int main(){
         }else if (choice == '2'){
             player2.setPridelands(false);
             player2.trainCub();
+            cout << endl; // skip a line
             cout << player2.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), Sarafina (5)" << endl;
+            cout << endl; // skip a line
             for (unsigned int i = 0; i < advisorsVector.size(); i++){
                 cout << "Name: " << advisorsVector[i].name << ", Power: " << advisorsVector[i].power << ", Description: " << advisorsVector[i].description << endl;
             }
