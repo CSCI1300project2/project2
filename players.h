@@ -4,6 +4,13 @@
 #define PLAYERS_H
 using namespace std;
 
+struct advisors
+    {
+        string name;
+        string power;
+        string description;
+    };
+
 class Player{
 
     public:
@@ -26,11 +33,16 @@ class Player{
     void printStats();
     void setPridelands(bool isPridelands);
     bool getPridelands();
-    void setAdvisor(string a);
+    void setAdvisor(advisors a);
+    advisors getAdvisor();
+    void printAdvisor();
+    bool getHasAdvisor();
+    void setHasAdvisor(bool hasA);
 
     private:
     string _name;
-    string advisor;
+    advisors advisor;
+    bool hasAdvisor = false;
     int _strength, _stamina, _wisdom, _pride_points, _age;
     bool _pridelands;
 

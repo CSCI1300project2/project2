@@ -23,6 +23,8 @@ void printMenu()
     cout << "Please choose an option using the corresponding number:" << endl;
 }
 
+
+
 // split function for reading from txt files
 int split(string input_string, char separator, string arr[], const int ARR_SIZE)
 {
@@ -62,14 +64,6 @@ int main()
         int stamina;
         int wisdom;
         int pridePoints;
-    };
-
-    // stores the attributes of each advisor option
-    struct advisors
-    {
-        string name;
-        string power;
-        string description;
     };
 
     // vectors to store character and advisor objects
@@ -394,6 +388,7 @@ int main()
         }
         else if (choice == '2')
         {
+            player1.setHasAdvisor(true);
             player1.setPridelands(false);
             player1.trainCub();
             cout << endl; // skip a line
@@ -410,19 +405,19 @@ int main()
                     switch (characterChoice)
                     {
                     case '1':
-                        player1.setAdvisor(advisorsVector[0].name);
+                        player1.setAdvisor(advisorsVector[0]);
                         break;
                     case '2':
-                        player1.setAdvisor(advisorsVector[1].name);
+                        player1.setAdvisor(advisorsVector[1]);
                         break;
                     case '3':
-                        player1.setAdvisor(advisorsVector[2].name);
+                        player1.setAdvisor(advisorsVector[2]);
                         break;
                     case '4':
-                        player1.setAdvisor(advisorsVector[3].name);
+                        player1.setAdvisor(advisorsVector[3]);
                         break;
                     case '5':
-                        player1.setAdvisor(advisorsVector[4].name);
+                        player1.setAdvisor(advisorsVector[4]);
                         break;
                     }
                     break;
@@ -452,6 +447,7 @@ int main()
         }
         else if (choice == '2')
         {
+            player2.setHasAdvisor(true);
             player2.setPridelands(false);
             player2.trainCub();
             cout << endl; // skip a line
@@ -468,19 +464,19 @@ int main()
                     switch (characterChoice)
                     {
                     case '1':
-                        player2.setAdvisor(advisorsVector[0].name);
+                        player2.setAdvisor(advisorsVector[0]);
                         break;
                     case '2':
-                        player2.setAdvisor(advisorsVector[1].name);
+                        player2.setAdvisor(advisorsVector[1]);
                         break;
                     case '3':
-                        player2.setAdvisor(advisorsVector[2].name);
+                        player2.setAdvisor(advisorsVector[2]);
                         break;
                     case '4':
-                        player2.setAdvisor(advisorsVector[3].name);
+                        player2.setAdvisor(advisorsVector[3]);
                         break;
                     case '5':
-                        player2.setAdvisor(advisorsVector[4].name);
+                        player2.setAdvisor(advisorsVector[4]);
                         break;
                     }
                     break;
@@ -502,12 +498,10 @@ int main()
     // initialize both boards and display them
     Board testBoard(2);
     testBoard.initializeBoard();
-
-    cout << endl; // skip a line
-    cout << endl; // skip a line
     char menuChoice;
     int turnCount = 0;
     int randSpace = 0;
+
     while (testBoard.getPlayerPosition(1) != 52 || testBoard.getPlayerPosition(2) != 52)
     {   
         cout<<endl;
@@ -521,6 +515,7 @@ int main()
         printMenu();
         while (cin >> menuChoice)
         {
+            cout << endl; // skip a line
             if (turnCount % 2 == 0)
             {
                 if (menuChoice == '1' || menuChoice == '2' || menuChoice == '3' || menuChoice == '4' || menuChoice == '5')
@@ -528,16 +523,22 @@ int main()
                     switch (menuChoice)
                     {
                     case '1':
-
+                        player1.printStats();
                         break;
                     case '2':
-
+                        cout << player1.getName() << " name:" << player1.getName() << endl;
+                        cout << player1.getName() << " age:" << player1.getAge() << endl;
                         break;
                     case '3':
-
+                        cout << player1.getName() << " your position is: " << testBoard.getPlayerPosition(0) << endl;
                         break;
                     case '4':
-
+                        if(player1.getHasAdvisor() == true){
+                            cout <<player1.getName()<< " does have an advisor." << endl;
+                            player1.printAdvisor();
+                        }else{
+                            cout<<player1.getName()<<" does not have an advisor"<<endl;
+                        }
                         break;
                     case '5':
                         randSpace = (rand() % 6) + 1;
@@ -559,16 +560,22 @@ int main()
                     switch (menuChoice)
                     {
                     case '1':
-
+                        player2.printStats();
                         break;
                     case '2':
-
+                        cout << player2.getName() << " name:" << player2.getName() << endl;
+                        cout << player2.getName() << " age:" << player2.getAge() << endl;
                         break;
                     case '3':
-
+                        cout << player2.getName() << " your position is: " << testBoard.getPlayerPosition(0) << endl;
                         break;
                     case '4':
-
+                        if(player2.getHasAdvisor() == true){
+                            cout <<player2.getName()<< " does have an advisor." << endl;
+                            player2.printAdvisor();
+                        }else{
+                            cout<<player2.getName()<<" does not have an advisor"<<endl;
+                        }
                         break;
                     case '5':
                         randSpace = (rand() % 6) + 1;

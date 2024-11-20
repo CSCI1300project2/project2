@@ -118,10 +118,26 @@ void Player::setPridelands(bool isPridelands){
     _pridelands = isPridelands;
 }
 
-void Player::setAdvisor(string a){
+void Player::setAdvisor(advisors a){
     advisor = a;
 }
 
 bool Player::getPridelands(){
     return _pridelands;
+}
+
+advisors Player::getAdvisor(){
+    return advisor;
+}
+
+void Player::printAdvisor(){
+    cout << "Name: " << getAdvisor().name << ", Power: " << getAdvisor().power << ", Description: " << getAdvisor().description << endl;
+}
+
+bool Player::getHasAdvisor(){
+    return hasAdvisor;
+}
+
+void Player::setHasAdvisor(bool hasA){
+    hasAdvisor = hasA;
 }
