@@ -112,21 +112,11 @@ int main()
         string answer;
     };
 
-    struct randomEvents
-    {
-        string description;
-        int pathType;
-        int advisor;
-        int pridePoints;
-    };
-
     // vectors to store character and advisor objects
     vector<characters> charactersVector;
     string charactersString[6];
     vector<advisors> advisorsVector;
     string advisorsString[3];
-    vector<randomEvents> randomEventsVector;
-    string randomEventsString[4];
     vector<riddles> riddlesVector;
     string riddlesString[2];
 
@@ -221,56 +211,15 @@ int main()
 
     advisorsFile.close(); // close the advisors file
 
-    string randomEventsLine;
-    firstLine = true; // sets first line back to true for the new file
-    ifstream randomEventsFile("randomEvents.txt");
-    if (!randomEventsFile.is_open())
-    {
-        cout << "Could not open file." << endl;
-        return -1;
-    }
-
-    while (getline(randomEventsFile, randomEventsLine))
-    {
-        if (!firstLine)
-        {
-            split(randomEventsLine, '|', randomEventsString, 3);
-            randomEvents tempRandomEvent;
-            for (unsigned int j = 0; j < 3; j++)
-            {
-                switch (j)
-                {
-                case 0:
-                    tempRandomEvent.description = randomEventsString[j];
-                    break;
-                case 1:
-                    tempRandomEvent.pathType = stoi(randomEventsString[j]);
-                    break;
-                case 2:
-                    tempRandomEvent.advisor = stoi(randomEventsString[j]);
-                    break;
-                case 3:
-                    tempRandomEvent.pridePoints = stoi(randomEventsString[j]);
-                    break;
-                }
-            }
-            // Add the new character to the vector
-            randomEventsVector.push_back(tempRandomEvent);
-        }
-        firstLine = false;
-    }
-
-    randomEventsFile.close(); // close the Random Events file
-
     string riddleLine;
     ifstream riddlesFile("riddles.txt");
-    bool firstLine = true;
+    firstLine = true;
     if (!riddlesFile.is_open())
     {
         cout << "Could not open file." << endl;
         return -1;
     }
-    
+
     while (getline(riddlesFile, riddleLine))
     {
         split(riddleLine, '|', riddlesString, 2);
@@ -290,7 +239,7 @@ int main()
         // Add the new riddle to the vector
         riddlesVector.push_back(tempRiddle);
     }
-    
+
     riddlesFile.close(); // close the riddles file
 
     srand(time(0)); // seed random function
@@ -714,7 +663,8 @@ int main()
                                 cout << "Would you like to view your advsior (1), change your advisor (2), or keep your advisor (3)?" << endl;
                                 while (cin >> player1ChangeAdvisor)
                                 {
-                                    if(!player1FirstAdvisorRun){
+                                    if (!player1FirstAdvisorRun)
+                                    {
                                         cout << "Would you like to view your advsior (1), change your advisor (2), or keep your advisor (3)?" << endl;
                                     }
                                     if (player1ChangeAdvisor == 1)
@@ -760,7 +710,7 @@ int main()
                             player1Board.setPlayerPos(tempPosition);
                             cout << endl; // skip a line
                             break;
-                        case 'U':         // purple
+                        case 'U': // purple
                             cout << endl;
                             player1Board.displayBoard(player1);
                             player2Board.displayBoard(player2);
@@ -783,6 +733,96 @@ int main()
                             cout << endl; // skip a line
                             break;
                         case 'G': // green
+                            if (rand() % 2 == 0)
+                            {
+                                if (player1.getPridelands())
+                                {
+                                    switch (rand() % 4)
+                                    {
+                                    case 0:
+                                        cout << player1.getName() << " has encountered a desert storm!" << endl;
+                                        cout << endl;
+                                        if (player1.getHasAdvisor() && player1.getAdvisor().name == "Nala")
+                                        {
+                                            cout << "Your advisor, Zazu uses Weather Control to bypass the event" << endl;
+                                            cout << endl;
+                                        }
+                                        else
+                                        {
+                                            player1.setPridePoints(player1.getPridePoints() - 500);
+                                            cout << "The desert storm wounds you and you lose 500 pride points!" << endl;
+                                            cout << endl;
+                                        }
+                                        break;
+                                    case 1:
+                                        cout << player1.getName() << " you have been assigned night watch duty under pitch-black conditions!" << endl;
+                                        cout << endl;
+                                        if (player1.getHasAdvisor() && player1.getAdvisor().name == "Nala")
+                                        {
+                                            cout << "Your advisor, Nala uses Night Vision to bypass the event" << endl;
+                                            cout << endl;
+                                        }
+                                        else
+                                        {
+                                            player1.setPridePoints(player1.getPridePoints() - 400);
+                                            cout << "You lose 400 points because you cannot see." << endl;
+                                            cout << endl;
+                                        }
+                                        break;
+                                    case 2:
+                                        cout << player1.getName() << " has experienced a bountiful season and earned 800 pride points!" << endl;
+                                        cout << endl;
+                                        player1.setPridePoints(player1.getPridePoints() + 800);
+                                        break;
+                                    case 3:
+                                        cout << player1.getName() << " has participated in Rafiki's ritual by eating from the carcus of another lion and has gained 500 pride points!" << endl;
+                                        cout << endl;
+                                        player1.setPridePoints(player1.getPridePoints() + 500);
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    switch (rand() % 3)
+                                    {
+                                    case 0:
+                                        cout << player1.getName() << " has decided to endure intense training with the pride warriors!" << endl;
+                                        cout << endl;
+                                        if (player1.getHasAdvisor() && player1.getAdvisor().name == "Sarabi")
+                                        {
+                                            cout << "Your advisor, Sarabi uses Energy Manipulation to bypass the event" << endl;
+                                            cout << endl;
+                                        }
+                                        else
+                                        {
+                                            player1.setPridePoints(player1.getPridePoints() - 200);
+                                            cout << "You lose 200 points due to fatigue" << endl;
+                                            cout << endl;
+                                        }
+                                        break;
+                                    case 1:
+                                        cout << player1.getName() << " has been enlightened by the knowledgable safari animals and has gained 600 pride points!" << endl;
+                                        cout << endl;
+                                        player1.setPridePoints(player1.getPridePoints() + 600);
+                                        break;
+                                    case 2:
+                                        cout << player1.getName() << " has encountered a desert storm!" << endl;
+                                        cout << endl;
+                                        if (player1.getHasAdvisor() && player1.getAdvisor().name == "Nala")
+                                        {
+                                            cout << "Your advisor, Zazu uses Weather Control to bypass the event" << endl;
+                                            cout << endl;
+                                        }
+                                        else
+                                        {
+                                            player1.setPridePoints(player1.getPridePoints() - 500);
+                                            cout << "The desert storm wounds you and you lose 500 pride points!" << endl;
+                                            cout << endl;
+                                        }
+                                        break;
+                                    }
+                                }
+                            }
                             break;
                         }
                         ifMoved = true;
@@ -869,7 +909,8 @@ int main()
                                 cout << "Would you like to view your advsior (1), change your advisor (2), or keep your advisor (3)?" << endl;
                                 while (cin >> player2ChangeAdvisor)
                                 {
-                                    if(!player2FirstAdvisorRun){
+                                    if (!player2FirstAdvisorRun)
+                                    {
                                         cout << "Would you like to view your advsior (1), change your advisor (2), or keep your advisor (3)?" << endl;
                                     }
                                     if (player2ChangeAdvisor == 1)
@@ -915,7 +956,7 @@ int main()
                             player2Board.setPlayerPos(tempPosition);
                             cout << endl; // skip a line
                             break;
-                        case 'U':         // purple
+                        case 'U': // purple
                             cout << endl;
                             player1Board.displayBoard(player1);
                             player2Board.displayBoard(player2);
@@ -938,6 +979,96 @@ int main()
                             cout << endl; // skip a line
                             break;
                         case 'G': // green
+                            if (rand() % 2 == 0)
+                            {
+                                if (player2.getPridelands())
+                                {
+                                    switch (rand() % 4)
+                                    {
+                                    case 0:
+                                        cout << player2.getName() << " has encountered a desert storm!" << endl;
+                                        cout << endl;
+                                        if (player2.getHasAdvisor() && player2.getAdvisor().name == "Nala")
+                                        {
+                                            cout << "Your advisor, Zazu uses Weather Control to bypass the event" << endl;
+                                            cout << endl;
+                                        }
+                                        else
+                                        {
+                                            player2.setPridePoints(player2.getPridePoints() - 500);
+                                            cout << "The desert storm wounds you and you lose 500 pride points!" << endl;
+                                            cout << endl;
+                                        }
+                                        break;
+                                    case 1:
+                                        cout << player2.getName() << " you have been assigned night watch duty under pitch-black conditions!" << endl;
+                                        cout << endl;
+                                        if (player2.getHasAdvisor() && player2.getAdvisor().name == "Nala")
+                                        {
+                                            cout << "Your advisor, Nala uses Night Vision to bypass the event" << endl;
+                                            cout << endl;
+                                        }
+                                        else
+                                        {
+                                            player2.setPridePoints(player2.getPridePoints() - 400);
+                                            cout << "You lose 400 points because you cannot see." << endl;
+                                            cout << endl;
+                                        }
+                                        break;
+                                    case 2:
+                                        cout << player2.getName() << " has experienced a bountiful season and earned 800 pride points!" << endl;
+                                        cout << endl;
+                                        player2.setPridePoints(player2.getPridePoints() + 800);
+                                        break;
+                                    case 3:
+                                        cout << player2.getName() << " has participated in Rafiki's ritual by eating from the carcus of another lion and has gained 500 pride points!" << endl;
+                                        cout << endl;
+                                        player2.setPridePoints(player2.getPridePoints() + 500);
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    switch (rand() % 3)
+                                    {
+                                    case 0:
+                                        cout << player2.getName() << " has decided to endure intense training with the pride warriors!" << endl;
+                                        cout << endl;
+                                        if (player2.getHasAdvisor() && player2.getAdvisor().name == "Sarabi")
+                                        {
+                                            cout << "Your advisor, Sarabi uses Energy Manipulation to bypass the event" << endl;
+                                            cout << endl;
+                                        }
+                                        else
+                                        {
+                                            player2.setPridePoints(player2.getPridePoints() - 200);
+                                            cout << "You lose 200 points due to fatigue" << endl;
+                                            cout << endl;
+                                        }
+                                        break;
+                                    case 1:
+                                        cout << player2.getName() << " has been enlightened by the knowledgable safari animals and has gained 600 pride points!" << endl;
+                                        cout << endl;
+                                        player2.setPridePoints(player2.getPridePoints() + 600);
+                                        break;
+                                    case 2:
+                                        cout << player2.getName() << " has encountered a desert storm!" << endl;
+                                        cout << endl;
+                                        if (player2.getHasAdvisor() && player2.getAdvisor().name == "Nala")
+                                        {
+                                            cout << "Your advisor, Zazu uses Weather Control to bypass the event" << endl;
+                                            cout << endl;
+                                        }
+                                        else
+                                        {
+                                            player2.setPridePoints(player2.getPridePoints() - 500);
+                                            cout << "The desert storm wounds you and you lose 500 pride points!" << endl;
+                                            cout << endl;
+                                        }
+                                        break;
+                                    }
+                                }
+                            }
                             break;
                         }
                         ifMoved = true;
@@ -978,7 +1109,8 @@ int main()
         }
     }
 
-    if(player1Finished && player2Finished){
+    if (player1Finished && player2Finished)
+    {
 
         player1.setPridePoints(player1.getPridePoints() + (player1.getStamina() / 100) * 1000);
         player1.setPridePoints(player1.getPridePoints() + (player1.getWisdom() / 100) * 1000);
@@ -991,27 +1123,33 @@ int main()
         string resultsLine;
 
         cout << endl;
-        if(player1.getPridePoints() > player2.getPridePoints()){
+        if (player1.getPridePoints() > player2.getPridePoints())
+        {
             resultsWritingFile << player1.getName() << " WINS!!" << endl;
             resultsWritingFile << endl;
             resultsWritingFile << "Scores:" << endl;
             resultsWritingFile << player1.getName() << ": " << player1.getPridePoints() << endl;
             resultsWritingFile << player2.getName() << ": " << player2.getPridePoints() << endl;
-        } else if(player1.getPridePoints() < player2.getPridePoints()){
+        }
+        else if (player1.getPridePoints() < player2.getPridePoints())
+        {
             resultsWritingFile << player2.getName() << " WINS!!" << endl;
             resultsWritingFile << endl;
             resultsWritingFile << "Scores:" << endl;
             resultsWritingFile << player2.getName() << ": " << player2.getPridePoints() << endl;
             resultsWritingFile << player1.getName() << ": " << player1.getPridePoints() << endl;
-        }else{
+        }
+        else
+        {
             resultsWritingFile << "It was a tie! Both players had a score of " << player1.getPridePoints() << "." << endl;
         }
 
         resultsWritingFile.close();
         fstream resultsReadingFile("results.txt");
 
-        while (getline(resultsReadingFile, resultsLine)) {
-            cout << resultsLine << endl;  // Print each line to the console
+        while (getline(resultsReadingFile, resultsLine))
+        {
+            cout << resultsLine << endl; // Print each line to the console
         }
         cout << endl;
 
