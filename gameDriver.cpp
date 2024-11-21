@@ -531,6 +531,7 @@ int main()
             if (player1Board.getPlayerPosition() >= 51) // Skip Player 1 if they already finished
             {
                 turnCount++;
+                player1Finished = true;
                 continue;
             }
 
@@ -542,6 +543,7 @@ int main()
             if (player2Board.getPlayerPosition() >= 51) // Skip Player 2 if they already finished
             {
                 turnCount++;
+                player2Finished = true;
                 continue;
             }
 
@@ -892,9 +894,43 @@ int main()
     }
 
     if(player1Finished && player2Finished){
-        ofstream resultsFile("results.txt");
-        
-    }
 
+        player1.setPridePoints(player1.getPridePoints() + (player1.getStamina() / 100) * 1000);
+        player1.setPridePoints(player1.getPridePoints() + (player1.getWisdom() / 100) * 1000);
+        player1.setPridePoints(player1.getPridePoints() + (player1.getStrength() / 100) * 1000);
+        player2.setPridePoints(player2.getPridePoints() + (player2.getStamina() / 100) * 1000);
+        player2.setPridePoints(player2.getPridePoints() + (player2.getWisdom() / 100) * 1000);
+        player2.setPridePoints(player2.getPridePoints() + (player2.getStrength() / 100) * 1000);
+
+        ofstream resultsWritingFile("results.txt");
+        string resultsLine;
+
+        cout << endl;
+        if(player1.getPridePoints() > player2.getPridePoints()){
+            resultsWritingFile << player1.getName() << " WINS!!" << endl;
+            resultsWritingFile << endl;
+            resultsWritingFile << "Scores:" << endl;
+            resultsWritingFile << player1.getName() << ": " << player1.getPridePoints() << endl;
+            resultsWritingFile << player2.getName() << ": " << player2.getPridePoints() << endl;
+        } else if(player1.getPridePoints() < player2.getPridePoints()){
+            resultsWritingFile << player2.getName() << " WINS!!" << endl;
+            resultsWritingFile << endl;
+            resultsWritingFile << "Scores:" << endl;
+            resultsWritingFile << player2.getName() << ": " << player2.getPridePoints() << endl;
+            resultsWritingFile << player1.getName() << ": " << player1.getPridePoints() << endl;
+        }else{
+            resultsWritingFile << "It was a tie! Both players had a score of " << player1.getPridePoints() << "." << endl;
+        }
+
+        resultsWritingFile.close();
+        fstream resultsReadingFile("results.txt");
+
+        while (getline(resultsReadingFile, resultsLine)) {
+            cout << resultsLine << endl;  // Print each line to the console
+        }
+        cout << endl;
+
+        resultsReadingFile.close();
+    }
     return 0;
 }
