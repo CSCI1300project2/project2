@@ -277,7 +277,7 @@ int main()
 
     cout << endl; // skip a line
     char characterChoice;
-    cout << player1.getName() << ", choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), or name your own character with random attributes(6)" << endl;
+    cout << player1.getName() << ", choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo(6) or name your own character with random attributes(7)" << endl;
     cout << endl; // skip a line
     // print the attributes of each character in the characters vector
     for (unsigned int i = 0; i < charactersVector.size(); i++)
@@ -293,7 +293,7 @@ int main()
 
     while (cin >> characterChoice)
     {
-        if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5' || characterChoice == '6')
+        if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5' || characterChoice == '6' || characterChoice == '7')
         {
             switch (characterChoice)
             {
@@ -363,6 +363,19 @@ int main()
                 charactersVector.pop_back();
                 break;
             case '6':
+                player1.setName(charactersVector[5].name);
+                player1.setAge(charactersVector[5].age);
+                player1.setStamina(charactersVector[5].stamina);
+                player1.setWisdom(charactersVector[5].wisdom);
+                player1.setStrength(charactersVector[5].strength);
+                player1.setPridePoints(charactersVector[5].pridePoints);
+                for (unsigned int i = 5; i < charactersVector.size() - 1; i++)
+                {
+                    charactersVector[i] = charactersVector[i + 1];
+                }
+                charactersVector.pop_back();
+                break;
+            case '7':
                 string inputName;
                 cin.ignore();
                 cout << endl; // skip a line
@@ -406,7 +419,7 @@ int main()
 
     while (cin >> characterChoice)
     {
-        if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5' || characterChoice == '6')
+        if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5' || characterChoice == '6' || characterChoice == '7')
         {
             switch (characterChoice)
             {
@@ -451,6 +464,19 @@ int main()
                 player2.setPridePoints(charactersVector[4].pridePoints);
                 break;
             case '6':
+                player1.setName(charactersVector[5].name);
+                player1.setAge(charactersVector[5].age);
+                player1.setStamina(charactersVector[5].stamina);
+                player1.setWisdom(charactersVector[5].wisdom);
+                player1.setStrength(charactersVector[5].strength);
+                player1.setPridePoints(charactersVector[5].pridePoints);
+                for (unsigned int i = 5; i < charactersVector.size() - 1; i++)
+                {
+                    charactersVector[i] = charactersVector[i + 1];
+                }
+                charactersVector.pop_back();
+                break;
+            case '7':
                 string inputName;
                 cin.ignore();
                 cout << endl; // skip a line
