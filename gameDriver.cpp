@@ -676,13 +676,16 @@ int main()
                             {
                                 int player1ChangeAdvisor;
                                 bool player1FirstAdvisorRun = true;
+                                bool player1AdvisorHasChanged = false;
                                 cout << "Would you like to view your advsior (1), change your advisor (2), or keep your advisor (3)?" << endl;
-                                while (cin >> player1ChangeAdvisor)
+                                while (!player1AdvisorHasChanged)
                                 {
                                     if (!player1FirstAdvisorRun)
                                     {
+                                        cout << endl; // skip a line
                                         cout << "Would you like to view your advsior (1), change your advisor (2), or keep your advisor (3)?" << endl;
                                     }
+                                    cin >> player1ChangeAdvisor;
                                     if (player1ChangeAdvisor == 1)
                                     {
                                         cout << endl; // skip a line
@@ -695,12 +698,16 @@ int main()
                                         player1 = settingAdvisor(player1, characterChoice, advisorsVector);
                                         cout << endl; // skip a line
                                         cout << "Your advisor is " << player1.getAdvisor().name << "." << endl;
+                                        player1AdvisorHasChanged = true;
+                                        player1FirstAdvisorRun = false;
                                         break;
                                     }
                                     else if (player1ChangeAdvisor == 3)
                                     {
                                         cout << endl; // skip a line
                                         cout << "Your advisor is " << player1.getAdvisor().name << "." << endl;
+                                        player1AdvisorHasChanged = true;
+                                        player1FirstAdvisorRun = false;
                                         break;
                                     }
                                     else
@@ -851,7 +858,12 @@ int main()
                         ifMoved = true;
                         if (player1Board.getPlayerPosition() >= 51)
                         {
-                            cout << player1.getName() << " has finished!" << endl;
+                            cout << endl; // skip a line
+                            cout << player1.getName() << " has finished! ";
+                            if(!player2Finished){
+                                cout << "+1000 points for finishing first!" << endl;
+                                player1.setPridePoints(player1.getPridePoints() + 1000);
+                            }
                             cout << endl; // skip a line
                         }
                         break;
@@ -929,31 +941,38 @@ int main()
                             {
                                 int player2ChangeAdvisor;
                                 bool player2FirstAdvisorRun = true;
+                                bool player2AdvisorHasChanged = false;
                                 cout << "Would you like to view your advsior (1), change your advisor (2), or keep your advisor (3)?" << endl;
-                                while (cin >> player2ChangeAdvisor)
+                                while (!player2AdvisorHasChanged)
                                 {
                                     if (!player2FirstAdvisorRun)
                                     {
+                                        cout << endl; // skip a line
                                         cout << "Would you like to view your advsior (1), change your advisor (2), or keep your advisor (3)?" << endl;
                                     }
+                                    cin >> player2ChangeAdvisor;
                                     if (player2ChangeAdvisor == 1)
                                     {
                                         cout << endl; // skip a line
-                                        player2.printAdvisor();
+                                        player1.printAdvisor();
                                         player2FirstAdvisorRun = false;
                                     }
                                     else if (player2ChangeAdvisor == 2)
                                     {
-                                        player2.setHasAdvisor(true);
-                                        player2 = settingAdvisor(player2, characterChoice, advisorsVector);
+                                        player1.setHasAdvisor(true);
+                                        player1 = settingAdvisor(player1, characterChoice, advisorsVector);
                                         cout << endl; // skip a line
                                         cout << "Your advisor is " << player1.getAdvisor().name << "." << endl;
+                                        player2AdvisorHasChanged = true;
+                                        player2FirstAdvisorRun = false;
                                         break;
                                     }
                                     else if (player2ChangeAdvisor == 3)
                                     {
                                         cout << endl; // skip a line
-                                        cout << "Your advisor is " << player2.getAdvisor().name << "." << endl;
+                                        cout << "Your advisor is " << player1.getAdvisor().name << "." << endl;
+                                        player2AdvisorHasChanged = true;
+                                        player2FirstAdvisorRun = false;
                                         break;
                                     }
                                     else
@@ -1097,7 +1116,12 @@ int main()
                         ifMoved = true;
                         if (player2Board.getPlayerPosition() >= 51)
                         {
+                            cout << endl; // skip a line
                             cout << player2.getName() << " has finished!" << endl;
+                            if(!player1Finished){
+                                cout << "+1000 points for finishing first!" << endl;
+                                player2.setPridePoints(player2.getPridePoints() + 1000);
+                            }
                             cout << endl; // skip a line
                         }
                         break;
