@@ -381,15 +381,18 @@ int main()
             switch (characterChoice)
             {
             case '1':
-                if(player1.getName() != charactersVector[0].name){
-                player2.setName(charactersVector[0].name);
-                player2.setAge(charactersVector[0].age);
-                player2.setStamina(charactersVector[0].stamina);
-                player2.setWisdom(charactersVector[0].wisdom);
-                player2.setStrength(charactersVector[0].strength);
-                player2.setPridePoints(charactersVector[0].pridePoints);
-                sameCharacter = true;
-                } else{
+                if (player1.getName() != charactersVector[0].name)
+                {
+                    player2.setName(charactersVector[0].name);
+                    player2.setAge(charactersVector[0].age);
+                    player2.setStamina(charactersVector[0].stamina);
+                    player2.setWisdom(charactersVector[0].wisdom);
+                    player2.setStrength(charactersVector[0].strength);
+                    player2.setPridePoints(charactersVector[0].pridePoints);
+                    sameCharacter = true;
+                }
+                else
+                {
                     cout << endl;
                     cout << "This character is already taken. Choose again." << endl;
                     cout << endl;
@@ -397,15 +400,18 @@ int main()
                 }
                 break;
             case '2':
-                if(player1.getName() != charactersVector[1].name){
-                player2.setName(charactersVector[1].name);
-                player2.setAge(charactersVector[1].age);
-                player2.setStamina(charactersVector[1].stamina);
-                player2.setWisdom(charactersVector[1].wisdom);
-                player2.setStrength(charactersVector[1].strength);
-                player2.setPridePoints(charactersVector[1].pridePoints);
-                sameCharacter = true;
-                } else{
+                if (player1.getName() != charactersVector[1].name)
+                {
+                    player2.setName(charactersVector[1].name);
+                    player2.setAge(charactersVector[1].age);
+                    player2.setStamina(charactersVector[1].stamina);
+                    player2.setWisdom(charactersVector[1].wisdom);
+                    player2.setStrength(charactersVector[1].strength);
+                    player2.setPridePoints(charactersVector[1].pridePoints);
+                    sameCharacter = true;
+                }
+                else
+                {
                     cout << endl;
                     cout << "This character is already taken. Choose again." << endl;
                     cout << endl;
@@ -413,15 +419,18 @@ int main()
                 }
                 break;
             case '3':
-                if(player1.getName() != charactersVector[2].name){
-                player2.setName(charactersVector[2].name);
-                player2.setAge(charactersVector[2].age);
-                player2.setStamina(charactersVector[2].stamina);
-                player2.setWisdom(charactersVector[2].wisdom);
-                player2.setStrength(charactersVector[2].strength);
-                player2.setPridePoints(charactersVector[2].pridePoints);
-                sameCharacter = true;
-                } else{
+                if (player1.getName() != charactersVector[2].name)
+                {
+                    player2.setName(charactersVector[2].name);
+                    player2.setAge(charactersVector[2].age);
+                    player2.setStamina(charactersVector[2].stamina);
+                    player2.setWisdom(charactersVector[2].wisdom);
+                    player2.setStrength(charactersVector[2].strength);
+                    player2.setPridePoints(charactersVector[2].pridePoints);
+                    sameCharacter = true;
+                }
+                else
+                {
                     cout << endl;
                     cout << "This character is already taken. Choose again." << endl;
                     cout << endl;
@@ -429,15 +438,18 @@ int main()
                 }
                 break;
             case '4':
-                if(player1.getName() != charactersVector[3].name){
-                player2.setName(charactersVector[3].name);
-                player2.setAge(charactersVector[3].age);
-                player2.setStamina(charactersVector[3].stamina);
-                player2.setWisdom(charactersVector[3].wisdom);
-                player2.setStrength(charactersVector[3].strength);
-                player2.setPridePoints(charactersVector[3].pridePoints);
-                sameCharacter = true;
-                } else{
+                if (player1.getName() != charactersVector[3].name)
+                {
+                    player2.setName(charactersVector[3].name);
+                    player2.setAge(charactersVector[3].age);
+                    player2.setStamina(charactersVector[3].stamina);
+                    player2.setWisdom(charactersVector[3].wisdom);
+                    player2.setStrength(charactersVector[3].strength);
+                    player2.setPridePoints(charactersVector[3].pridePoints);
+                    sameCharacter = true;
+                }
+                else
+                {
                     cout << endl;
                     cout << "This character is already taken. Choose again." << endl;
                     cout << endl;
@@ -445,15 +457,18 @@ int main()
                 }
                 break;
             case '5':
-                if(player1.getName() != charactersVector[4].name){
-                player2.setName(charactersVector[4].name);
-                player2.setAge(charactersVector[4].age);
-                player2.setStamina(charactersVector[4].stamina);
-                player2.setWisdom(charactersVector[4].wisdom);
-                player2.setStrength(charactersVector[4].strength);
-                player2.setPridePoints(charactersVector[4].pridePoints);
-                sameCharacter = true;
-                } else{
+                if (player1.getName() != charactersVector[4].name)
+                {
+                    player2.setName(charactersVector[4].name);
+                    player2.setAge(charactersVector[4].age);
+                    player2.setStamina(charactersVector[4].stamina);
+                    player2.setWisdom(charactersVector[4].wisdom);
+                    player2.setStrength(charactersVector[4].strength);
+                    player2.setPridePoints(charactersVector[4].pridePoints);
+                    sameCharacter = true;
+                }
+                else
+                {
                     cout << endl;
                     cout << "This character is already taken. Choose again." << endl;
                     cout << endl;
@@ -461,15 +476,18 @@ int main()
                 }
                 break;
             case '6':
-                if(player1.getName() != charactersVector[5].name){
-                player2.setName(charactersVector[5].name);
-                player2.setAge(charactersVector[5].age);
-                player2.setStamina(charactersVector[5].stamina);
-                player2.setWisdom(charactersVector[5].wisdom);
-                player2.setStrength(charactersVector[5].strength);
-                player2.setPridePoints(charactersVector[5].pridePoints);
-                sameCharacter = true;
-                } else{
+                if (player1.getName() != charactersVector[5].name)
+                {
+                    player2.setName(charactersVector[5].name);
+                    player2.setAge(charactersVector[5].age);
+                    player2.setStamina(charactersVector[5].stamina);
+                    player2.setWisdom(charactersVector[5].wisdom);
+                    player2.setStrength(charactersVector[5].strength);
+                    player2.setPridePoints(charactersVector[5].pridePoints);
+                    sameCharacter = true;
+                }
+                else
+                {
                     cout << endl;
                     cout << "This character is already taken. Choose again." << endl;
                     cout << endl;
@@ -646,7 +664,7 @@ int main()
                             player1Board.displayBoard(player1);
                             player2Board.displayBoard(player2);
                             cout << endl;
-                            cout << "Uh-oh, you’ve stumbled into the Graveyard! You will move back 10 tiles and lose 100 Stamina, Strength, and Wisdom Points" << endl;
+                            cout << "Uh-oh, you have stumbled into the Graveyard! You will move back 10 tiles and lose 100 Stamina, Strength, and Wisdom Points" << endl;
                             player1.setStrength(player1.getStrength() - 100);
                             player1.setWisdom(player1.getWisdom() - 100);
                             player1.setStamina(player1.getStamina() - 100);
@@ -655,7 +673,7 @@ int main()
                             break;
                         case 'B': // blue
                             cout << endl;
-                            cout << "You’ve found a peaceful oasis! You will be granted an extra turn to keep moving forward, so take a deep breath and relax; you also gain 200 Stamina, Strength, and Wisdom Points." << endl;
+                            cout << "You have found a peaceful oasis! You will be granted an extra turn to keep moving forward, so take a deep breath and relax; you also gain 200 Stamina, Strength, and Wisdom Points." << endl;
                             player1.setStrength(player1.getStrength() + 200);
                             player1.setWisdom(player1.getWisdom() + 200);
                             player1.setStamina(player1.getStamina() + 200);
@@ -738,7 +756,7 @@ int main()
                             player1Board.displayBoard(player1);
                             player2Board.displayBoard(player2);
                             cout << endl;
-                            cout << "Time for a test of wits! Answer correctly, and you’ll earn a boost of 500 Wisdom Points. Think carefully, your cleverness will pay off!" << endl;
+                            cout << "Time for a test of wits! Answer correctly, and you will earn a boost of 500 Wisdom Points. Think carefully, your cleverness will pay off!" << endl;
                             cout << endl; // skip a line
                             randomRiddleIndex = rand() % riddlesVector.size();
                             cout << "Answer with one word in all lowercase: " << riddlesVector[randomRiddleIndex].riddleQuestion << endl;
@@ -760,10 +778,10 @@ int main()
                             {
                                 if (player1.getPridelands())
                                 {
-                                    switch (rand() % 4)
+                                    switch (rand() % 5)
                                     {
                                     case 0:
-                                    cout << endl; // skip a line
+                                        cout << endl; // skip a line
                                         cout << player1.getName() << " has encountered a desert storm!" << endl;
                                         cout << endl;
                                         if (player1.getHasAdvisor() && player1.getAdvisor().name == "Nala")
@@ -779,7 +797,7 @@ int main()
                                         }
                                         break;
                                     case 1:
-                                    cout << endl; // skip a line
+                                        cout << endl; // skip a line
                                         cout << player1.getName() << " you have been assigned night watch duty under pitch-black conditions!" << endl;
                                         cout << endl;
                                         if (player1.getHasAdvisor() && player1.getAdvisor().name == "Nala")
@@ -795,25 +813,41 @@ int main()
                                         }
                                         break;
                                     case 2:
-                                    cout << endl; // skip a line
+                                        cout << endl; // skip a line
                                         cout << player1.getName() << " has experienced a bountiful season and earned 800 pride points!" << endl;
                                         cout << endl;
                                         player1.setPridePoints(player1.getPridePoints() + 800);
                                         break;
                                     case 3:
-                                    cout << endl; // skip a line
+                                        cout << endl; // skip a line
                                         cout << player1.getName() << " has participated in Rafiki's ritual by eating from the carcus of another lion and has gained 500 pride points!" << endl;
                                         cout << endl;
                                         player1.setPridePoints(player1.getPridePoints() + 500);
+                                        break;
+                                    case 4:
+                                        cout << endl; // skip a line
+                                        cout << player1.getName() << " you are being chased by hunters!" << endl;
+                                        cout << endl;
+                                        if (player1.getHasAdvisor() && player1.getAdvisor().name == "Sarafina")
+                                        {
+                                            cout << "Your advisor, Sarafina uses Super Speed to bypass the event" << endl;
+                                            cout << endl;
+                                        }
+                                        else
+                                        {
+                                            player1.setPridePoints(player1.getPridePoints() - 300);
+                                            cout << "You lose 300 points because you are slow." << endl;
+                                            cout << endl;
+                                        }
                                         break;
                                     }
                                 }
                                 else
                                 {
-                                    switch (rand() % 3)
+                                    switch (rand() % 4)
                                     {
                                     case 0:
-                                    cout << endl; // skip a line
+                                        cout << endl; // skip a line
                                         cout << player1.getName() << " has decided to endure intense training with the pride warriors!" << endl;
                                         cout << endl;
                                         if (player1.getHasAdvisor() && player1.getAdvisor().name == "Sarabi")
@@ -829,13 +863,13 @@ int main()
                                         }
                                         break;
                                     case 1:
-                                    cout << endl; // skip a line
+                                        cout << endl; // skip a line
                                         cout << player1.getName() << " has been enlightened by the knowledgable safari animals and has gained 600 pride points!" << endl;
                                         cout << endl;
                                         player1.setPridePoints(player1.getPridePoints() + 600);
                                         break;
                                     case 2:
-                                    cout << endl; // skip a line
+                                        cout << endl; // skip a line
                                         cout << player1.getName() << " has encountered a desert storm!" << endl;
                                         cout << endl;
                                         if (player1.getHasAdvisor() && player1.getAdvisor().name == "Nala")
@@ -850,6 +884,22 @@ int main()
                                             cout << endl;
                                         }
                                         break;
+                                    case 3:
+                                        cout << endl; // skip a line
+                                        cout << player1.getName() << " you have snuck into a hungry rival lion's den!" << endl;
+                                        cout << endl;
+                                        if (player1.getHasAdvisor() && player1.getAdvisor().name == "Rafiki")
+                                        {
+                                            cout << "Your advisor, Rafiki uses Invisibility to bypass the event" << endl;
+                                            cout << endl;
+                                        }
+                                        else
+                                        {
+                                            player1.setPridePoints(player1.getPridePoints() - 400);
+                                            cout << "You lose 400 points because you were caught." << endl;
+                                            cout << endl;
+                                        }
+                                        break;
                                     }
                                 }
                             }
@@ -860,7 +910,8 @@ int main()
                         {
                             cout << endl; // skip a line
                             cout << player1.getName() << " has finished! ";
-                            if(!player2Finished){
+                            if (!player2Finished)
+                            {
                                 cout << "+1000 points for finishing first!" << endl;
                                 player1.setPridePoints(player1.getPridePoints() + 1000);
                             }
@@ -911,7 +962,7 @@ int main()
                             player1Board.displayBoard(player1);
                             player2Board.displayBoard(player2);
                             cout << endl;
-                            cout << "Uh-oh, you’ve stumbled into the Graveyard! You will move back 10 tiles and lose 100 Stamina, Strength, and Wisdom Points" << endl;
+                            cout << "Uh-oh, you have stumbled into the Graveyard! You will move back 10 tiles and lose 100 Stamina, Strength, and Wisdom Points" << endl;
                             player2.setStrength(player2.getStrength() - 100);
                             player2.setWisdom(player2.getWisdom() - 100);
                             player2.setStamina(player2.getStamina() - 100);
@@ -920,7 +971,7 @@ int main()
                             break;
                         case 'B': // blue
                             cout << endl;
-                            cout << "You’ve found a peaceful oasis! You will be granted an extra turn to keep moving forward, so take a deep breath and relax; you also gain 200 Stamina, Strength, and Wisdom Points." << endl;
+                            cout << "You have found a peaceful oasis! You will be granted an extra turn to keep moving forward, so take a deep breath and relax; you also gain 200 Stamina, Strength, and Wisdom Points." << endl;
                             player2.setStrength(player2.getStrength() + 200);
                             player2.setWisdom(player2.getWisdom() + 200);
                             player2.setStamina(player2.getStamina() + 200);
@@ -1003,7 +1054,7 @@ int main()
                             player1Board.displayBoard(player1);
                             player2Board.displayBoard(player2);
                             cout << endl;
-                            cout << "Time for a test of wits! Answer correctly, and you’ll earn a boost of 500 Wisdom Points. Think carefully, your cleverness will pay off!" << endl;
+                            cout << "Time for a test of wits! Answer correctly, and you will earn a boost of 500 Wisdom Points. Think carefully, your cleverness will pay off!" << endl;
                             cout << endl; // skip a line
                             randomRiddleIndex = rand() % riddlesVector.size();
                             cout << "Answer with one word in all lowercase: " << riddlesVector[randomRiddleIndex].riddleQuestion << endl;
@@ -1118,7 +1169,8 @@ int main()
                         {
                             cout << endl; // skip a line
                             cout << player2.getName() << " has finished!" << endl;
-                            if(!player1Finished){
+                            if (!player1Finished)
+                            {
                                 cout << "+1000 points for finishing first!" << endl;
                                 player2.setPridePoints(player2.getPridePoints() + 1000);
                             }
