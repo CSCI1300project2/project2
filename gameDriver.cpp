@@ -1260,12 +1260,12 @@ int main()
     2. check player progress has additional option to convert leadership traits to additional pride points
 
     sorting algorithm:
-    we will implement a sorting algorithm with the results of our game to sort our players by number of pride points or 
-    we could have a menu option to display current player ranking of a certian attribute BEFORE the end of the game to show 
+    we will implement a sorting algorithm with the results of our game to sort our players by number of pride points or
+    we could have a menu option to display current player ranking of a certian attribute BEFORE the end of the game to show
     and we could have them choose the attribute
 
     Special tiles:
-    - we will update initialize tiles code to make sure there is at least 20 special tiles on each player's 
+    - we will update initialize tiles code to make sure there is at least 20 special tiles on each player's
     respective boards
     - we will figure out how to get rid of line of color after game board ends
 
@@ -1285,7 +1285,7 @@ int main()
             Pet pet();
             Pet pet(string n, string s, string a, int a);
     }
-    we will add text file for pets and give players options to have pets and each pet will have special ability that the 
+    we will add text file for pets and give players options to have pets and each pet will have special ability that the
     player will use
 
     Group work:
@@ -1295,7 +1295,7 @@ int main()
         - we altered the characters txt file
         - added unique interactions with two advisors that were not used in example
         - modify game board
-            - we modified the game board by changing probabilities of first 50% and last 50% to reflect respective path 
+            - we modified the game board by changing probabilities of first 50% and last 50% to reflect respective path
             choices of pridelands and cub training
         - we will create another class pet as described above
 

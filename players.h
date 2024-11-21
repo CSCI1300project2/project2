@@ -1,4 +1,4 @@
-//CSCI1300 Project 2: Sergio Bocci and Grace Bournonille
+// CSCI1300 Project 2: Sergio Bocci and Grace Bournonille
 #include <iostream>
 #include <string>
 #ifndef PLAYERS_H
@@ -6,15 +6,16 @@
 using namespace std;
 
 struct advisors
-    {
-        string name;
-        string power;
-        string description;
-    };
+{
+    string name;
+    string power;
+    string description;
+};
 
-class Player{
+class Player
+{
 
-    public:
+public:
     Player();
     Player(string name, int stamina, int wisdom, int strenth, int PlayerNumber);
     string getName();
@@ -42,14 +43,13 @@ class Player{
     int getPlayerNumber();
     void setPlayerNumber(int p);
 
-    private:
+private:
     string _name;
     advisors advisor;
     bool hasAdvisor;
     int _strength, _stamina, _wisdom, _pride_points, _age;
     bool _pridelands;
     int playerNumber;
-
 };
 
 #endif

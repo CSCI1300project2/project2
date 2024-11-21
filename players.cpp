@@ -1,9 +1,10 @@
-//CSCI1300 Project 2: Sergio Bocci and Grace Bournonille
+// CSCI1300 Project 2: Sergio Bocci and Grace Bournonille
 #include "players.h"
 #include <string>
 using namespace std;
 
-Player::Player(){
+Player::Player()
+{
     _name = "";
     _age = 1;
     _strength = 100;
@@ -13,20 +14,30 @@ Player::Player(){
     hasAdvisor = false;
 }
 
-Player::Player(string name, int stamina, int wisdom, int strenth, int PlayerNumber){
-    if (stamina > 100 && stamina < 1000){
+Player::Player(string name, int stamina, int wisdom, int strenth, int PlayerNumber)
+{
+    if (stamina > 100 && stamina < 1000)
+    {
         _stamina = stamina;
-    } else {
+    }
+    else
+    {
         _stamina = 100;
     }
-    if (strenth > 100 && strenth < 1000){
+    if (strenth > 100 && strenth < 1000)
+    {
         _strength = strenth;
-    } else {
+    }
+    else
+    {
         _strength = 100;
     }
-    if (wisdom > 100 && wisdom < 1000){
+    if (wisdom > 100 && wisdom < 1000)
+    {
         _wisdom = wisdom;
-    } else {
+    }
+    else
+    {
         _wisdom = 100;
     }
     _name = name;
@@ -36,81 +47,105 @@ Player::Player(string name, int stamina, int wisdom, int strenth, int PlayerNumb
     hasAdvisor = false;
 }
 
-string Player::getName(){
+string Player::getName()
+{
     return _name;
 }
 
-int Player::getStrength(){
+int Player::getStrength()
+{
     return _strength;
 }
 
-int Player::getStamina(){
+int Player::getStamina()
+{
     return _stamina;
 }
 
-int Player::getPridePoints(){
+int Player::getPridePoints()
+{
     return _pride_points;
 }
 
-int Player::getAge(){
+int Player::getAge()
+{
     return _age;
 }
 
-int Player::getWisdom(){
+int Player::getWisdom()
+{
     return _wisdom;
 }
 
-void Player::setName(string name){
+void Player::setName(string name)
+{
     _name = name;
 }
 
-void Player::setStrength(int strength){
-    if(strength >= 100){
+void Player::setStrength(int strength)
+{
+    if (strength >= 100)
+    {
         _strength = strength;
-    } else {
+    }
+    else
+    {
         _strength = 100;
     }
 }
 
-void Player::setStamina(int stamina){
-    if(stamina >= 100){
+void Player::setStamina(int stamina)
+{
+    if (stamina >= 100)
+    {
         _stamina = stamina;
-    } else {
+    }
+    else
+    {
         _stamina = 100;
     }
 }
 
-void Player::setWisdom(int wisdom){
-    if(wisdom >= 100){
+void Player::setWisdom(int wisdom)
+{
+    if (wisdom >= 100)
+    {
         _wisdom = wisdom;
-    } else {
+    }
+    else
+    {
         _wisdom = 100;
     }
 }
 
-void Player::setPridePoints(int pride_points){
+void Player::setPridePoints(int pride_points)
+{
     _pride_points = pride_points;
 }
 
-void Player::setAge(int age){
+void Player::setAge(int age)
+{
     _age = age;
 }
 
-void Player::trainCub(){
+void Player::trainCub()
+{
     _pride_points = (getPridePoints() - 5000);
     _strength = (getStrength() + 500);
     _stamina = (getStamina() + 500);
     _wisdom = (getWisdom() + 1000);
 }
 
-void Player::toPrideLands(){
+void Player::toPrideLands()
+{
     _pride_points = (getPridePoints() + 5000);
     _strength = (getStrength() + 200);
     _stamina = (getStamina() + 200);
     _wisdom = (getWisdom() + 200);
 }
 
-void Player::printStats(){
+void Player::printStats()
+{
     cout << _name << ", age " << _age << endl;
     cout << "Strength " << _strength << endl;
     cout << "Stamina " << _stamina << endl;
@@ -118,39 +153,48 @@ void Player::printStats(){
     cout << "Pride Points " << _pride_points << endl;
 }
 
-void Player::setPridelands(bool isPridelands){
+void Player::setPridelands(bool isPridelands)
+{
     _pridelands = isPridelands;
 }
 
-void Player::setAdvisor(advisors a){
+void Player::setAdvisor(advisors a)
+{
     advisor = a;
     hasAdvisor = true;
 }
 
-bool Player::getPridelands(){
+bool Player::getPridelands()
+{
     return _pridelands;
 }
 
-advisors Player::getAdvisor(){
+advisors Player::getAdvisor()
+{
     return advisor;
 }
 
-void Player::printAdvisor(){
+void Player::printAdvisor()
+{
     cout << "Name: " << advisor.name << ", Power: " << advisor.power << ", Description: " << advisor.description << endl;
 }
 
-bool Player::getHasAdvisor(){
+bool Player::getHasAdvisor()
+{
     return hasAdvisor;
 }
 
-void Player::setHasAdvisor(bool hasA){
+void Player::setHasAdvisor(bool hasA)
+{
     hasAdvisor = hasA;
 }
 
-int Player::getPlayerNumber(){
+int Player::getPlayerNumber()
+{
     return playerNumber;
 }
 
-void Player::setPlayerNumber(int p){
+void Player::setPlayerNumber(int p)
+{
     playerNumber = p;
 }

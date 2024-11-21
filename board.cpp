@@ -1,4 +1,4 @@
-//CSCI1300 Project 2: Sergio Bocci and Grace Bournonille
+// CSCI1300 Project 2: Sergio Bocci and Grace Bournonille
 #include "board.h"
 #include <cstdlib> // For rand() and srand()
 #include <ctime>   // For time()
@@ -29,83 +29,140 @@ void Board::initializeTiles(Player player)
     int green_count = 0;
     int choice = 0;
 
-    for (int i = 0; i < _BOARD_SIZE; i++) {
+    for (int i = 0; i < _BOARD_SIZE; i++)
+    {
         temp.setColor('G');
-        if (i == 0) {
+        if (i == 0)
+        {
             // Starting tile
             temp.setColor('Y'); // Grey (Starting tile)
-        } else if (i == _BOARD_SIZE - 1) {
+        }
+        else if (i == _BOARD_SIZE - 1)
+        {
             // Final tile: Pride Rock
             temp.setColor('O'); // Orange (Final tile)
-        } else {
+        }
+        else
+        {
             // Determine section based on position (percentage of board length)
             int section = (i * 100) / _BOARD_SIZE;
 
             // Ensure at least 30 green tiles
-            if (_BOARD_SIZE - i + green_count < 30) {
+            if (_BOARD_SIZE - i + green_count < 30)
+            {
                 temp.setColor('G'); // Green (safe tile)
                 green_count++;
-            } else if (player.getPridelands()) {
+            }
+            else if (player.getPridelands())
+            {
                 // Pride Lands Path: More non-green tiles towards the beginning
-                if (section < 50 && rand() % 3 != 0) { // Increased likelihood for non-green tiles
+                if (section < 50 && rand() % 3 != 0)
+                { // Increased likelihood for non-green tiles
                     choice = rand() % 6;
-                    if (choice == 0) {
+                    if (choice == 0)
+                    {
                         temp.setColor('R'); // Red
-                    } else if (choice == 1) {
+                    }
+                    else if (choice == 1)
+                    {
                         temp.setColor('B'); // Blue
-                    } else if (choice == 2) {
+                    }
+                    else if (choice == 2)
+                    {
                         temp.setColor('P'); // Pink
-                    } else if (choice == 3) {
+                    }
+                    else if (choice == 3)
+                    {
                         temp.setColor('N'); // Brown
-                    } else if (choice == 4){
+                    }
+                    else if (choice == 4)
+                    {
                         temp.setColor('U'); // Purple
                     }
-                } else if(section > 50 && rand() % 2 != 0){
+                }
+                else if (section > 50 && rand() % 2 != 0)
+                {
                     choice = rand() % 20;
-                    if (choice == 0) {
+                    if (choice == 0)
+                    {
                         temp.setColor('R'); // Red
-                    } else if (choice == 1) {
+                    }
+                    else if (choice == 1)
+                    {
                         temp.setColor('B'); // Blue
-                    } else if (choice == 2) {
+                    }
+                    else if (choice == 2)
+                    {
                         temp.setColor('P'); // Pink
-                    } else if (choice == 3) {
+                    }
+                    else if (choice == 3)
+                    {
                         temp.setColor('N'); // Brown
-                    } else if (choice == 4){
+                    }
+                    else if (choice == 4)
+                    {
                         temp.setColor('U'); // Purple
                     }
-                } else {
+                }
+                else
+                {
                     temp.setColor('G'); // Safe tile
                     green_count++;
                 }
-            } else {
+            }
+            else
+            {
                 // Cub Training Path: More non-green tiles towards the end
-                if (section > 50 && rand() % 3 != 0) { // Increased likelihood for non-green tiles
+                if (section > 50 && rand() % 3 != 0)
+                { // Increased likelihood for non-green tiles
                     choice = rand() % 6;
-                    if (choice == 0) {
+                    if (choice == 0)
+                    {
                         temp.setColor('R'); // Red
-                    } else if (choice == 1) {
+                    }
+                    else if (choice == 1)
+                    {
                         temp.setColor('B'); // Blue
-                    } else if (choice == 2) {
+                    }
+                    else if (choice == 2)
+                    {
                         temp.setColor('P'); // Pink
-                    } else if (choice == 3) {
+                    }
+                    else if (choice == 3)
+                    {
                         temp.setColor('N'); // Brown
-                    } else if (choice == 4){
+                    }
+                    else if (choice == 4)
+                    {
                         temp.setColor('U'); // Purple
                     }
-                } else if(section < 50 && rand() % 2 != 0){
+                }
+                else if (section < 50 && rand() % 2 != 0)
+                {
                     choice = rand() % 20;
-                    if (choice == 0) {
+                    if (choice == 0)
+                    {
                         temp.setColor('R'); // Red
-                    } else if (choice == 1) {
+                    }
+                    else if (choice == 1)
+                    {
                         temp.setColor('B'); // Blue
-                    } else if (choice == 2) {
+                    }
+                    else if (choice == 2)
+                    {
                         temp.setColor('P'); // Pink
-                    } else if (choice == 3) {
+                    }
+                    else if (choice == 3)
+                    {
                         temp.setColor('N'); // Brown
-                    } else if (choice == 4){
+                    }
+                    else if (choice == 4)
+                    {
                         temp.setColor('U'); // Purple
                     }
-                } else {
+                }
+                else
+                {
                     temp.setColor('G'); // Safe tile
                     green_count++;
                 }
@@ -197,7 +254,7 @@ void Board::displayTrack(Player player)
 void Board::displayBoard(Player player)
 {
     displayTrack(player);
-    cout<<endl;
+    cout << endl;
 }
 
 bool Board::movePlayer(int spaces)
@@ -217,14 +274,19 @@ int Board::getPlayerPosition() const
     return _player_position;
 }
 
-tileType Board::getPositionTile(int playerPos) const{
+tileType Board::getPositionTile(int playerPos) const
+{
     return _tiles[playerPos];
 }
 
-void Board::setPlayerPos(int pos){
-    if(pos >= 0){
+void Board::setPlayerPos(int pos)
+{
+    if (pos >= 0)
+    {
         _player_position = pos;
-    } else {
+    }
+    else
+    {
         _player_position = 0;
     }
 }
