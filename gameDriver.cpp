@@ -127,6 +127,8 @@ int main()
     string advisorsString[3];
     vector<randomEvents> randomEventsVector;
     string randomEventsString[4];
+    vector<riddles> riddlesVector;
+    string riddlesString[2];
 
     // opening the character file
     string characterLine;
@@ -257,6 +259,39 @@ int main()
         }
         firstLine = false;
     }
+
+    randomEventsFile.close(); // close the Random Events file
+
+    string riddleLine;
+    ifstream riddlesFile("riddles.txt");
+    bool firstLine = true;
+    if (!riddlesFile.is_open())
+    {
+        cout << "Could not open file." << endl;
+        return -1;
+    }
+    
+    while (getline(riddlesFile, riddleLine))
+    {
+        split(riddleLine, '|', riddlesString, 2);
+        riddles tempRiddle;
+        for (unsigned int j = 0; j < 2; j++)
+        {
+            switch (j)
+            {
+            case 0:
+                tempRiddle.riddleQuestion = riddlesString[j];
+                break;
+            case 1:
+                tempRiddle.answer = riddlesString[j];
+                break;
+            }
+        }
+        // Add the new riddle to the vector
+        riddlesVector.push_back(tempRiddle);
+    }
+    
+    riddlesFile.close(); // close the riddles file
 
     srand(time(0)); // seed random function
 
@@ -560,36 +595,12 @@ int main()
     int randSpace = 0;
     int tempPosition = 0;
     int randomRiddleIndex = 0;
-    string riddleAnswer = "";
-    riddles riddle;
-    string riddleLine;
-    string riddlesString[2];
-    ifstream riddlesFile("riddles.txt");
-    vector<riddles> riddlesVector;
-    while (getline(riddlesFile, riddleLine))
-    {
-        split(riddleLine, '|', riddlesString, 2);
-        riddles tempRiddle;
-        for (unsigned int j = 0; j < 2; j++)
-        {
-            switch (j)
-            {
-            case 0:
-                tempRiddle.riddleQuestion = riddlesString[j];
-                break;
-            case 1:
-                tempRiddle.answer = riddlesString[j];
-                break;
-            }
-        }
-        // Add the new riddle to the vector
-        riddlesVector.push_back(tempRiddle);
-    }
-    riddlesFile.close(); // close the riddles file
+
     bool ifMoved = true;
     bool extraTurn = false;
     bool player1Finished = false;
     bool player2Finished = false;
+    string riddleAnswer = "";
 
     // display board once before printing the first menu
     cout << endl;
