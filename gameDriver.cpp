@@ -95,7 +95,6 @@ int split(string input_string, char separator, string arr[], const int ARR_SIZE)
 
 int main()
 {
-
     // stores the attributes of each character option
     struct characters
     {
@@ -113,11 +112,21 @@ int main()
         string answer;
     };
 
+    struct randomEvents
+    {
+        string description;
+        int pathType;
+        int advisor;
+        int pridePoints;
+    };
+
     // vectors to store character and advisor objects
     vector<characters> charactersVector;
     string charactersString[6];
     vector<advisors> advisorsVector;
     string advisorsString[3];
+    vector<randomEvents> randomEventsVector;
+    string randomEventsString[4];
 
     // opening the character file
     string characterLine;
@@ -209,6 +218,45 @@ int main()
     }
 
     advisorsFile.close(); // close the advisors file
+
+    string randomEventsLine;
+    firstLine = true; // sets first line back to true for the new file
+    ifstream randomEventsFile("randomEvents.txt");
+    if (!randomEventsFile.is_open())
+    {
+        cout << "Could not open file." << endl;
+        return -1;
+    }
+
+    while (getline(randomEventsFile, randomEventsLine))
+    {
+        if (!firstLine)
+        {
+            split(randomEventsLine, '|', randomEventsString, 3);
+            randomEvents tempRandomEvent;
+            for (unsigned int j = 0; j < 3; j++)
+            {
+                switch (j)
+                {
+                case 0:
+                    tempRandomEvent.description = randomEventsString[j];
+                    break;
+                case 1:
+                    tempRandomEvent.pathType = stoi(randomEventsString[j]);
+                    break;
+                case 2:
+                    tempRandomEvent.advisor = stoi(randomEventsString[j]);
+                    break;
+                case 3:
+                    tempRandomEvent.pridePoints = stoi(randomEventsString[j]);
+                    break;
+                }
+            }
+            // Add the new character to the vector
+            randomEventsVector.push_back(tempRandomEvent);
+        }
+        firstLine = false;
+    }
 
     srand(time(0)); // seed random function
 
