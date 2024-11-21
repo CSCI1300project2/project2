@@ -1254,5 +1254,54 @@ int main()
 
         resultsReadingFile.close();
     }
+    /*
+    We will add additional options to two of our menu items.
+    1. review your advisor will have additional option to prompt player to continue using it
+    2. check player progress has additional option to convert leadership traits to additional pride points
+
+    sorting algorithm:
+    we will implement a sorting algorithm with the results of our game to sort our players by number of pride points or 
+    we could have a menu option to display current player ranking of a certian attribute BEFORE the end of the game to show 
+    and we could have them choose the attribute
+
+    Special tiles:
+    - we will update initialize tiles code to make sure there is at least 20 special tiles on each player's 
+    respective boards
+    - we will figure out how to get rid of line of color after game board ends
+
+    Tile class:
+    we will add two more private data members
+    one will store the type of each tile object: ex. Hyenas tile
+
+    New class possibility:
+    class Pet{
+        private:
+            string name;
+            string species;
+            string ability;
+            int age;
+        public:
+            setters and getters
+            Pet pet();
+            Pet pet(string n, string s, string a, int a);
+    }
+    we will add text file for pets and give players options to have pets and each pet will have special ability that the 
+    player will use
+
+    Group work:
+    - sorting algorithm as explained above
+
+    customization:
+        - we altered the characters txt file
+        - added unique interactions with two advisors that were not used in example
+        - modify game board
+            - we modified the game board by changing probabilities of first 50% and last 50% to reflect respective path 
+            choices of pridelands and cub training
+        - we will create another class pet as described above
+
+    Extra credit:
+        - presentation (10 points)
+        - same tile constraint (5 points)
+    */
     return 0;
 }
