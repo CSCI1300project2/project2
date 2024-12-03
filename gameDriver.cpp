@@ -715,6 +715,14 @@ int main()
                         }
                         break;
                     case '5':
+                        player1.setAge(player1.getAge() + 1);
+                        if (player1.getAge() > 30)
+                        {
+                            cout << player1.getName() << " is " << player1.getAge() << " years old, and has died from old age.";
+                            cout << endl;
+                            cout << player2.getName() << " wins!" << endl;
+                            return 0;
+                        }
                         tempPosition = player1Board.getPlayerPosition();
                         randSpace = (rand() % 6) + 1;
                         player1Board.movePlayer(randSpace);
@@ -742,7 +750,6 @@ int main()
                             break;
                         }
                         ifMoved = true;
-                        player1.setAge(player1.getAge() + 1);
                         if (player1Board.getPlayerPosition() >= 51)
                         {
                             cout << endl; // skip a line
@@ -788,6 +795,14 @@ int main()
                         }
                         break;
                     case '5':
+                        player2.setAge(player2.getAge() + 1);
+                        if (player2.getAge() > 30)
+                        {
+                            cout << player2.getName() << " is " << player2.getAge() << " years old, and has died from old age.";
+                            cout << endl;
+                            cout << player1.getName() << " wins!" << endl;
+                            return 0;
+                        }
                         tempPosition = player2Board.getPlayerPosition();
                         randSpace = (rand() % 6) + 1;
                         player2Board.movePlayer(randSpace);
@@ -815,7 +830,6 @@ int main()
                             break;
                         }
                         ifMoved = true;
-                        player2.setAge(player2.getAge() + 1);
                         if (player2Board.getPlayerPosition() >= 51)
                         {
                             cout << endl; // skip a line
@@ -937,24 +951,6 @@ int main()
     Extra credit:
         - presentation (10 points)
         - same tile constraint (5 points)
-
-            if (player1.getAge() > 10)
-            {
-                cout << player1.getName() << " is " << player1.getAge() << " years old, and has died from old age.";
-                cout << endl;
-                cout << player2.getName() << " wins!" << endl;
-                continue;
-            }
-            else if (player2.getAge() > 10)
-            {
-                cout << player2.getName() << " is " << player2.getAge() << " years old, and has died from old age.";
-                cout << endl;
-                cout << player1.getName() << " wins!" << endl;
-                continue;
-            }
-
-
-
     */
 
     return 0;
