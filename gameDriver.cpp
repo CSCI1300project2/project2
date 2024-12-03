@@ -24,7 +24,50 @@ void printMenu()
     cout << "Please choose an option using the corresponding number:" << endl;
 }
 
+struct characters
+{
+    string name;
+    int age;
+    int strength;
+    int stamina;
+    int wisdom;
+    int pridePoints;
+};
+
 struct advisors;
+
+void sortCharactersByAge(vector<characters> charactersVector)
+{
+    int n = charactersVector.size();
+
+    // Perform selection sort to sort characters by age in descending order
+    for (int i = 0; i < n - 1; i++)
+    {
+        // Find the character with the largest age in the unsorted portion of the vector
+        int maxIndex = i;
+        for (int j = i + 1; j < n; j++)
+        {
+            if (charactersVector[j].age > charactersVector[maxIndex].age)
+            {
+                maxIndex = j;
+            }
+        }
+
+        // Swap the current element with the element at maxIndex
+        if (maxIndex != i)
+        {
+            swap(charactersVector[i], charactersVector[maxIndex]);
+        }
+    }
+
+    // Print the sorted characters by age
+    cout << endl;
+    cout << "Sorted characters by age:" << endl;
+    for (unsigned int i = 0; i < charactersVector.size(); i++)
+    {
+        cout << charactersVector[i].name << " age: " << charactersVector[i].age << endl;
+    }
+}
 
 Player settingAdvisor(Player player, char characterChoice, vector<advisors> advisorsVector)
 {
@@ -96,15 +139,6 @@ int split(string input_string, char separator, string arr[], const int ARR_SIZE)
 int main()
 {
     // stores the attributes of each character option
-    struct characters
-    {
-        string name;
-        int age;
-        int strength;
-        int stamina;
-        int wisdom;
-        int pridePoints;
-    };
 
     struct riddles
     {
@@ -261,7 +295,7 @@ int main()
 
     cout << endl; // skip a line
     char characterChoice;
-    cout << player1.getName() << ", choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo(6) or name your own character with random attributes(7)" << endl;
+    cout << player1.getName() << ", choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo(6), name your own character with random attributes(7), or view characters ranked according to their age(8)" << endl;
     cout << endl; // skip a line
     // print the attributes of each character in the characters vector
     for (unsigned int i = 0; i < charactersVector.size(); i++)
@@ -274,11 +308,13 @@ int main()
              << ", PridePoints: " << charactersVector[i].pridePoints
              << endl;
     }
-
-    while (cin >> characterChoice)
+    bool characterChosen = false;
+    while (cin >> characterChoice && !characterChosen)
     {
-        if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5' || characterChoice == '6' || characterChoice == '7')
+
+        if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5' || characterChoice == '6' || characterChoice == '7' || characterChoice == '8')
         {
+            string inputName;
             switch (characterChoice)
             {
             case '1':
@@ -288,6 +324,8 @@ int main()
                 player1.setWisdom(charactersVector[0].wisdom);
                 player1.setStrength(charactersVector[0].strength);
                 player1.setPridePoints(charactersVector[0].pridePoints);
+                cout << " Your character is " << charactersVector[0].name << endl;
+                characterChosen = true;
                 break;
             case '2':
                 player1.setName(charactersVector[1].name);
@@ -296,6 +334,8 @@ int main()
                 player1.setWisdom(charactersVector[1].wisdom);
                 player1.setStrength(charactersVector[1].strength);
                 player1.setPridePoints(charactersVector[1].pridePoints);
+                cout << "Your character is " << charactersVector[1].name << endl;
+                characterChosen = true;
                 break;
             case '3':
                 player1.setName(charactersVector[2].name);
@@ -304,6 +344,8 @@ int main()
                 player1.setWisdom(charactersVector[2].wisdom);
                 player1.setStrength(charactersVector[2].strength);
                 player1.setPridePoints(charactersVector[2].pridePoints);
+                cout << " Your character is " << charactersVector[2].name << endl;
+                characterChosen = true;
                 break;
             case '4':
                 player1.setName(charactersVector[3].name);
@@ -312,6 +354,8 @@ int main()
                 player1.setWisdom(charactersVector[3].wisdom);
                 player1.setStrength(charactersVector[3].strength);
                 player1.setPridePoints(charactersVector[3].pridePoints);
+                cout << " Your character is " << charactersVector[3].name << endl;
+                characterChosen = true;
                 break;
             case '5':
                 player1.setName(charactersVector[4].name);
@@ -320,6 +364,8 @@ int main()
                 player1.setWisdom(charactersVector[4].wisdom);
                 player1.setStrength(charactersVector[4].strength);
                 player1.setPridePoints(charactersVector[4].pridePoints);
+                cout << " Your character is " << charactersVector[4].name << endl;
+                characterChosen = true;
                 break;
             case '6':
                 player1.setName(charactersVector[5].name);
@@ -328,9 +374,10 @@ int main()
                 player1.setWisdom(charactersVector[5].wisdom);
                 player1.setStrength(charactersVector[5].strength);
                 player1.setPridePoints(charactersVector[5].pridePoints);
+                cout << " Your character is " << charactersVector[5].name << endl;
+                characterChosen = true;
                 break;
             case '7':
-                string inputName;
                 cin.ignore();
                 cout << endl; // skip a line
                 cout << "Enter character name: " << endl;
@@ -341,9 +388,19 @@ int main()
                 player1.setWisdom((rand() % 10 + 1) * 100);
                 player1.setStrength((rand() % 10 + 1) * 100);
                 player1.setPridePoints(20000);
+                cout << " Your character is " << charactersVector[6].name << endl;
+                characterChosen = true;
                 break;
+            case '8':
+                vector<characters> tempArr = charactersVector;
+                sortCharactersByAge(tempArr);
+                cout << endl;
+                cout << "Choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo(6), name your own character with random attributes(7) or see ranking again(8)" << endl;
             }
-            break;
+            if (characterChosen)
+            {
+                break; // This ensures the loop exits as soon as a character is chosen
+            }
         }
         else
         {
@@ -1267,7 +1324,6 @@ int main()
     Special tiles:
     - we will update initialize tiles code to make sure there is at least 20 special tiles on each player's
     respective boards
-    - we will figure out how to get rid of line of color after game board ends
 
     Tile class:
     we will add two more private data members
@@ -1303,6 +1359,6 @@ int main()
         - presentation (10 points)
         - same tile constraint (5 points)
     */
-   
+
     return 0;
 }
