@@ -227,7 +227,17 @@ int main()
     riddlesFile.close(); // close the riddles file
 
     srand(time(0)); // seed random function
-
+    cout << endl;
+    cout << "Welcome to the Lands of Africa!" << endl;
+    cout << "Players will journey across the African Savannah, each as a young lion eager to prove they are ready to step up as the next Pride Leader after Simba's retirement." << endl;
+    cout << "Along the way, they will make strategic decisions, face unexpected challenges, and collect Pride Points as they grow and refine their Leadership Traits—Stamina, Strength, and Wisdom." << endl;
+    cout << endl;
+    cout << "Rules: " << endl;
+    cout << "1. You will choose one of two paths: Through cub training or straight to the Pride Lands." << endl;
+    cout << "2. Lead your character to pride rock as fast as possible. The player who collects the most pride points by demonstrating leadership traits will win the game!" << endl;
+    cout << "3. Navigate through the game by entering numbers corresponding to actions." << endl;
+    cout << "4. When it is your turn, you will move a random number of spaces 1-6" << endl;
+    cout << "5. Finish the game before your character dies of old age at 30 years old!" << endl;
     cout << endl; // skip a line
     // set both players names to user input
     string playerName;
@@ -684,6 +694,7 @@ int main()
         printMenu();
         while (cin >> menuChoice && !ifMoved)
         {
+            int ageChoice;
             cout << endl;             // skip a line
             bool validChoice = false; // Flag to check if input is valid
             if (turnCount % 2 == 0)
@@ -699,6 +710,43 @@ int main()
                     case '2':
                         cout << player1.getName() << " name: " << player1.getName() << endl;
                         cout << player1.getName() << " age: " << player1.getAge() << endl;
+                        cout << endl;
+                        cout << "Would you like to use 100 stamina points to magically lower your age: yes(1) no(2)?" << endl;
+                        while (cin >> ageChoice)
+                        {
+                            if (ageChoice == 1)
+                            {
+                                if (player1.getStamina() < 100)
+                                {
+                                    cout << endl;
+                                    cout << "You do not have enough stamina points" << endl;
+                                    break;
+                                }
+                                else
+                                {
+                                    cout << player1.getStamina();
+                                    player1.setStamina(player1.getStamina() + 100);
+                                    player1.setAge(player1.getAge() - 1);
+                                    cout << endl;
+                                    cout << player1.getName() << ", your new age is: " << player1.getAge() << " and your new stamina is: " << player1.getStamina();
+                                    cout << endl;
+                                    break;
+                                }
+                            }
+                            else if (ageChoice == 2)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                cout << endl;
+                                cout << "Invalid input. Please enter a valid option." << endl;
+                                cout << endl;
+                                cin.clear();
+                                cin.ignore(1000, '\n');
+                                continue;
+                            }
+                        }
                         break;
                     case '3':
                         cout << player1.getName() << " your position is: " << player1Board.getPlayerPosition() << endl;
@@ -779,6 +827,43 @@ int main()
                     case '2':
                         cout << player2.getName() << " name: " << player2.getName() << endl;
                         cout << player2.getName() << " age: " << player2.getAge() << endl;
+                        cout << endl;
+                        cout << "Would you like to use 100 stamina points to magically lower your age: yes(1) no(2)?" << endl;
+                        while (cin >> ageChoice)
+                        {
+                            if (ageChoice == 2)
+                            {
+                                if (player2.getStamina() < 100)
+                                {
+                                    cout << endl;
+                                    cout << "You do not have enough stamina points" << endl;
+                                    break;
+                                }
+                                else
+                                {
+                                    cout << player2.getStamina();
+                                    player2.setStamina(player2.getStamina() + 100);
+                                    player2.setAge(player2.getAge() - 1);
+                                    cout << endl;
+                                    cout << player2.getName() << ", your new age is: " << player2.getAge() << " and your new stamina is: " << player2.getStamina();
+                                    cout << endl;
+                                    break;
+                                }
+                            }
+                            else if (ageChoice == 2)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                cout << endl;
+                                cout << "Invalid input. Please enter a valid option." << endl;
+                                cout << endl;
+                                cin.clear();
+                                cin.ignore(1000, '\n');
+                                continue;
+                            }
+                        }
                         break;
                     case '3':
                         cout << player2.getName() << " your position is: " << player2Board.getPlayerPosition() << endl;
