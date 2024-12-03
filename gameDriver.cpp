@@ -565,18 +565,18 @@ int main()
     }
 
     // ask each player if they would like to go to pridelands or cub training
-    char choice;
+    char pridelandsChoice;
     cout << endl; // skip a line
     cout << player1.getName() << ", would you like to go to the pridelands (1) or begin Cub Training (2)?" << endl;
-    while (cin >> choice)
+    while (cin >> pridelandsChoice)
     {
-        if (choice == '1')
+        if (pridelandsChoice == '1')
         {
             player1.setPridelands(true);
             player1.toPrideLands();
             break;
         }
-        else if (choice == '2')
+        else if (pridelandsChoice == '2')
         {
             cout << endl; // skip a line
             player1 = settingAdvisor(player1, characterChoice, advisorsVector);
@@ -596,15 +596,15 @@ int main()
 
     cout << endl; // skip a line
     cout << player2.getName() << ", would you like to go to the pridelands (1) or begin Cub Training (2)?" << endl;
-    while (cin >> choice)
+    while (cin >> pridelandsChoice)
     {
-        if (choice == '1')
+        if (pridelandsChoice == '1')
         {
             player2.setPridelands(true);
             player2.toPrideLands();
             break;
         }
-        else if (choice == '2')
+        else if (pridelandsChoice == '2')
         {
             cout << endl; // skip a line
             player2 = settingAdvisor(player2, characterChoice, advisorsVector);
@@ -694,7 +694,7 @@ int main()
         printMenu();
         while (cin >> menuChoice && !ifMoved)
         {
-            int ageChoice;
+            char ageChoice;
             cout << endl;             // skip a line
             bool validChoice = false; // Flag to check if input is valid
             if (turnCount % 2 == 0)
@@ -714,7 +714,7 @@ int main()
                         cout << "Would you like to use 100 stamina points to magically lower your age: yes(1) no(2)?" << endl;
                         while (cin >> ageChoice)
                         {
-                            if (ageChoice == 1)
+                            if (ageChoice == '1')
                             {
                                 if (player1.getStamina() < 100)
                                 {
@@ -722,9 +722,14 @@ int main()
                                     cout << "You do not have enough stamina points" << endl;
                                     break;
                                 }
+                                else if (player1.getAge() <= 1)
+                                {
+                                    cout << "You have to be at least 2 years old." << endl;
+                                    break;
+                                }
                                 else
                                 {
-                                    cout << player1.getStamina();
+                                    cout << endl;
                                     player1.setStamina(player1.getStamina() + 100);
                                     player1.setAge(player1.getAge() - 1);
                                     cout << endl;
@@ -733,7 +738,7 @@ int main()
                                     break;
                                 }
                             }
-                            else if (ageChoice == 2)
+                            else if (ageChoice == '2')
                             {
                                 break;
                             }
@@ -741,10 +746,8 @@ int main()
                             {
                                 cout << endl;
                                 cout << "Invalid input. Please enter a valid option." << endl;
-                                cout << endl;
                                 cin.clear();
                                 cin.ignore(1000, '\n');
-                                continue;
                             }
                         }
                         break;
@@ -831,7 +834,7 @@ int main()
                         cout << "Would you like to use 100 stamina points to magically lower your age: yes(1) no(2)?" << endl;
                         while (cin >> ageChoice)
                         {
-                            if (ageChoice == 2)
+                            if (ageChoice == '2')
                             {
                                 if (player2.getStamina() < 100)
                                 {
@@ -839,9 +842,14 @@ int main()
                                     cout << "You do not have enough stamina points" << endl;
                                     break;
                                 }
+                                else if (player2.getAge() <= 1)
+                                {
+                                    cout << "You have to be at least 2 years old." << endl;
+                                    break;
+                                }
                                 else
                                 {
-                                    cout << player2.getStamina();
+                                    cout << endl;
                                     player2.setStamina(player2.getStamina() + 100);
                                     player2.setAge(player2.getAge() - 1);
                                     cout << endl;
@@ -850,7 +858,7 @@ int main()
                                     break;
                                 }
                             }
-                            else if (ageChoice == 2)
+                            else if (ageChoice == '2')
                             {
                                 break;
                             }
@@ -858,10 +866,8 @@ int main()
                             {
                                 cout << endl;
                                 cout << "Invalid input. Please enter a valid option." << endl;
-                                cout << endl;
                                 cin.clear();
                                 cin.ignore(1000, '\n');
-                                continue;
                             }
                         }
                         break;
