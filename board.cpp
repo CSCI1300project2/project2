@@ -27,15 +27,17 @@ void Board::initializeTiles(Player player)
 {
     tileType temp;
     int green_count = 0;
+    int colored_count = 0;
     int choice = 0;
 
     for (int i = 0; i < _BOARD_SIZE; i++)
     {
-        temp.setColor('G');
+        temp.setColor('G'); // Default to green
+
         if (i == 0)
         {
             // Starting tile
-            temp.setColor('Y'); // Grey (Starting tile)
+            temp.setColor('Y'); // Yellow (Starting tile)
         }
         else if (i == _BOARD_SIZE - 1)
         {
@@ -47,130 +49,109 @@ void Board::initializeTiles(Player player)
             // Determine section based on position (percentage of board length)
             int section = (i * 100) / _BOARD_SIZE;
 
-            // Ensure at least 30 green tiles
-            if (_BOARD_SIZE - i + green_count < 30)
+            if (green_count < 30 && _BOARD_SIZE - i + green_count < 30)
             {
-                temp.setColor('G'); // Green (safe tile)
+                // Ensure at least 30 green tiles
+                temp.setColor('G');
                 green_count++;
             }
-            else if (player.getPridelands())
+            else if (colored_count < 20 && _BOARD_SIZE - i + colored_count < 20)
             {
-                // Pride Lands Path: More non-green tiles towards the beginning
-                if (section < 50 && rand() % 3 != 0)
-                { // Increased likelihood for non-green tiles
-                    choice = rand() % 6;
-                    if (choice == 0)
-                    {
-                        temp.setColor('R'); // Red
-                    }
-                    else if (choice == 1)
-                    {
-                        temp.setColor('B'); // Blue
-                    }
-                    else if (choice == 2)
-                    {
-                        temp.setColor('P'); // Pink
-                    }
-                    else if (choice == 3)
-                    {
-                        temp.setColor('N'); // Brown
-                    }
-                    else if (choice == 4)
-                    {
-                        temp.setColor('U'); // Purple
-                    }
-                }
-                else if (section > 50 && rand() % 2 != 0)
+                // Ensure at least 20 colored tiles (excluding 'Y' and 'O')
+                choice = rand() % 5;
+                switch (choice)
                 {
-                    choice = rand() % 20;
-                    if (choice == 0)
-                    {
-                        temp.setColor('R'); // Red
-                    }
-                    else if (choice == 1)
-                    {
-                        temp.setColor('B'); // Blue
-                    }
-                    else if (choice == 2)
-                    {
-                        temp.setColor('P'); // Pink
-                    }
-                    else if (choice == 3)
-                    {
-                        temp.setColor('N'); // Brown
-                    }
-                    else if (choice == 4)
-                    {
-                        temp.setColor('U'); // Purple
-                    }
+                    case 0: temp.setColor('R'); break; // Red
+                    case 1: temp.setColor('B'); break; // Blue
+                    case 2: temp.setColor('P'); break; // Pink
+                    case 3: temp.setColor('N'); break; // Brown
+                    case 4: temp.setColor('U'); break; // Purple
                 }
-                else
-                {
-                    temp.setColor('G'); // Safe tile
-                    green_count++;
-                }
+                colored_count++;
             }
             else
             {
-                // Cub Training Path: More non-green tiles towards the end
-                if (section > 50 && rand() % 3 != 0)
-                { // Increased likelihood for non-green tiles
-                    choice = rand() % 6;
-                    if (choice == 0)
-                    {
-                        temp.setColor('R'); // Red
-                    }
-                    else if (choice == 1)
-                    {
-                        temp.setColor('B'); // Blue
-                    }
-                    else if (choice == 2)
-                    {
-                        temp.setColor('P'); // Pink
-                    }
-                    else if (choice == 3)
-                    {
-                        temp.setColor('N'); // Brown
-                    }
-                    else if (choice == 4)
-                    {
-                        temp.setColor('U'); // Purple
-                    }
-                }
-                else if (section < 50 && rand() % 2 != 0)
+                // Apply the existing randomization rules
+                if (player.getPridelands())
                 {
-                    choice = rand() % 20;
-                    if (choice == 0)
+                    // Pride Lands Path: More non-green tiles in the first 50%
+                    if (section < 50 && rand() % 3 != 0)
                     {
-                        temp.setColor('R'); // Red
+                        choice = rand() % 5;
+                        switch (choice)
+                        {
+                            case 0: temp.setColor('R'); break;
+                            case 1: temp.setColor('B'); break;
+                            case 2: temp.setColor('P'); break;
+                            case 3: temp.setColor('N'); break;
+                            case 4: temp.setColor('U'); break;
+                        }
+                        colored_count++;
                     }
-                    else if (choice == 1)
+                    else
                     {
-                        temp.setColor('B'); // Blue
-                    }
-                    else if (choice == 2)
-                    {
-                        temp.setColor('P'); // Pink
-                    }
-                    else if (choice == 3)
-                    {
-                        temp.setColor('N'); // Brown
-                    }
-                    else if (choice == 4)
-                    {
-                        temp.setColor('U'); // Purple
+                        temp.setColor('G');
+                        green_count++;
                     }
                 }
                 else
                 {
-                    temp.setColor('G'); // Safe tile
-                    green_count++;
+                    // Cub Training Path: More non-green tiles in the last 50%
+                    if (section > 50 && rand() % 3 != 0)
+                    {
+                        choice = rand() % 5;
+                        switch (choice)
+                        {
+                            case 0: temp.setColor('R'); break;
+                            case 1: temp.setColor('B'); break;
+                            case 2: temp.setColor('P'); break;
+                            case 3: temp.setColor('N'); break;
+                            case 4: temp.setColor('U'); break;
+                        }
+                        colored_count++;
+                    }
+                    else
+                    {
+                        temp.setColor('G');
+                        green_count++;
+                    }
                 }
             }
         }
 
         // Assign the tile to the board
         _tiles[i] = temp;
+    }
+
+    // Ensure exactly 30 green tiles and 20 colored tiles by retroactively adjusting the board
+    while (green_count < 30)
+    {
+        int idx = rand() % (_BOARD_SIZE - 2) + 1; // Avoid start and end tiles
+        if (_tiles[idx].getColor() != 'G')
+        {
+            _tiles[idx].setColor('G');
+            green_count++;
+            colored_count--;
+        }
+    }
+
+    while (colored_count < 20)
+    {
+        int idx = rand() % (_BOARD_SIZE - 2) + 1; // Avoid start and end tiles
+        if (_tiles[idx].getColor() == 'G')
+        {
+            choice = rand() % 5;
+            switch (choice)
+            {
+                case 0: _tiles[idx].setColor('R'); break;
+                case 1: _tiles[idx].setColor('B'); break;
+                case 2: _tiles[idx].setColor('P'); break;
+                case 3: _tiles[idx].setColor('N'); break;
+                case 4: _tiles[idx].setColor('U'); break;
+            }
+            green_count--;
+            colored_count++;
+        }
     }
 }
 

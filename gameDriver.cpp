@@ -309,12 +309,12 @@ int main()
              << endl;
     }
     bool characterChosen = false;
+    string inputName;
     while (cin >> characterChoice && !characterChosen)
     {
 
         if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5' || characterChoice == '6' || characterChoice == '7' || characterChoice == '8')
         {
-            string inputName;
             switch (characterChoice)
             {
             case '1':
@@ -414,7 +414,7 @@ int main()
     {
         cout << charactersVector[i].name << " (" << i + 1 << "), ";
     }
-    cout << "or name your own character with random attributes (" << charactersVector.size() + 1 << ")" << endl;
+    cout << "name your own character with random attributes (7), or view characters ranked according to their age(8)" << endl;
     cout << endl; // skip a line
     // print the attributes of each character in the characters vector
     for (unsigned int i = 0; i < charactersVector.size(); i++)
@@ -432,8 +432,7 @@ int main()
     while (!sameCharacter)
     {
         cin >> characterChoice;
-
-        if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5' || characterChoice == '6' || characterChoice == '7')
+        if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5' || characterChoice == '6' || characterChoice == '7' || characterChoice == '8')
         {
             switch (characterChoice)
             {
@@ -552,7 +551,6 @@ int main()
                 }
                 break;
             case '7':
-                string inputName;
                 cin.ignore();
                 cout << endl; // skip a line
                 cout << "Enter character name: " << endl;
@@ -565,6 +563,12 @@ int main()
                 player2.setPridePoints(20000);
                 sameCharacter = true;
                 break;
+            case '8':
+                vector<characters> tempArr = charactersVector;
+                sortCharactersByAge(tempArr);
+                cout << endl;
+                cout << "Choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo(6), name your own character with random attributes(7) or see ranking again(8)" << endl;
+                sameCharacter = false;
             }
         }
         else
@@ -573,7 +577,6 @@ int main()
         }
     }
 
-    cout << endl; // skip a line
     // ask each player if they would like to go to pridelands or cub training
     char choice;
     cout << endl; // skip a line
@@ -1316,15 +1319,6 @@ int main()
     1. review your advisor will have additional option to prompt player to continue using it
     2. check player progress has additional option to convert leadership traits to additional pride points
 
-    sorting algorithm:
-    we will implement a sorting algorithm with the results of our game to sort our players by number of pride points or
-    we could have a menu option to display current player ranking of a certian attribute BEFORE the end of the game to show
-    and we could have them choose the attribute
-
-    Special tiles:
-    - we will update initialize tiles code to make sure there is at least 20 special tiles on each player's
-    respective boards
-
     Tile class:
     we will add two more private data members
     one will store the type of each tile object: ex. Hyenas tile
@@ -1344,15 +1338,7 @@ int main()
     we will add text file for pets and give players options to have pets and each pet will have special ability that the
     player will use
 
-    Group work:
-    - sorting algorithm as explained above
-
     customization:
-        - we altered the characters txt file
-        - added unique interactions with two advisors that were not used in example
-        - modify game board
-            - we modified the game board by changing probabilities of first 50% and last 50% to reflect respective path
-            choices of pridelands and cub training
         - we will create another class pet as described above
 
     Extra credit:
