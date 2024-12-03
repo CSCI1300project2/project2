@@ -2,6 +2,7 @@
 #include <iostream>
 #include "tile.h"
 #include <cstring>
+#include <vector>
 using namespace std;
 
 tileType::tileType()
@@ -11,11 +12,6 @@ tileType::tileType()
 char tileType::getColor()
 {
     return color;
-}
-
-string tileType::getType()
-{
-    return type;
 }
 
 void tileType::setColor(char c)

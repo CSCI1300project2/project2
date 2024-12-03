@@ -1,9 +1,12 @@
 // CSCI1300 Project 2: Sergio Bocci and Grace Bournonille
 #ifndef BOARD_H
 #define BOARD_H
-#include "tile.h"
+#include <vector>
 #include "players.h"
+#include "tile.h"
 using namespace std;
+
+Player settingAdvisor(Player player, char characterChoice, vector<advisors> advisorsVector);
 
 class Board
 {
@@ -22,11 +25,18 @@ public:
     Board(bool pridelands);
     void displayTrack(Player player);
     void initializeBoard(bool pridelands);
-    void displayBoard(Player player);
+    void displayBoard(Player player, bool first);
     bool movePlayer(int spaces);
     int getPlayerPosition() const;
     tileType getPositionTile(int playerPos) const;
     void setPlayerPos(int pos);
+    int getPlayerPos();
+    void blue(Player player);
+    void red(Player player);
+    void green(Player player);
+    void pink(Player player, vector <advisors> advisorsVector, char characterChoice);
+    void purple(Player player, vector<riddles> riddlesVector, int randomRiddleIndex);
+    void brown(Player player, int pos);
 };
 
 #endif
