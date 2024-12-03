@@ -311,9 +311,9 @@ int main()
     }
     bool characterChosen = false;
     string inputName;
-    while (cin >> characterChoice && !characterChosen)
+    while (!characterChosen)
     {
-
+        cin >> characterChoice;
         if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5' || characterChoice == '6' || characterChoice == '7' || characterChoice == '8')
         {
             switch (characterChoice)
@@ -414,6 +414,8 @@ int main()
         {
             cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
         }
     }
 
