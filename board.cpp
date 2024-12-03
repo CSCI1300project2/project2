@@ -234,6 +234,13 @@ void Board::displayTrack(Player player)
 
 void Board::displayBoard(Player player)
 {
+    if(player.getPridelands()){
+        cout << "Straight to Pridelands:" << endl;
+        cout << endl;
+    } else {
+        cout << "Cub Training:" << endl;
+        cout << endl;
+    }
     displayTrack(player);
     cout << endl;
 }

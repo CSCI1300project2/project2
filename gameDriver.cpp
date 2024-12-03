@@ -1004,6 +1004,7 @@ int main()
                             break;
                         }
                         ifMoved = true;
+                        player1.setAge(player1.getAge() + 1);
                         if (player1Board.getPlayerPosition() >= 51)
                         {
                             cout << endl; // skip a line
@@ -1265,6 +1266,7 @@ int main()
                             break;
                         }
                         ifMoved = true;
+                        player2.setAge(player2.getAge() + 1);
                         if (player2Board.getPlayerPosition() >= 51)
                         {
                             cout << endl; // skip a line
@@ -1378,6 +1380,7 @@ int main()
             Pet pet();
             Pet pet(string n, string s, string a, int a);
     }
+
     we will add text file for pets and give players options to have pets and each pet will have special ability that the
     player will use
 
