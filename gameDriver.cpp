@@ -105,6 +105,8 @@ Player settingAdvisor(Player player, char characterChoice, vector<advisors> advi
         {
             cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
         }
     }
     return player;
@@ -600,6 +602,8 @@ int main()
         {
             cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
         }
     }
 
@@ -628,6 +632,8 @@ int main()
         {
             cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
         }
     }
 
@@ -654,6 +660,8 @@ int main()
         {
             cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
         }
     }
 
@@ -820,6 +828,8 @@ int main()
                                     {
                                         cout << endl; // skip a line
                                         cout << "Invalid Input. Try again." << endl;
+                                        cin.clear();
+                                        cin.ignore(1000, '\n');
                                     }
                                 }
                             }
@@ -1118,6 +1128,8 @@ int main()
                                     {
                                         cout << endl; // skip a line
                                         cout << "Invalid Input. Try again." << endl;
+                                        cin.clear();
+                                        cin.ignore(1000, '\n');
                                     }
                                 }
                             }
@@ -1273,6 +1285,8 @@ int main()
             {
                 cout << endl;
                 cout << "Invalid Input. Please enter a valid option." << endl;
+                cin.clear();
+                cin.ignore(1000, '\n');
                 continue; // Skip to the next loop iteration and print the menu again
             }
 
