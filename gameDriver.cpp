@@ -667,8 +667,8 @@ int main()
 
     cout << endl; // skip a line
     // initialize both boards and display them
-    Board player1Board(player1);
-    Board player2Board(player2);
+    Board pridelandsBoard(true);
+    Board cubTrainingBoard(false);
     char menuChoice;
     int turnCount = 0;
     int randSpace = 0;
@@ -680,6 +680,20 @@ int main()
     bool player1Finished = false;
     bool player2Finished = false;
     string riddleAnswer = "";
+
+    Board player1Board;
+    Board player2Board;
+
+    if(player1.getPridelands()){
+        player1Board = pridelandsBoard;
+    } else {
+        player1Board = cubTrainingBoard;
+    }
+    if(player2.getPridelands()){
+        player2Board = pridelandsBoard;
+    } else {
+        player2Board = cubTrainingBoard;
+    }
 
     // display board once before printing the first menu
     cout << endl;

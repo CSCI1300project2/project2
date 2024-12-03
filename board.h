@@ -14,13 +14,14 @@ private:
     int _player_count;
     int _player_position = 0;
     void displayTile(int pos, Player player);
-    void initializeTiles(Player player);
+    void initializeTiles(bool pridelands);
     bool isPlayerOnTile(int pos);
 
 public:
-    Board(Player player);
+    Board();
+    Board(bool pridelands);
     void displayTrack(Player player);
-    void initializeBoard(Player player);
+    void initializeBoard(bool pridelands);
     void displayBoard(Player player);
     bool movePlayer(int spaces);
     int getPlayerPosition() const;

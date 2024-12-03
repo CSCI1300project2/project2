@@ -15,15 +15,15 @@ using namespace std;
 #define GREY "\033[48;2;128;128;128m" // Grey (128,128,128)
 #define RESET "\033[0m"
 
-void Board::initializeBoard(Player player)
+void Board::initializeBoard(bool pridelands)
 {
     for (int i = 0; i < 2; i++)
     {
-        initializeTiles(player); // This ensures each lane has a unique tile distribution
+        initializeTiles(pridelands); // This ensures each lane has a unique tile distribution
     }
 }
 
-void Board::initializeTiles(Player player)
+void Board::initializeTiles(bool pridelands)
 {
     tileType temp;
     int green_count = 0;
@@ -72,7 +72,7 @@ void Board::initializeTiles(Player player)
             else
             {
                 // Apply the existing randomization rules
-                if (player.getPridelands())
+                if (pridelands)
                 {
                     // Pride Lands Path: More non-green tiles in the first 50%
                     if (section < 50 && rand() % 3 != 0)
@@ -155,15 +155,17 @@ void Board::initializeTiles(Player player)
     }
 }
 
-Board::Board(Player player)
+Board::Board(bool pridelands)
 {
     _player_count = 1;
     // Initialize player position
     _player_position = 0;
     // Initialize tiles
-    initializeTiles(player);
-    initializeBoard(player);
+    initializeTiles(pridelands);
+    initializeBoard(pridelands);
 }
+
+Board::Board(){}
 
 bool Board::isPlayerOnTile(int pos)
 {
@@ -235,10 +237,10 @@ void Board::displayTrack(Player player)
 void Board::displayBoard(Player player)
 {
     if(player.getPridelands()){
-        cout << "Straight to Pridelands:" << endl;
+        cout << player.getName() << " has gone straight to Pridelands:" << endl;
         cout << endl;
     } else {
-        cout << "Cub Training:" << endl;
+        cout << player.getName() << " has chosen cub training:" << endl;
         cout << endl;
     }
     displayTrack(player);
