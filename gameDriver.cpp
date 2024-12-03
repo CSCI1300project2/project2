@@ -103,6 +103,7 @@ Player settingAdvisor(Player player, char characterChoice, vector<advisors> advi
         }
         else
         {
+            cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
         }
     }
@@ -324,7 +325,8 @@ int main()
                 player1.setWisdom(charactersVector[0].wisdom);
                 player1.setStrength(charactersVector[0].strength);
                 player1.setPridePoints(charactersVector[0].pridePoints);
-                cout << " Your character is " << charactersVector[0].name << endl;
+                cout << endl;
+                cout << "Your character is " << charactersVector[0].name << endl;
                 characterChosen = true;
                 break;
             case '2':
@@ -334,6 +336,7 @@ int main()
                 player1.setWisdom(charactersVector[1].wisdom);
                 player1.setStrength(charactersVector[1].strength);
                 player1.setPridePoints(charactersVector[1].pridePoints);
+                cout << endl;
                 cout << "Your character is " << charactersVector[1].name << endl;
                 characterChosen = true;
                 break;
@@ -344,7 +347,8 @@ int main()
                 player1.setWisdom(charactersVector[2].wisdom);
                 player1.setStrength(charactersVector[2].strength);
                 player1.setPridePoints(charactersVector[2].pridePoints);
-                cout << " Your character is " << charactersVector[2].name << endl;
+                cout << endl;
+                cout << "Your character is " << charactersVector[2].name << endl;
                 characterChosen = true;
                 break;
             case '4':
@@ -354,7 +358,8 @@ int main()
                 player1.setWisdom(charactersVector[3].wisdom);
                 player1.setStrength(charactersVector[3].strength);
                 player1.setPridePoints(charactersVector[3].pridePoints);
-                cout << " Your character is " << charactersVector[3].name << endl;
+                cout << endl;
+                cout << "Your character is " << charactersVector[3].name << endl;
                 characterChosen = true;
                 break;
             case '5':
@@ -364,7 +369,8 @@ int main()
                 player1.setWisdom(charactersVector[4].wisdom);
                 player1.setStrength(charactersVector[4].strength);
                 player1.setPridePoints(charactersVector[4].pridePoints);
-                cout << " Your character is " << charactersVector[4].name << endl;
+                cout << endl;
+                cout << "Your character is " << charactersVector[4].name << endl;
                 characterChosen = true;
                 break;
             case '6':
@@ -374,7 +380,8 @@ int main()
                 player1.setWisdom(charactersVector[5].wisdom);
                 player1.setStrength(charactersVector[5].strength);
                 player1.setPridePoints(charactersVector[5].pridePoints);
-                cout << " Your character is " << charactersVector[5].name << endl;
+                cout << endl;
+                cout << "Your character is " << charactersVector[5].name << endl;
                 characterChosen = true;
                 break;
             case '7':
@@ -388,7 +395,8 @@ int main()
                 player1.setWisdom((rand() % 10 + 1) * 100);
                 player1.setStrength((rand() % 10 + 1) * 100);
                 player1.setPridePoints(20000);
-                cout << " Your character is " << charactersVector[6].name << endl;
+                cout << endl;
+                cout << "Your character is " << player1.getName() << endl;
                 characterChosen = true;
                 break;
             case '8':
@@ -404,6 +412,7 @@ int main()
         }
         else
         {
+            cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
         }
     }
@@ -445,6 +454,8 @@ int main()
                     player2.setWisdom(charactersVector[0].wisdom);
                     player2.setStrength(charactersVector[0].strength);
                     player2.setPridePoints(charactersVector[0].pridePoints);
+                    cout << endl;
+                    cout << "Your character is " << player2.getName() << endl;
                     sameCharacter = true;
                 }
                 else
@@ -464,6 +475,8 @@ int main()
                     player2.setWisdom(charactersVector[1].wisdom);
                     player2.setStrength(charactersVector[1].strength);
                     player2.setPridePoints(charactersVector[1].pridePoints);
+                    cout << endl;
+                    cout << "Your character is " << player2.getName() << endl;
                     sameCharacter = true;
                 }
                 else
@@ -483,6 +496,8 @@ int main()
                     player2.setWisdom(charactersVector[2].wisdom);
                     player2.setStrength(charactersVector[2].strength);
                     player2.setPridePoints(charactersVector[2].pridePoints);
+                    cout << endl;
+                    cout << "Your character is " << player2.getName() << endl;
                     sameCharacter = true;
                 }
                 else
@@ -502,6 +517,8 @@ int main()
                     player2.setWisdom(charactersVector[3].wisdom);
                     player2.setStrength(charactersVector[3].strength);
                     player2.setPridePoints(charactersVector[3].pridePoints);
+                    cout << endl;
+                    cout << "Your character is " << player2.getName() << endl;
                     sameCharacter = true;
                 }
                 else
@@ -521,6 +538,8 @@ int main()
                     player2.setWisdom(charactersVector[4].wisdom);
                     player2.setStrength(charactersVector[4].strength);
                     player2.setPridePoints(charactersVector[4].pridePoints);
+                    cout << endl;
+                    cout << "Your character is " << player2.getName() << endl;
                     sameCharacter = true;
                 }
                 else
@@ -540,6 +559,8 @@ int main()
                     player2.setWisdom(charactersVector[5].wisdom);
                     player2.setStrength(charactersVector[5].strength);
                     player2.setPridePoints(charactersVector[5].pridePoints);
+                    cout << endl;
+                    cout << "Your character is " << player2.getName() << endl;
                     sameCharacter = true;
                 }
                 else
@@ -561,6 +582,8 @@ int main()
                 player2.setWisdom((rand() % 10 + 1) * 100);
                 player2.setStrength((rand() % 10 + 1) * 100);
                 player2.setPridePoints(20000);
+                cout << endl;
+                cout << "Your character is " << player2.getName() << endl;
                 sameCharacter = true;
                 break;
             case '8':
@@ -573,6 +596,7 @@ int main()
         }
         else
         {
+            cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
         }
     }
@@ -600,6 +624,7 @@ int main()
         }
         else
         {
+            cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
         }
     }
@@ -625,6 +650,7 @@ int main()
         }
         else
         {
+            cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
         }
     }
@@ -842,7 +868,7 @@ int main()
                                     {
                                     case 0:
                                         cout << endl; // skip a line
-                                        cout << player1.getName() << " has encountered a desert storm!" << endl;
+                                        cout << player1.getName() << ", you've encountered a desert storm!" << endl;
                                         cout << endl;
                                         if (player1.getHasAdvisor() && player1.getAdvisor().name == "Nala")
                                         {
@@ -858,7 +884,7 @@ int main()
                                         break;
                                     case 1:
                                         cout << endl; // skip a line
-                                        cout << player1.getName() << " you have been assigned night watch duty under pitch-black conditions!" << endl;
+                                        cout << player1.getName() << ", you have been assigned night watch duty under pitch-black conditions!" << endl;
                                         cout << endl;
                                         if (player1.getHasAdvisor() && player1.getAdvisor().name == "Nala")
                                         {
@@ -874,19 +900,19 @@ int main()
                                         break;
                                     case 2:
                                         cout << endl; // skip a line
-                                        cout << player1.getName() << " has experienced a bountiful season and earned 800 pride points!" << endl;
+                                        cout << player1.getName() << ", you have experienced a bountiful season and earned 800 pride points!" << endl;
                                         cout << endl;
                                         player1.setPridePoints(player1.getPridePoints() + 800);
                                         break;
                                     case 3:
                                         cout << endl; // skip a line
-                                        cout << player1.getName() << " has participated in Rafiki's ritual by eating from the carcus of another lion and has gained 500 pride points!" << endl;
+                                        cout << player1.getName() << ", you have participated in Rafiki's ritual by eating from the carcus of another lion and has gained 500 pride points!" << endl;
                                         cout << endl;
                                         player1.setPridePoints(player1.getPridePoints() + 500);
                                         break;
                                     case 4:
                                         cout << endl; // skip a line
-                                        cout << player1.getName() << " you are being chased by hunters!" << endl;
+                                        cout << player1.getName() << ", you are being chased by hunters!" << endl;
                                         cout << endl;
                                         if (player1.getHasAdvisor() && player1.getAdvisor().name == "Sarafina")
                                         {
@@ -908,7 +934,7 @@ int main()
                                     {
                                     case 0:
                                         cout << endl; // skip a line
-                                        cout << player1.getName() << " has decided to endure intense training with the pride warriors!" << endl;
+                                        cout << player1.getName() << ", you have decided to endure intense training with the pride warriors!" << endl;
                                         cout << endl;
                                         if (player1.getHasAdvisor() && player1.getAdvisor().name == "Sarabi")
                                         {
@@ -924,13 +950,13 @@ int main()
                                         break;
                                     case 1:
                                         cout << endl; // skip a line
-                                        cout << player1.getName() << " has been enlightened by the knowledgable safari animals and has gained 600 pride points!" << endl;
+                                        cout << player1.getName() << ", you have been enlightened by the knowledgable safari animals and has gained 600 pride points!" << endl;
                                         cout << endl;
                                         player1.setPridePoints(player1.getPridePoints() + 600);
                                         break;
                                     case 2:
                                         cout << endl; // skip a line
-                                        cout << player1.getName() << " has encountered a desert storm!" << endl;
+                                        cout << player1.getName() << ", you have encountered a desert storm!" << endl;
                                         cout << endl;
                                         if (player1.getHasAdvisor() && player1.getAdvisor().name == "Nala")
                                         {
@@ -946,7 +972,7 @@ int main()
                                         break;
                                     case 3:
                                         cout << endl; // skip a line
-                                        cout << player1.getName() << " you have snuck into a hungry rival lion's den!" << endl;
+                                        cout << player1.getName() << ", you have snuck into a hungry rival lion's den!" << endl;
                                         cout << endl;
                                         if (player1.getHasAdvisor() && player1.getAdvisor().name == "Rafiki")
                                         {
@@ -1139,7 +1165,7 @@ int main()
                                     switch (rand() % 4)
                                     {
                                     case 0:
-                                        cout << player2.getName() << " has encountered a desert storm!" << endl;
+                                        cout << player2.getName() << ", you have encountered a desert storm!" << endl;
                                         cout << endl;
                                         if (player2.getHasAdvisor() && player2.getAdvisor().name == "Nala")
                                         {
@@ -1154,7 +1180,7 @@ int main()
                                         }
                                         break;
                                     case 1:
-                                        cout << player2.getName() << " you have been assigned night watch duty under pitch-black conditions!" << endl;
+                                        cout << player2.getName() << ", you have been assigned night watch duty under pitch-black conditions!" << endl;
                                         cout << endl;
                                         if (player2.getHasAdvisor() && player2.getAdvisor().name == "Nala")
                                         {
@@ -1169,12 +1195,12 @@ int main()
                                         }
                                         break;
                                     case 2:
-                                        cout << player2.getName() << " has experienced a bountiful season and earned 800 pride points!" << endl;
+                                        cout << player2.getName() << ", you have experienced a bountiful season and earned 800 pride points!" << endl;
                                         cout << endl;
                                         player2.setPridePoints(player2.getPridePoints() + 800);
                                         break;
                                     case 3:
-                                        cout << player2.getName() << " has participated in Rafiki's ritual by eating from the carcus of another lion and has gained 500 pride points!" << endl;
+                                        cout << player2.getName() << ", you have participated in Rafiki's ritual by eating from the carcus of another lion and has gained 500 pride points!" << endl;
                                         cout << endl;
                                         player2.setPridePoints(player2.getPridePoints() + 500);
                                         break;
@@ -1185,7 +1211,7 @@ int main()
                                     switch (rand() % 3)
                                     {
                                     case 0:
-                                        cout << player2.getName() << " has decided to endure intense training with the pride warriors!" << endl;
+                                        cout << player2.getName() << ", you have decided to endure intense training with the pride warriors!" << endl;
                                         cout << endl;
                                         if (player2.getHasAdvisor() && player2.getAdvisor().name == "Sarabi")
                                         {
@@ -1200,12 +1226,12 @@ int main()
                                         }
                                         break;
                                     case 1:
-                                        cout << player2.getName() << " has been enlightened by the knowledgable safari animals and has gained 600 pride points!" << endl;
+                                        cout << player2.getName() << ", you have been enlightened by the knowledgable safari animals and has gained 600 pride points!" << endl;
                                         cout << endl;
                                         player2.setPridePoints(player2.getPridePoints() + 600);
                                         break;
                                     case 2:
-                                        cout << player2.getName() << " has encountered a desert storm!" << endl;
+                                        cout << player2.getName() << ", you have encountered a desert storm!" << endl;
                                         cout << endl;
                                         if (player2.getHasAdvisor() && player2.getAdvisor().name == "Nala")
                                         {
@@ -1243,6 +1269,7 @@ int main()
             }
             if (!validChoice)
             {
+                cout << endl;
                 cout << "Invalid Input. Please enter a valid option." << endl;
                 continue; // Skip to the next loop iteration and print the menu again
             }
@@ -1337,9 +1364,6 @@ int main()
     }
     we will add text file for pets and give players options to have pets and each pet will have special ability that the
     player will use
-
-    customization:
-        - we will create another class pet as described above
 
     Extra credit:
         - presentation (10 points)
