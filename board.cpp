@@ -348,7 +348,7 @@ void Board::red(Player player)
     displayBoard(player, false);
     displayBoard(player, false);
     cout << endl;
-    cout << "Uh-oh, you have stumbled into the Graveyard! You will move back 10 tiles and lose 100 Stamina, Strength, and Wisdom Points" << endl;
+    cout << "Uh-oh, you have stumbled into the Graveyard!" << endl;
     cout << endl;
     if (player.getPlayerPet().getName() == "Allison")
     {
@@ -357,6 +357,7 @@ void Board::red(Player player)
     }
     else
     {
+        cout << "You will move back 10 tiles and lose 100 Stamina, Strength, and Wisdom Points" << endl;
         player.setStrength(player.getStrength() - 100);
         player.setWisdom(player.getWisdom() - 100);
         player.setStamina(player.getStamina() - 100);
@@ -364,6 +365,7 @@ void Board::red(Player player)
         cout << endl; // skip a line
     }
 }
+
 void Board::green(Player player)
 {
     if (rand() % 2 == 0)

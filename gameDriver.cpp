@@ -1013,12 +1013,14 @@ int main()
                                 {
                                     if (player1.getHasAdvisor() == true)
                                     {
+                                        cout << endl;
                                         cout << player1.getName() << " does have an advisor." << endl;
                                         player1.printAdvisor();
                                         break;
                                     }
                                     else
                                     {
+                                        cout << endl;
                                         cout << player1.getName() << " does not have an advisor" << endl;
                                         break;
                                     }
@@ -1219,12 +1221,14 @@ int main()
                                 {
                                     if (player2.getHasAdvisor() == true)
                                     {
+                                        cout << endl;
                                         cout << player2.getName() << " does have an advisor." << endl;
                                         player2.printAdvisor();
                                         break;
                                     }
                                     else
                                     {
+                                        cout << endl;
                                         cout << player2.getName() << " does not have an advisor" << endl;
                                         break;
                                     }
