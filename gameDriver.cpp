@@ -3,6 +3,7 @@
 #include "players.h"
 #include "board.h"
 #include "tile.h"
+#include "pet.h"
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -1022,19 +1023,6 @@ int main()
     Tile class:
     we will add two more private data members
     one will store the type of each tile object: ex. Hyenas tile
-
-    New class possibility:
-    class Pet{
-        private:
-            string name;
-            string species;
-            string ability;
-            int age;
-        public:
-            setters and getters
-            Pet pet();
-            Pet pet(string n, string s, string a, int a);
-    }
 
     we will add text file for pets and give players options to have pets and each pet will have special ability that the
     player will use
