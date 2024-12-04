@@ -379,6 +379,8 @@ int main()
         }
     }
 
+    
+
     cout << endl; // skip a line
     cout << player2.getName() << ", choose your character: ";
     for (unsigned int i = 0; i < charactersVector.size(); i++)

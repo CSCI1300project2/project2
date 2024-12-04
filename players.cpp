@@ -198,3 +198,11 @@ void Player::setPlayerNumber(int p)
 {
     playerNumber = p;
 }
+
+void Player::setPlayerPet(Pets p){
+    pet = p;
+}
+
+Pets Player::getPlayerPet(){
+    return pet;
+}

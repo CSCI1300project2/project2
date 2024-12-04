@@ -1,0 +1,4 @@
+petsName|age|species|description|ability
+Richard|42|Corporate Employee|The human embodiment of a spreadsheet. Dresses in a rotation of beige and gray. Hobbies include extreme couponing|Loves Riddles
+Allison|8|Second Grader|Could porbably be classified as an extreme sport. Hobbies include asking rapid fire questions and interrupting conversations|Annoys the ghost in the graveyard so that they leave you alone
+Jerry|57|FBI Agent|Perfectly maintained mustache and a love for Hawaiian shirts. He never goes anywhere without his trenchcoat.|His expert disguise make him invisible to Hyenas

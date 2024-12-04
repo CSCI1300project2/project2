@@ -1,3 +1,4 @@
+// CSCI1300 Project 2: Sergio Bocci and Grace Bournonille
 #include "pet.h"
 #include <iostream>
 #include <cstdlib> 
@@ -11,10 +12,11 @@ Pets::Pets(){
     age = 0;
 }
 
-Pets::Pets(string n, string s, string a, int ag){
+Pets::Pets(string n, string s, string a, string d, int ag){
     name = n;
     species = s;
     ability = a;
+    description = d;
     age = ag;
 }
 
@@ -48,4 +50,12 @@ void Pets::setName(string n){
 
 void Pets::setAge(int age){
     age = age;
+}
+
+string Pets::getDescription(){
+    return description;
+}
+
+void Pets::setDescription(string d){
+    description = d;
 }

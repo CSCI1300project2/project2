@@ -1,6 +1,7 @@
 // CSCI1300 Project 2: Sergio Bocci and Grace Bournonille
 #include <iostream>
 #include <string>
+#include "pet.h"
 #ifndef PLAYERS_H
 #define PLAYERS_H
 using namespace std;
@@ -42,9 +43,11 @@ public:
     void setHasAdvisor(bool hasA);
     int getPlayerNumber();
     void setPlayerNumber(int p);
-
+    void setPlayerPet(Pets p);
+    Pets getPlayerPet();
 private:
     string _name;
+    Pets pet;
     advisors advisor;
     bool hasAdvisor;
     int _strength, _stamina, _wisdom, _pride_points, _age;
