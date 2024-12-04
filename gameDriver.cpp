@@ -298,13 +298,15 @@ int main()
     // set both players names to user input
     string playerName;
     cout << "Enter Player 1's name: " << endl;
-    cin >> playerName;
+    getline(cin, playerName);
+    cin.clear();
     Player player1;
     player1.setName(playerName);
     player1.setPlayerNumber(1);
     cout << endl; // skip a line
     cout << "Enter Player 2's name: " << endl;
-    cin >> playerName;
+    getline(cin, playerName);
+    cin.clear();
     Player player2;
     player2.setName(playerName);
     player2.setPlayerNumber(2);
@@ -404,6 +406,7 @@ int main()
                 cout << endl; // skip a line
                 cout << "Enter character name: " << endl;
                 getline(cin, inputName);
+                cin.clear();
                 player1.setName(inputName);
                 player1.setAge(rand() % (20 - 1 + 1) + 1);
                 player1.setStamina((rand() % 10 + 1) * 100);
@@ -412,6 +415,11 @@ int main()
                 player1.setPridePoints(20000);
                 cout << endl;
                 cout << "Your character is " << player1.getName() << endl;
+                cout << "Pride Points: " << player1.getPridePoints() << endl;
+                cout << "Stamina: " << player1.getStamina() << endl;
+                cout << "Wisdom: " << player1.getWisdom() << endl;
+                cout << "Strength: " << player1.getStrength() << endl;
+                cout << "Age: " << player1.getAge() << endl;
                 characterChosen = true;
                 break;
             case '8':
@@ -650,6 +658,7 @@ int main()
                 cout << endl; // skip a line
                 cout << "Enter character name: " << endl;
                 getline(cin, inputName);
+                cin.clear();
                 player2.setName(inputName);
                 player2.setAge(rand() % (20 - 1 + 1) + 1);
                 player2.setStamina((rand() % 10 + 1) * 100);
@@ -658,6 +667,11 @@ int main()
                 player2.setPridePoints(20000);
                 cout << endl;
                 cout << "Your character is " << player2.getName() << endl;
+                cout << "Pride Points: " << player2.getPridePoints() << endl;
+                cout << "Stamina: " << player2.getStamina() << endl;
+                cout << "Wisdom: " << player2.getWisdom() << endl;
+                cout << "Strength: " << player2.getStrength() << endl;
+                cout << "Age: " << player1.getAge() << endl;
                 sameCharacter = true;
                 break;
             case '8':
@@ -946,7 +960,18 @@ int main()
                                         }
                                         else if (changePet == '1')
                                         {
-                                            cout << "Which pet would you like to change to: Richard(1), Allison(2), Jerry(3)" << endl;
+                                            cout << "Which pet would you like to change to: Richard (1), Allison (2), Jerry (3)" << endl;
+                                            cout << endl; // skip a line
+                                            // print the attributes of each pet in the pets vector
+                                            for (unsigned int i = 0; i < petsVector.size(); i++)
+                                            {
+                                                cout << "Name: " << petsVector[i].getName()
+                                                     << ", Age: " << petsVector[i].getAge()
+                                                     << ", Species: " << petsVector[i].getSpecies()
+                                                     << ", Description: " << petsVector[i].getDescription()
+                                                     << ", Ability: " << petsVector[i].getAbility()
+                                                     << endl;
+                                            }
                                             while (cin >> whichPet)
                                             {
                                                 if (whichPet == '1')
@@ -1141,7 +1166,18 @@ int main()
                                         }
                                         else if (changePet == '1')
                                         {
-                                            cout << "Which pet would you like to change to: Richard(1), Allison(2), Jerry(3)" << endl;
+                                            cout << "Which pet would you like to change to: Richard (1), Allison (2), Jerry (3)" << endl;
+                                            cout << endl; // skip a line
+                                            // print the attributes of each pet in the pets vector
+                                            for (unsigned int i = 0; i < petsVector.size(); i++)
+                                            {
+                                                cout << "Name: " << petsVector[i].getName()
+                                                     << ", Age: " << petsVector[i].getAge()
+                                                     << ", Species: " << petsVector[i].getSpecies()
+                                                     << ", Description: " << petsVector[i].getDescription()
+                                                     << ", Ability: " << petsVector[i].getAbility()
+                                                     << endl;
+                                            }
                                             while (cin >> whichPet)
                                             {
                                                 if (whichPet == '1')
@@ -1331,23 +1367,6 @@ int main()
 
         resultsReadingFile.close();
     }
-
-    /*
-    We will add additional options to two of our menu items.
-    1. review your advisor will have additional option to prompt player to continue using it
-    2. check player progress has additional option to convert leadership traits to additional pride points
-
-    Tile class:
-    we will add two more private data members
-    one will store the type of each tile object: ex. Hyenas tile
-
-    we will add text file for pets and give players options to have pets and each pet will have special ability that the
-    player will use
-
-    Extra credit:
-        - presentation (10 points)
-        - same tile constraint (5 points)
-    */
 
     return 0;
 }
