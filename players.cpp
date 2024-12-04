@@ -206,3 +206,7 @@ void Player::setPlayerPet(Pets p){
 Pets Player::getPlayerPet(){
     return pet;
 }
+
+void Player::displayPet(){
+    cout << _name << " Pet: " << pet.getName() << endl;
+}

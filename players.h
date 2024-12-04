@@ -45,6 +45,7 @@ public:
     void setPlayerNumber(int p);
     void setPlayerPet(Pets p);
     Pets getPlayerPet();
+    void displayPet();
 private:
     string _name;
     Pets pet;

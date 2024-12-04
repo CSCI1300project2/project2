@@ -19,7 +19,7 @@ void printMenu()
     cout << "1. Check Player Progress (1)" << endl;
     cout << "2. Review Character (2)" << endl;
     cout << "3. Check Position (3)" << endl;
-    cout << "4. Review your Advisor (4)" << endl;
+    cout << "4. Review your companions (4)" << endl;
     cout << "5. Move Forward (5)" << endl;
     cout << endl;
     cout << "Please choose an option using the corresponding number:" << endl;
@@ -97,6 +97,11 @@ int split(string input_string, char separator, string arr[], const int ARR_SIZE)
 
 int main()
 {
+    // Open the file in truncation mode
+    ofstream resultsFile("results.txt", ios::trunc);
+    // Close the file
+    resultsFile.close();
+
     // vectors to store character and advisor objects
     vector<characters> charactersVector;
     string charactersString[6];
@@ -104,11 +109,61 @@ int main()
     string advisorsString[3];
     vector<riddles> riddlesVector;
     string riddlesString[2];
+    vector<Pets> petsVector;
+    string petsString[5];
+
+    // opening the pets file
+    string petsLine;
+    ifstream petsFile("pets.txt");
+    bool firstLine = true;
+    if (!petsFile.is_open())
+    {
+        cout << "Could not open file." << endl;
+        return -1;
+    }
+
+    // loop that populates the petsVector from the pets file
+    while (getline(petsFile, petsLine))
+    {
+        if (!firstLine)
+        {
+            split(petsLine, '|', petsString, 5);
+            Pets tempPet;
+
+            for (unsigned int j = 0; j < 5; j++)
+            {
+                switch (j)
+                {
+                case 0:
+                    tempPet.setName(petsString[j]);
+                    break;
+                case 1:
+                    tempPet.setAge(stoi(petsString[j]));
+                    break;
+                case 2:
+                    tempPet.setSpecies(petsString[j]);
+                    break;
+                case 3:
+                    tempPet.setDescription(petsString[j]);
+                    break;
+                case 4:
+                    tempPet.setAbility(petsString[j]);
+                    break;
+                }
+            }
+
+            // Add the new character to the vector
+            petsVector.push_back(tempPet);
+        }
+        firstLine = false;
+    }
+
+    petsFile.close(); // close the pets file
 
     // opening the character file
     string characterLine;
     ifstream charactersFile("characters.txt");
-    bool firstLine = true;
+    firstLine = true;
     if (!charactersFile.is_open())
     {
         cout << "Could not open file." << endl;
@@ -256,7 +311,7 @@ int main()
 
     cout << endl; // skip a line
     char characterChoice;
-    cout << player1.getName() << ", choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo(6), name your own character with random attributes(7), or view characters ranked according to their age(8)" << endl;
+    cout << player1.getName() << ", choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo (6), name your own character with random attributes (7), or view characters ranked according to their age (8)" << endl;
     cout << endl; // skip a line
     // print the attributes of each character in the characters vector
     for (unsigned int i = 0; i < charactersVector.size(); i++)
@@ -363,7 +418,7 @@ int main()
                 vector<characters> tempArr = charactersVector;
                 sortCharactersByAge(tempArr);
                 cout << endl;
-                cout << "Choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo(6), name your own character with random attributes(7) or see ranking again (8)" << endl;
+                cout << "Choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo (6), name your own character with random attributes (7) or see ranking again (8)" << endl;
             }
             if (characterChosen)
             {
@@ -379,7 +434,62 @@ int main()
         }
     }
 
-    
+    cout << endl; // skip a line
+    char petChoice;
+    cout << player1.getName() << ", choose your pet: Richard (1), Allison (2), Jerry (3)" << endl;
+    cout << endl; // skip a line
+    // print the attributes of each pet in the pets vector
+    for (unsigned int i = 0; i < petsVector.size(); i++)
+    {
+        cout << "Name: " << petsVector[i].getName()
+             << ", Age: " << petsVector[i].getAge()
+             << ", Species: " << petsVector[i].getSpecies()
+             << ", Description: " << petsVector[i].getDescription()
+             << ", Ability: " << petsVector[i].getAbility()
+             << endl;
+    }
+
+    bool petChosen = false;
+    // setting the players pet based on user input
+    while (!petChosen)
+    {
+        cin >> petChoice;
+        if (petChoice == '1' || petChoice == '2' || petChoice == '3')
+        {
+            switch (petChoice)
+            {
+            case '1':
+                player1.setPlayerPet(petsVector[0]);
+                cout << endl;
+                cout << "Your pet is " << petsVector[0].getName() << endl;
+                petChosen = true;
+                break;
+            case '2':
+                player1.setPlayerPet(petsVector[1]);
+                cout << endl;
+                cout << "Your pet is " << petsVector[1].getName() << endl;
+                petChosen = true;
+                break;
+            case '3':
+                player1.setPlayerPet(petsVector[2]);
+                cout << endl;
+                cout << "Your pet is " << petsVector[2].getName() << endl;
+                petChosen = true;
+                break;
+            }
+            if (petChosen)
+            {
+                break; // This ensures the loop exits as soon as a character is chosen
+            }
+        }
+        else
+        {
+            cout << endl;
+            cout << "Invalid Input. Please enter a valid option." << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
+        }
+    }
 
     cout << endl; // skip a line
     cout << player2.getName() << ", choose your character: ";
@@ -556,6 +666,61 @@ int main()
                 cout << endl;
                 cout << "Choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo(6), name your own character with random attributes(7) or see ranking again (8)" << endl;
                 sameCharacter = false;
+            }
+        }
+        else
+        {
+            cout << endl;
+            cout << "Invalid Input. Please enter a valid option." << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
+        }
+    }
+
+    cout << endl; // skip a line
+    cout << player2.getName() << ", choose your pet: Richard (1), Allison (2), Jerry (3)" << endl;
+    cout << endl; // skip a line
+    // print the attributes of each character in the characters vector
+    for (unsigned int i = 0; i < petsVector.size(); i++)
+    {
+        cout << "Name: " << petsVector[i].getName()
+             << ", Age: " << petsVector[i].getAge()
+             << ", Species: " << petsVector[i].getSpecies()
+             << ", Description: " << petsVector[i].getDescription()
+             << ", Ability: " << petsVector[i].getAbility()
+             << endl;
+    }
+
+    petChosen = false;
+    while (!petChosen)
+    {
+        cin >> petChoice;
+        if (petChoice == '1' || petChoice == '2' || petChoice == '3')
+        {
+            switch (petChoice)
+            {
+            case '1':
+                player2.setPlayerPet(petsVector[0]);
+                cout << endl;
+                cout << "Your pet is " << petsVector[0].getName() << endl;
+                petChosen = true;
+                break;
+            case '2':
+                player2.setPlayerPet(petsVector[1]);
+                cout << endl;
+                cout << "Your pet is " << petsVector[1].getName() << endl;
+                petChosen = true;
+                break;
+            case '3':
+                player2.setPlayerPet(petsVector[2]);
+                cout << endl;
+                cout << "Your pet is " << petsVector[2].getName() << endl;
+                petChosen = true;
+                break;
+            }
+            if (petChosen)
+            {
+                break; // This ensures the loop exits as soon as a character is chosen
             }
         }
         else
@@ -758,14 +923,41 @@ int main()
                         cout << player1.getName() << " your position is: " << player1Board.getPlayerPosition() << endl;
                         break;
                     case '4':
-                        if (player1.getHasAdvisor() == true)
+                        char companionChoice;
+                        cout << "Would you like to view your pet (1) or your advisor (2)?" << endl;
+                        cout << endl;
+                        while (cin >> companionChoice)
                         {
-                            cout << player1.getName() << " does have an advisor." << endl;
-                            player1.printAdvisor();
-                        }
-                        else
-                        {
-                            cout << player1.getName() << " does not have an advisor" << endl;
+                            if (companionChoice == '1' || companionChoice == '2')
+                            {
+                                if (companionChoice == '1')
+                                {
+                                    cout << endl;
+                                    player1.displayPet();
+                                    break;
+                                }
+                                if (companionChoice == '2')
+                                {
+                                    if (player1.getHasAdvisor() == true)
+                                    {
+                                        cout << player1.getName() << " does have an advisor." << endl;
+                                        player1.printAdvisor();
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        cout << player1.getName() << " does not have an advisor" << endl;
+                                        break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                cout << endl;
+                                cout << "Invalid input. Please enter a valid option." << endl;
+                                cin.clear();
+                                cin.ignore(1000, '\n');
+                            }
                         }
                         break;
                     case '5':

@@ -48,8 +48,8 @@ void Pets::setName(string n){
     name = n;
 }
 
-void Pets::setAge(int age){
-    age = age;
+void Pets::setAge(int ag){
+    age = ag;
 }
 
 string Pets::getDescription(){
