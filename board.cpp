@@ -327,7 +327,8 @@ void Board::setPlayerPos(int pos)
     }
 }
 
-int Board::getPlayerPos(){
+int Board::getPlayerPos()
+{
     return _player_position;
 }
 
@@ -348,13 +349,21 @@ void Board::red(Player player)
     displayBoard(player, false);
     cout << endl;
     cout << "Uh-oh, you have stumbled into the Graveyard! You will move back 10 tiles and lose 100 Stamina, Strength, and Wisdom Points" << endl;
-    player.setStrength(player.getStrength() - 100);
-    player.setWisdom(player.getWisdom() - 100);
-    player.setStamina(player.getStamina() - 100);
-    setPlayerPos(getPlayerPosition() - 10);
-    cout << endl; // skip a line
+    cout << endl;
+    if (player.getPlayerPet().getName() == "Allison")
+    {
+        cout << "Your pet, Allison annoys the ghosts to bypass the event" << endl;
+        cout << endl;
+    }
+    else
+    {
+        player.setStrength(player.getStrength() - 100);
+        player.setWisdom(player.getWisdom() - 100);
+        player.setStamina(player.getStamina() - 100);
+        setPlayerPos(getPlayerPosition() - 10);
+        cout << endl; // skip a line
+    }
 }
-
 void Board::green(Player player)
 {
     if (rand() % 2 == 0)
@@ -488,7 +497,7 @@ void Board::green(Player player)
     }
 }
 
-void Board::pink(Player player, vector <advisors> advisorsVector, char characterChoice)
+void Board::pink(Player player, vector<advisors> advisorsVector, char characterChoice)
 {
     cout << endl;
     displayBoard(player, false);
@@ -562,20 +571,28 @@ void Board::purple(Player player, vector<riddles> riddlesVector, int randomRiddl
     cout << endl;
     cout << "Time for a test of wits! Answer correctly, and you will earn a boost of 500 Wisdom Points. Think carefully, your cleverness will pay off!" << endl;
     cout << endl; // skip a line
-    randomRiddleIndex = rand() % riddlesVector.size();
-    cout << "Answer with one word in all lowercase: " << riddlesVector[randomRiddleIndex].riddleQuestion << endl;
-    cin >> riddleAnswer;
-    cout << endl; // skip a line
-    if (riddleAnswer == riddlesVector[randomRiddleIndex].answer)
+    if (player.getPlayerPet().getName() == "Richard")
     {
-        cout << "Congrats! You answered correctly! +500 Wisdom Points" << endl;
+        cout<<"Your pet, Richard is the undefeated riddle champion and already knows the answer. You gain 500 Wisdom Points"<<endl;
         player.setWisdom(player.getWisdom() + 500);
     }
     else
     {
-        cout << "Incorrect. Better luck next time." << endl;
+        randomRiddleIndex = rand() % riddlesVector.size();
+        cout << "Answer with one word in all lowercase: " << riddlesVector[randomRiddleIndex].riddleQuestion << endl;
+        cin >> riddleAnswer;
+        cout << endl; // skip a line
+        if (riddleAnswer == riddlesVector[randomRiddleIndex].answer)
+        {
+            cout << "Congrats! You answered correctly! +500 Wisdom Points" << endl;
+            player.setWisdom(player.getWisdom() + 500);
+        }
+        else
+        {
+            cout << "Incorrect. Better luck next time." << endl;
+        }
+        cout << endl; // skip a line
     }
-    cout << endl; // skip a line
 }
 
 void Board::brown(Player player, int pos)
@@ -585,9 +602,18 @@ void Board::brown(Player player, int pos)
     displayBoard(player, false);
     cout << endl;
     cout << "Hyenas are on the prowl! They drag you back to where you were last, and the journey comes at a cost. You will be returned to your previous position. In addition, your Stamina Points decrease by 300 Points." << endl;
-    player.setStamina(player.getStamina() - 300);
-    setPlayerPos(pos);
-    cout << endl; // skip a line
+    cout << endl;
+    if (player.getPlayerPet().getName() == "Jerry")
+    {
+        cout << "Your pet, Jerry uses his expert disguises to hide from the Hyenas and bypass the event" << endl;
+        cout << endl;
+    }
+    else
+    {
+        player.setStamina(player.getStamina() - 300);
+        setPlayerPos(pos);
+        cout << endl; // skip a line
+    }
 }
 
 Player settingAdvisor(Player player, char characterChoice, vector<advisors> advisorsVector)
