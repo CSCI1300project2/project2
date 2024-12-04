@@ -568,8 +568,6 @@ void Board::purple(Player player, vector<riddles> riddlesVector, int randomRiddl
 {
     string riddleAnswer = "";
     cout << endl;
-    displayBoard(player, false);
-    displayBoard(player, false);
     cout << endl;
     cout << "Time for a test of wits! Answer correctly, and you will earn a boost of 500 Wisdom Points. Think carefully, your cleverness will pay off!" << endl;
     cout << endl; // skip a line
