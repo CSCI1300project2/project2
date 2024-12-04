@@ -17,7 +17,7 @@ class Pets{
         string getName();
         string getAbility();
         string getSpecies();
-        void setAge(int ag);
+        void setAge(int age);
         void setName(string n);
         void setAbility(string a);
         void setSpecies(string s);
