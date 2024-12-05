@@ -1039,7 +1039,7 @@ int main()
                                     }
                                     if (companionChoice == '2')
                                     {
-                                        if (player1.getHasAdvisor() == true)
+                                        if (player1.getHasAdvisor())
                                         {
                                             cout << endl;
                                             cout << player1.getName() << " does have an advisor." << endl;

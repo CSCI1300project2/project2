@@ -506,7 +506,8 @@ void Board::pink(Player player, vector<advisors> advisorsVector, char characterC
     cout << endl; // skip a line
     if (player.getHasAdvisor())
     {
-        int player1ChangeAdvisor;
+        char changeAdvisorChoice;
+        string changeAdvisorStringChoice;
         bool player1FirstAdvisorRun = true;
         bool player1AdvisorHasChanged = false;
         cout << "Would you like to view your advsior (1), change your advisor (2), or keep your advisor (3)?" << endl;
@@ -517,37 +518,40 @@ void Board::pink(Player player, vector<advisors> advisorsVector, char characterC
                 cout << endl; // skip a line
                 cout << "Would you like to view your advsior (1), change your advisor (2), or keep your advisor (3)?" << endl;
             }
-            cin >> player1ChangeAdvisor;
-            if (player1ChangeAdvisor == 1)
+            getline(cin, changeAdvisorStringChoice);
+            if (changeAdvisorStringChoice == "1" || changeAdvisorStringChoice == "2" || changeAdvisorStringChoice == "3")
             {
-                cout << endl; // skip a line
-                player.printAdvisor();
-                player1FirstAdvisorRun = false;
-            }
-            else if (player1ChangeAdvisor == 2)
-            {
-                player.setHasAdvisor(true);
-                player = settingAdvisor(player, characterChoice, advisorsVector);
-                cout << endl; // skip a line
-                cout << "Your advisor is " << player.getAdvisor().name << "." << endl;
-                player1AdvisorHasChanged = true;
-                player1FirstAdvisorRun = false;
-                break;
-            }
-            else if (player1ChangeAdvisor == 3)
-            {
-                cout << endl; // skip a line
-                cout << "Your advisor is " << player.getAdvisor().name << "." << endl;
-                player1AdvisorHasChanged = true;
-                player1FirstAdvisorRun = false;
-                break;
+                changeAdvisorChoice = changeAdvisorStringChoice[0];
+                if (changeAdvisorChoice == '1')
+                {
+                    cout << endl; // skip a line
+                    player.printAdvisor();
+                    player1FirstAdvisorRun = false;
+                }
+                else if (changeAdvisorChoice == '2')
+                {
+                    player.setHasAdvisor(true);
+                    player = settingAdvisor(player, characterChoice, advisorsVector);
+                    cout << endl; // skip a line
+                    cout << "Your advisor is " << player.getAdvisor().name << "." << endl;
+                    player1AdvisorHasChanged = true;
+                    player1FirstAdvisorRun = false;
+                    break;
+                }
+                else if (changeAdvisorChoice == '3')
+                {
+                    cout << endl; // skip a line
+                    cout << "Your advisor is " << player.getAdvisor().name << "." << endl;
+                    player1AdvisorHasChanged = true;
+                    player1FirstAdvisorRun = false;
+                    break;
+                }
             }
             else
             {
                 cout << endl; // skip a line
                 cout << "Invalid Input. Try again." << endl;
                 cin.clear();
-                cin.ignore(1000, '\n');
             }
         }
     }
@@ -566,7 +570,7 @@ void Board::purple(Player player, vector<riddles> riddlesVector, int randomRiddl
     cout << endl; // skip a line
     if (player.getPlayerPet().getName() == "Richard")
     {
-        cout<<"Your pet, Richard is the undefeated riddle champion and already knows the answer. You gain 500 Wisdom Points"<<endl;
+        cout << "Your pet, Richard is the undefeated riddle champion and already knows the answer. You gain 500 Wisdom Points" << endl;
         player.setWisdom(player.getWisdom() + 500);
     }
     else
@@ -626,18 +630,28 @@ Player settingAdvisor(Player player, char characterChoice, vector<advisors> advi
             {
             case '1':
                 player.setAdvisor(advisorsVector[0]);
+                cout << endl;
+                cout << "Your advisor is " << player.getAdvisor().name << "." << endl;
                 break;
             case '2':
                 player.setAdvisor(advisorsVector[1]);
+                cout << endl;
+                cout << "Your advisor is " << player.getAdvisor().name << "." << endl;
                 break;
             case '3':
                 player.setAdvisor(advisorsVector[2]);
+                cout << endl;
+                cout << "Your advisor is " << player.getAdvisor().name << "." << endl;
                 break;
             case '4':
                 player.setAdvisor(advisorsVector[3]);
+                cout << endl;
+                cout << "Your advisor is " << player.getAdvisor().name << "." << endl;
                 break;
             case '5':
                 player.setAdvisor(advisorsVector[4]);
+                cout << endl;
+                cout << "Your advisor is " << player.getAdvisor().name << "." << endl;
                 break;
             }
             break;
