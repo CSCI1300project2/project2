@@ -329,6 +329,7 @@ int main()
     }
     bool characterChosen = false;
     string inputName;
+
     while (!characterChosen)
     {
         getline(cin, characterChoiceString);
@@ -463,7 +464,7 @@ int main()
     }
 
     bool petChosen = false;
-    // setting the players pet based on user input
+    // setting player1's pet based on user input
     while (!petChosen)
     {
         getline(cin, petChoiceString);
@@ -712,6 +713,7 @@ int main()
     }
 
     petChosen = false;
+    // setting player2's pet based on user input
     while (!petChosen)
     {
         getline(cin, petChoiceString);
@@ -754,59 +756,66 @@ int main()
 
     // ask each player if they would like to go to pridelands or cub training
     char pridelandsChoice;
+    string pridelandsChoiceString;
     cout << endl; // skip a line
     cout << player1.getName() << ", would you like to go to the pridelands (1) or begin Cub Training (2)?" << endl;
-    while (cin >> pridelandsChoice)
+    while (getline(cin, pridelandsChoiceString))
     {
-        if (pridelandsChoice == '1')
+        if (pridelandsChoiceString == "1" || pridelandsChoiceString == "2")
         {
-            player1.setPridelands(true);
-            player1.toPrideLands();
-            break;
-        }
-        else if (pridelandsChoice == '2')
-        {
-            cout << endl; // skip a line
-            player1 = settingAdvisor(player1, characterChoice, advisorsVector);
-            player1.setHasAdvisor(true);
-            player1.setPridelands(false);
-            player1.trainCub();
-            break;
+            pridelandsChoice = pridelandsChoiceString[0];
+            if (pridelandsChoice == '1')
+            {
+                player1.setPridelands(true);
+                player1.toPrideLands();
+                break;
+            }
+            else if (pridelandsChoice == '2')
+            {
+                cout << endl; // skip a line
+                player1 = settingAdvisor(player1, characterChoice, advisorsVector);
+                player1.setHasAdvisor(true);
+                player1.setPridelands(false);
+                player1.trainCub();
+                break;
+            }
         }
         else
         {
             cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
             cin.clear();
-            cin.ignore(1000, '\n');
         }
     }
 
     cout << endl; // skip a line
     cout << player2.getName() << ", would you like to go to the pridelands (1) or begin Cub Training (2)?" << endl;
-    while (cin >> pridelandsChoice)
+    while (getline(cin, pridelandsChoiceString))
     {
-        if (pridelandsChoice == '1')
+        if (pridelandsChoiceString == "1" || pridelandsChoiceString == "2")
         {
-            player2.setPridelands(true);
-            player2.toPrideLands();
-            break;
-        }
-        else if (pridelandsChoice == '2')
-        {
-            cout << endl; // skip a line
-            player2 = settingAdvisor(player2, characterChoice, advisorsVector);
-            player2.setHasAdvisor(true);
-            player2.setPridelands(false);
-            player2.trainCub();
-            break;
+            pridelandsChoice = pridelandsChoiceString[0];
+            if (pridelandsChoice == '1')
+            {
+                player2.setPridelands(true);
+                player2.toPrideLands();
+                break;
+            }
+            else if (pridelandsChoice == '2')
+            {
+                cout << endl; // skip a line
+                player2 = settingAdvisor(player2, characterChoice, advisorsVector);
+                player2.setHasAdvisor(true);
+                player2.setPridelands(false);
+                player2.trainCub();
+                break;
+            }
         }
         else
         {
             cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
             cin.clear();
-            cin.ignore(1000, '\n');
         }
     }
 
@@ -1333,7 +1342,6 @@ int main()
 
     if (player1Finished && player2Finished && player1.getAge() > 10 && player2.getAge() > 10)
     {
-
         player1.setPridePoints(player1.getPridePoints() + (player1.getStamina() / 100) * 1000);
         player1.setPridePoints(player1.getPridePoints() + (player1.getWisdom() / 100) * 1000);
         player1.setPridePoints(player1.getPridePoints() + (player1.getStrength() / 100) * 1000);
