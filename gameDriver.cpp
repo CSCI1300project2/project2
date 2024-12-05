@@ -823,6 +823,7 @@ int main()
     // initialize both boards and display them
     Board pridelandsBoard(true);
     Board cubTrainingBoard(false);
+    string menuChoiceString;
     char menuChoice;
     int turnCount = 0;
     int randSpace = 0;
@@ -889,16 +890,15 @@ int main()
         }
 
         printMenu();
-        while (cin >> menuChoice && !ifMoved)
+        while (getline(cin, menuChoiceString) && !ifMoved)
         {
             char ageChoice;
             cout << endl;             // skip a line
-            bool validChoice = false; // Flag to check if input is valid
             if (turnCount % 2 == 0)
             {
-                if (menuChoice == '1' || menuChoice == '2' || menuChoice == '3' || menuChoice == '4' || menuChoice == '5')
+                if (menuChoiceString == "1" || menuChoiceString == "2" || menuChoiceString == "3" || menuChoiceString == "4" || menuChoiceString == "5")
                 {
-                    validChoice = true; // Input is valid
+                    menuChoice = menuChoiceString[0];
                     switch (menuChoice)
                     {
                     case '1':
@@ -944,7 +944,6 @@ int main()
                                 cout << endl;
                                 cout << "Invalid input. Please enter a valid option." << endl;
                                 cin.clear();
-                                cin.ignore(1000, '\n');
                             }
                         }
                         break;
@@ -1009,7 +1008,6 @@ int main()
                                                     cout << endl;
                                                     cout << "Invalid input. Please enter a valid option." << endl;
                                                     cin.clear();
-                                                    cin.ignore(1000, '\n');
                                                 }
                                             }
                                             break;
@@ -1019,7 +1017,6 @@ int main()
                                             cout << endl;
                                             cout << "Invalid input. Please enter a valid option." << endl;
                                             cin.clear();
-                                            cin.ignore(1000, '\n');
                                         }
                                     }
                                     break;
@@ -1046,7 +1043,6 @@ int main()
                                 cout << endl;
                                 cout << "Invalid input. Please enter a valid option." << endl;
                                 cin.clear();
-                                cin.ignore(1000, '\n');
                             }
                         }
                         break;
@@ -1101,12 +1097,18 @@ int main()
                     }
                     break;
                 }
+                else
+                {
+                    cout << endl;
+                    cout << "Invalid input. Please enter a valid option." << endl;
+                    cin.clear();
+                }
             }
             else
             {
-                validChoice = true; // Input is valid
-                if (menuChoice == '1' || menuChoice == '2' || menuChoice == '3' || menuChoice == '4' || menuChoice == '5')
+                if (menuChoiceString == "1" || menuChoiceString == "2" || menuChoiceString == "3" || menuChoiceString == "4" || menuChoiceString == "5")
                 {
+                    menuChoice = menuChoiceString[0];
                     switch (menuChoice)
                     {
                     case '1':
@@ -1152,7 +1154,6 @@ int main()
                                 cout << endl;
                                 cout << "Invalid input. Please enter a valid option." << endl;
                                 cin.clear();
-                                cin.ignore(1000, '\n');
                             }
                         }
                         break;
@@ -1309,14 +1310,12 @@ int main()
                     }
                     break;
                 }
-            }
-            if (!validChoice)
-            {
-                cout << endl;
-                cout << "Invalid Input. Please enter a valid option." << endl;
-                cin.clear();
-                cin.ignore(1000, '\n');
-                continue; // Skip to the next loop iteration and print the menu again
+                else
+                {
+                    cout << endl;
+                    cout << "Invalid input. Please enter a valid option." << endl;
+                    cin.clear();
+                }
             }
 
             // If the choice was valid, process the action and break out of the input loop
