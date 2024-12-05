@@ -6,8 +6,6 @@
 #include "tile.h"
 using namespace std;
 
-Player settingAdvisor(Player player, char characterChoice, vector<advisors> advisorsVector);
-
 class Board
 {
 private:
@@ -31,12 +29,6 @@ public:
     tileType getPositionTile(int playerPos) const;
     void setPlayerPos(int pos);
     int getPlayerPos();
-    void blue(Player player);
-    void red(Player player);
-    void green(Player player);
-    void pink(Player player, vector<advisors> advisorsVector, char characterChoice);
-    void purple(Player player, vector<riddles> riddlesVector, int randomRiddleIndex);
-    void brown(Player player, int pos);
 };
 
 #endif
