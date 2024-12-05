@@ -345,9 +345,6 @@ void Board::blue(Player player)
 void Board::red(Player player)
 {
     cout << endl;
-    displayBoard(player, false);
-    displayBoard(player, false);
-    cout << endl;
     cout << "Uh-oh, you have stumbled into the Graveyard!" << endl;
     cout << endl;
     if (player.getPlayerPet().getName() == "Allison")
@@ -502,9 +499,6 @@ void Board::green(Player player)
 void Board::pink(Player player, vector<advisors> advisorsVector, char characterChoice)
 {
     cout << endl;
-    displayBoard(player, false);
-    displayBoard(player, false);
-    cout << endl;
     cout << "Welcome to the land of enrichment - when landing on this tile, your Stamina, Strength, and Wisdom Points increase by 300, and you get to choose an advisor from the available list of advisors. If you already have an advisor, you can switch your advisor out for a different one from the list or keep your original advisor. Don’t forget - an advisor can protect you from random events that negatively impact your Pride Points." << endl;
     player.setStrength(player.getStrength() + 300);
     player.setWisdom(player.getWisdom() + 300);
@@ -568,7 +562,6 @@ void Board::purple(Player player, vector<riddles> riddlesVector, int randomRiddl
 {
     string riddleAnswer = "";
     cout << endl;
-    cout << endl;
     cout << "Time for a test of wits! Answer correctly, and you will earn a boost of 500 Wisdom Points. Think carefully, your cleverness will pay off!" << endl;
     cout << endl; // skip a line
     if (player.getPlayerPet().getName() == "Richard")
@@ -597,9 +590,6 @@ void Board::purple(Player player, vector<riddles> riddlesVector, int randomRiddl
 
 void Board::brown(Player player, int pos)
 {
-    cout << endl;
-    displayBoard(player, false);
-    displayBoard(player, false);
     cout << endl;
     cout << "Hyenas are on the prowl! They drag you back to where you were last, and the journey comes at a cost. You will be returned to your previous position. In addition, your Stamina Points decrease by 300 Points." << endl;
     cout << endl;

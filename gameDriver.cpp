@@ -312,6 +312,7 @@ int main()
     player2.setPlayerNumber(2);
 
     cout << endl; // skip a line
+    string characterChoiceString;
     char characterChoice;
     cout << player1.getName() << ", choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo (6), name your own character with random attributes (7), or view characters ranked according to their age (8)" << endl;
     cout << endl; // skip a line
@@ -330,9 +331,10 @@ int main()
     string inputName;
     while (!characterChosen)
     {
-        cin >> characterChoice;
-        if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5' || characterChoice == '6' || characterChoice == '7' || characterChoice == '8')
+        getline(cin, characterChoiceString);
+        if (characterChoiceString == "1" || characterChoiceString == "2" || characterChoiceString == "3" || characterChoiceString == "4" || characterChoiceString == "5" || characterChoiceString == "6" || characterChoiceString == "8" || characterChoiceString == "8")
         {
+            characterChoice = characterChoiceString[0];
             switch (characterChoice)
             {
             case '1':
@@ -426,24 +428,27 @@ int main()
                 vector<characters> tempArr = charactersVector;
                 sortCharactersByAge(tempArr);
                 cout << endl;
+                cin.clear();
                 cout << "Choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo (6), name your own character with random attributes (7) or see ranking again (8)" << endl;
+                break;
             }
             if (characterChosen)
             {
+                cin.clear();
                 break; // This ensures the loop exits as soon as a character is chosen
             }
         }
         else
         {
+            cin.clear();
             cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
-            cin.clear();
-            cin.ignore(1000, '\n');
         }
     }
 
     cout << endl; // skip a line
     char petChoice;
+    string petChoiceString;
     cout << player1.getName() << ", choose your pet: Richard (1), Allison (2), Jerry (3)" << endl;
     cout << endl; // skip a line
     // print the attributes of each pet in the pets vector
@@ -461,9 +466,10 @@ int main()
     // setting the players pet based on user input
     while (!petChosen)
     {
-        cin >> petChoice;
-        if (petChoice == '1' || petChoice == '2' || petChoice == '3')
+        getline(cin, petChoiceString);
+        if (petChoiceString == "1" || petChoiceString == "2" || petChoiceString == "3")
         {
+            petChoice = petChoiceString[0];
             switch (petChoice)
             {
             case '1':
@@ -495,7 +501,6 @@ int main()
             cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
             cin.clear();
-            cin.ignore(1000, '\n');
         }
     }
 
