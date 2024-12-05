@@ -527,9 +527,10 @@ int main()
     bool sameCharacter = false;
     while (!sameCharacter)
     {
-        cin >> characterChoice;
-        if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5' || characterChoice == '6' || characterChoice == '7' || characterChoice == '8')
+        getline(cin, characterChoiceString);
+        if (characterChoiceString == "1" || characterChoiceString == "2" || characterChoiceString == "3" || characterChoiceString == "4" || characterChoiceString == "5" || characterChoiceString == "6" || characterChoiceString == "7" || characterChoiceString == "8")
         {
+            characterChoice = characterChoiceString[0];
             switch (characterChoice)
             {
             case '1':
@@ -685,6 +686,7 @@ int main()
                 cout << endl;
                 cout << "Choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo(6), name your own character with random attributes(7) or see ranking again (8)" << endl;
                 sameCharacter = false;
+                break;
             }
         }
         else
@@ -692,7 +694,6 @@ int main()
             cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
             cin.clear();
-            cin.ignore(1000, '\n');
         }
     }
 
@@ -713,9 +714,10 @@ int main()
     petChosen = false;
     while (!petChosen)
     {
-        cin >> petChoice;
-        if (petChoice == '1' || petChoice == '2' || petChoice == '3')
+        getline(cin, petChoiceString);
+        if (petChoiceString == "1" || petChoiceString == "2" || petChoiceString == "3")
         {
+            petChoice = petChoiceString[0];
             switch (petChoice)
             {
             case '1':
@@ -747,7 +749,6 @@ int main()
             cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
             cin.clear();
-            cin.ignore(1000, '\n');
         }
     }
 
