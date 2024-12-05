@@ -958,6 +958,8 @@ int main()
     player1Board.displayBoard(player1, true);
     player2Board.displayBoard(player2, true);
     cout << endl;
+    bool validInput = true;
+    bool validMenu = true;
 
     while ((!player1Finished || !player2Finished))
     {
@@ -970,9 +972,11 @@ int main()
                 player1Finished = true;
                 continue;
             }
-
-            cout << player1.getName() << "'s turn." << endl;
-            cout << endl;
+            if (validInput)
+            {
+                cout << player1.getName() << "'s turn." << endl;
+                cout << endl;
+            }
         }
         else // Player 2's turn
         {
@@ -983,11 +987,18 @@ int main()
                 continue;
             }
 
-            cout << player2.getName() << "'s turn." << endl;
-            cout << endl;
+            if (validInput)
+            {
+                cout << player2.getName() << "'s turn." << endl;
+                cout << endl;
+            }
         }
 
-        printMenu();
+        if (validMenu)
+        {
+            cout << endl;
+            printMenu();
+        }
         while (getline(cin, menuChoiceString) && !ifMoved)
         {
             char ageChoice;
@@ -1006,13 +1017,16 @@ int main()
             {
                 if (menuChoiceString == "1" || menuChoiceString == "2" || menuChoiceString == "3" || menuChoiceString == "4" || menuChoiceString == "5")
                 {
+                    validMenu = true;
                     menuChoice = menuChoiceString[0];
                     switch (menuChoice)
                     {
                     case '1':
+                        validInput = false;
                         player1.printStats();
                         break;
                     case '2':
+                        validInput = false;
                         cout << player1.getName() << " name: " << player1.getName() << endl;
                         cout << player1.getName() << " age: " << player1.getAge() << endl;
                         cout << endl;
@@ -1060,9 +1074,11 @@ int main()
                         }
                         break;
                     case '3':
+                        validInput = true;
                         cout << player1.getName() << " your position is: " << player1Board.getPlayerPosition() << endl;
                         break;
                     case '4':
+                        validInput = false;
                         cout << "Would you like to view your pet (1) or your advisor (2)?" << endl;
                         cout << endl;
                         while (getline(cin, companionChoiceString))
@@ -1164,6 +1180,7 @@ int main()
                         }
                         break;
                     case '5':
+                        validInput = true;
                         player1.setAge(player1.getAge() + 1);
                         if (player1.getAge() > 30)
                         {
@@ -1562,6 +1579,8 @@ int main()
                 }
                 else
                 {
+                    validMenu = false;
+                    validInput = false;
                     cout << endl;
                     cout << "Invalid input. Please enter a valid option." << endl;
                     cin.clear();
@@ -1571,13 +1590,16 @@ int main()
             {
                 if (menuChoiceString == "1" || menuChoiceString == "2" || menuChoiceString == "3" || menuChoiceString == "4" || menuChoiceString == "5")
                 {
+                    validMenu = true;
                     menuChoice = menuChoiceString[0];
                     switch (menuChoice)
                     {
                     case '1':
+                        validInput = false;
                         player2.printStats();
                         break;
                     case '2':
+                        validInput = false;
                         cout << player2.getName() << " name: " << player2.getName() << endl;
                         cout << player2.getName() << " age: " << player2.getAge() << endl;
                         cout << endl;
@@ -1625,9 +1647,11 @@ int main()
                         }
                         break;
                     case '3':
+                        validInput = true;
                         cout << player2.getName() << " your position is: " << player2Board.getPlayerPosition() << endl;
                         break;
                     case '4':
+                        validInput = false;
                         char changePet;
                         char whichPet;
                         char companionChoice;
@@ -1732,6 +1756,7 @@ int main()
                         }
                         break;
                     case '5':
+                        validInput = true;
                         player2.setAge(player2.getAge() + 1);
                         if (player2.getAge() > 30)
                         {
@@ -2130,6 +2155,8 @@ int main()
                 }
                 else
                 {
+                    validMenu = false;
+                    validInput = false;
                     cout << endl;
                     cout << "Invalid input. Please enter a valid option." << endl;
                     cin.clear();
@@ -2139,10 +2166,15 @@ int main()
             // If the choice was valid, process the action and break out of the input loop
             break;
         }
-        cout << endl;
-        player1Board.displayBoard(player1, false);
-        player2Board.displayBoard(player2, false);
-        cout << endl;
+
+        if (validInput)
+        {
+            cout << endl;
+            player1Board.displayBoard(player1, false);
+            player2Board.displayBoard(player2, false);
+            cout << endl;
+        }
+
         if (ifMoved)
         {
             if (extraTurn)
