@@ -893,7 +893,15 @@ int main()
         while (getline(cin, menuChoiceString) && !ifMoved)
         {
             char ageChoice;
-            cout << endl;             // skip a line
+            string ageChoiceString;
+            char pinkAdvisorChoice = ' ';
+            char changePet;
+            string changePetString;
+            char whichPet;
+            string whichPetString;
+            char companionChoice;
+            string companionChoiceString;
+            cout << endl; // skip a line
             if (turnCount % 2 == 0)
             {
                 if (menuChoiceString == "1" || menuChoiceString == "2" || menuChoiceString == "3" || menuChoiceString == "4" || menuChoiceString == "5")
@@ -909,35 +917,39 @@ int main()
                         cout << player1.getName() << " age: " << player1.getAge() << endl;
                         cout << endl;
                         cout << "Would you like to use 100 stamina points to magically lower your age: yes(1) no(2)?" << endl;
-                        while (cin >> ageChoice)
+                        while (getline(cin, ageChoiceString))
                         {
-                            if (ageChoice == '1')
+                            if (ageChoiceString == "1" || ageChoiceString == "2")
                             {
-                                if (player1.getStamina() < 100)
+                                ageChoice = ageChoiceString[0];
+                                if (ageChoice == '1')
                                 {
-                                    cout << endl;
-                                    cout << "You do not have enough stamina points" << endl;
+                                    if (player1.getStamina() < 100)
+                                    {
+                                        cout << endl;
+                                        cout << "You do not have enough stamina points" << endl;
+                                        break;
+                                    }
+                                    else if (player1.getAge() <= 1)
+                                    {
+                                        cout << "You have to be at least 2 years old." << endl;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        cout << endl;
+                                        player1.setStamina(player1.getStamina() + 100);
+                                        player1.setAge(player1.getAge() - 1);
+                                        cout << endl;
+                                        cout << player1.getName() << ", your new age is: " << player1.getAge() << " and your new stamina is: " << player1.getStamina();
+                                        cout << endl;
+                                        break;
+                                    }
+                                }
+                                else if (ageChoice == '2')
+                                {
                                     break;
                                 }
-                                else if (player1.getAge() <= 1)
-                                {
-                                    cout << "You have to be at least 2 years old." << endl;
-                                    break;
-                                }
-                                else
-                                {
-                                    cout << endl;
-                                    player1.setStamina(player1.getStamina() + 100);
-                                    player1.setAge(player1.getAge() - 1);
-                                    cout << endl;
-                                    cout << player1.getName() << ", your new age is: " << player1.getAge() << " and your new stamina is: " << player1.getStamina();
-                                    cout << endl;
-                                    break;
-                                }
-                            }
-                            else if (ageChoice == '2')
-                            {
-                                break;
                             }
                             else
                             {
@@ -951,90 +963,95 @@ int main()
                         cout << player1.getName() << " your position is: " << player1Board.getPlayerPosition() << endl;
                         break;
                     case '4':
-                        char changePet;
-                        char whichPet;
-                        char companionChoice;
                         cout << "Would you like to view your pet (1) or your advisor (2)?" << endl;
                         cout << endl;
-                        while (cin >> companionChoice)
+                        while (getline(cin, companionChoiceString))
                         {
-                            if (companionChoice == '1' || companionChoice == '2')
+                            if (companionChoiceString == "1" || companionChoiceString == "2")
                             {
-                                if (companionChoice == '1')
+                                companionChoice = companionChoiceString[0];
+                                if (companionChoice == '1' || companionChoice == '2')
                                 {
-                                    cout << endl;
-                                    player1.displayPet();
-                                    cout << endl;
-                                    cout << "Would you like to change your pet? yes(1) no(2)" << endl;
-                                    while (cin >> changePet)
+                                    if (companionChoice == '1')
                                     {
-                                        if (changePet == '2')
+                                        cout << endl;
+                                        player1.displayPet();
+                                        cout << endl;
+                                        cout << "Would you like to change your pet? yes(1) no(2)" << endl;
+                                        while (cin >> changePet)
                                         {
-                                            break;
+                                            if (changePet == '2')
+                                            {
+                                                break;
+                                            }
+                                            else if (changePet == '1')
+                                            {
+                                                cout << "Which pet would you like to change to: Richard (1), Allison (2), Jerry (3)" << endl;
+                                                cout << endl; // skip a line
+                                                // print the attributes of each pet in the pets vector
+                                                for (unsigned int i = 0; i < petsVector.size(); i++)
+                                                {
+                                                    cout << "Name: " << petsVector[i].getName()
+                                                         << ", Age: " << petsVector[i].getAge()
+                                                         << ", Species: " << petsVector[i].getSpecies()
+                                                         << ", Description: " << petsVector[i].getDescription()
+                                                         << ", Ability: " << petsVector[i].getAbility()
+                                                         << endl;
+                                                }
+                                                while (getline(cin, whichPetString))
+                                                {
+                                                    if (whichPetString == "1" || whichPetString == "2" || whichPetString == "2")
+                                                    {
+                                                        whichPet = whichPetString[0];
+                                                        if (whichPet == '1')
+                                                        {
+                                                            player1.setPlayerPet(petsVector[0]);
+                                                            break;
+                                                        }
+                                                        else if (whichPet == '2')
+                                                        {
+                                                            player1.setPlayerPet(petsVector[1]);
+                                                            break;
+                                                        }
+                                                        else if (whichPet == '3')
+                                                        {
+                                                            player1.setPlayerPet(petsVector[2]);
+                                                            break;
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        cout << endl;
+                                                        cout << "Invalid input. Please enter a valid option." << endl;
+                                                        cin.clear();
+                                                    }
+                                                }
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                cout << endl;
+                                                cout << "Invalid input. Please enter a valid option." << endl;
+                                                cin.clear();
+                                            }
                                         }
-                                        else if (changePet == '1')
+                                        break;
+                                    }
+                                    if (companionChoice == '2')
+                                    {
+                                        if (player1.getHasAdvisor() == true)
                                         {
-                                            cout << "Which pet would you like to change to: Richard (1), Allison (2), Jerry (3)" << endl;
-                                            cout << endl; // skip a line
-                                            // print the attributes of each pet in the pets vector
-                                            for (unsigned int i = 0; i < petsVector.size(); i++)
-                                            {
-                                                cout << "Name: " << petsVector[i].getName()
-                                                     << ", Age: " << petsVector[i].getAge()
-                                                     << ", Species: " << petsVector[i].getSpecies()
-                                                     << ", Description: " << petsVector[i].getDescription()
-                                                     << ", Ability: " << petsVector[i].getAbility()
-                                                     << endl;
-                                            }
-                                            while (cin >> whichPet)
-                                            {
-                                                if (whichPet == '1')
-                                                {
-                                                    player1.setPlayerPet(petsVector[0]);
-                                                    break;
-                                                }
-                                                else if (whichPet == '2')
-                                                {
-                                                    player1.setPlayerPet(petsVector[1]);
-                                                    break;
-                                                }
-                                                else if (whichPet == '3')
-                                                {
-                                                    player1.setPlayerPet(petsVector[2]);
-                                                    break;
-                                                }
-                                                else
-                                                {
-                                                    cout << endl;
-                                                    cout << "Invalid input. Please enter a valid option." << endl;
-                                                    cin.clear();
-                                                }
-                                            }
+                                            cout << endl;
+                                            cout << player1.getName() << " does have an advisor." << endl;
+                                            player1.printAdvisor();
                                             break;
                                         }
                                         else
                                         {
                                             cout << endl;
-                                            cout << "Invalid input. Please enter a valid option." << endl;
-                                            cin.clear();
+                                            cout << player1.getName() << " does not have an advisor" << endl;
+                                            break;
                                         }
-                                    }
-                                    break;
-                                }
-                                if (companionChoice == '2')
-                                {
-                                    if (player1.getHasAdvisor() == true)
-                                    {
-                                        cout << endl;
-                                        cout << player1.getName() << " does have an advisor." << endl;
-                                        player1.printAdvisor();
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        cout << endl;
-                                        cout << player1.getName() << " does not have an advisor" << endl;
-                                        break;
                                     }
                                 }
                             }
@@ -1069,7 +1086,7 @@ int main()
                             player1Board.blue(player1);
                             break;
                         case 'P': // pink
-                            player1Board.pink(player1, advisorsVector, characterChoice);
+                            player1Board.pink(player1, advisorsVector, pinkAdvisorChoice);
                             break;
                         case 'N': // brown
                             player1Board.brown(player1, tempPosition);
@@ -1119,35 +1136,39 @@ int main()
                         cout << player2.getName() << " age: " << player2.getAge() << endl;
                         cout << endl;
                         cout << "Would you like to use 100 stamina points to magically lower your age: yes(1) no(2)?" << endl;
-                        while (cin >> ageChoice)
+                        while (getline(cin, ageChoiceString))
                         {
-                            if (ageChoice == '2')
+                            if (ageChoiceString == "1" || ageChoiceString == "2")
                             {
-                                if (player2.getStamina() < 100)
+                                ageChoice = ageChoiceString[0];
+                                if (ageChoice == '2')
                                 {
-                                    cout << endl;
-                                    cout << "You do not have enough stamina points" << endl;
+                                    if (player2.getStamina() < 100)
+                                    {
+                                        cout << endl;
+                                        cout << "You do not have enough stamina points" << endl;
+                                        break;
+                                    }
+                                    else if (player2.getAge() <= 1)
+                                    {
+                                        cout << "You have to be at least 2 years old." << endl;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        cout << endl;
+                                        player2.setStamina(player2.getStamina() + 100);
+                                        player2.setAge(player2.getAge() - 1);
+                                        cout << endl;
+                                        cout << player2.getName() << ", your new age is: " << player2.getAge() << " and your new stamina is: " << player2.getStamina();
+                                        cout << endl;
+                                        break;
+                                    }
+                                }
+                                else if (ageChoice == '2')
+                                {
                                     break;
                                 }
-                                else if (player2.getAge() <= 1)
-                                {
-                                    cout << "You have to be at least 2 years old." << endl;
-                                    break;
-                                }
-                                else
-                                {
-                                    cout << endl;
-                                    player2.setStamina(player2.getStamina() + 100);
-                                    player2.setAge(player2.getAge() - 1);
-                                    cout << endl;
-                                    cout << player2.getName() << ", your new age is: " << player2.getAge() << " and your new stamina is: " << player2.getStamina();
-                                    cout << endl;
-                                    break;
-                                }
-                            }
-                            else if (ageChoice == '2')
-                            {
-                                break;
                             }
                             else
                             {
@@ -1166,87 +1187,93 @@ int main()
                         char companionChoice;
                         cout << "Would you like to view your pet (1) or your advisor (2)?" << endl;
                         cout << endl;
-                        while (cin >> companionChoice)
+                        while (getline(cin, companionChoiceString))
                         {
-                            if (companionChoice == '1' || companionChoice == '2')
+                            if (companionChoiceString == "1" || companionChoiceString == "2")
                             {
-                                if (companionChoice == '1')
+                                companionChoice = companionChoiceString[0];
+                                if (companionChoice == '1' || companionChoice == '2')
                                 {
-                                    cout << endl;
-                                    player2.displayPet();
-                                    cout << endl;
-                                    cout << "Would you like to change your pet? yes(1) no(2)" << endl;
-                                    while (cin >> changePet)
+                                    if (companionChoice == '1')
                                     {
-                                        if (changePet == '2')
+                                        cout << endl;
+                                        player2.displayPet();
+                                        cout << endl;
+                                        cout << "Would you like to change your pet? yes(1) no(2)" << endl;
+                                        while (cin >> changePet)
                                         {
-                                            break;
+                                            if (changePet == '2')
+                                            {
+                                                break;
+                                            }
+                                            else if (changePet == '1')
+                                            {
+                                                cout << "Which pet would you like to change to: Richard (1), Allison (2), Jerry (3)" << endl;
+                                                cout << endl; // skip a line
+                                                // print the attributes of each pet in the pets vector
+                                                for (unsigned int i = 0; i < petsVector.size(); i++)
+                                                {
+                                                    cout << "Name: " << petsVector[i].getName()
+                                                         << ", Age: " << petsVector[i].getAge()
+                                                         << ", Species: " << petsVector[i].getSpecies()
+                                                         << ", Description: " << petsVector[i].getDescription()
+                                                         << ", Ability: " << petsVector[i].getAbility()
+                                                         << endl;
+                                                }
+                                                while (getline(cin, whichPetString))
+                                                {
+                                                    if (whichPetString == "1" || whichPetString == "2")
+                                                    {
+                                                        whichPet = whichPetString[0];
+                                                        if (whichPet == '1')
+                                                        {
+                                                            player2.setPlayerPet(petsVector[0]);
+                                                            break;
+                                                        }
+                                                        else if (whichPet == '2')
+                                                        {
+                                                            player2.setPlayerPet(petsVector[1]);
+                                                            break;
+                                                        }
+                                                        else if (whichPet == '3')
+                                                        {
+                                                            player2.setPlayerPet(petsVector[2]);
+                                                            break;
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        cout << endl;
+                                                        cout << "Invalid input. Please enter a valid option." << endl;
+                                                        cin.clear();
+                                                    }
+                                                }
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                cout << endl;
+                                                cout << "Invalid input. Please enter a valid option." << endl;
+                                                cin.clear();
+                                            }
                                         }
-                                        else if (changePet == '1')
+                                        break;
+                                    }
+                                    if (companionChoice == '2')
+                                    {
+                                        if (player2.getHasAdvisor() == true)
                                         {
-                                            cout << "Which pet would you like to change to: Richard (1), Allison (2), Jerry (3)" << endl;
-                                            cout << endl; // skip a line
-                                            // print the attributes of each pet in the pets vector
-                                            for (unsigned int i = 0; i < petsVector.size(); i++)
-                                            {
-                                                cout << "Name: " << petsVector[i].getName()
-                                                     << ", Age: " << petsVector[i].getAge()
-                                                     << ", Species: " << petsVector[i].getSpecies()
-                                                     << ", Description: " << petsVector[i].getDescription()
-                                                     << ", Ability: " << petsVector[i].getAbility()
-                                                     << endl;
-                                            }
-                                            while (cin >> whichPet)
-                                            {
-                                                if (whichPet == '1')
-                                                {
-                                                    player2.setPlayerPet(petsVector[0]);
-                                                    break;
-                                                }
-                                                else if (whichPet == '2')
-                                                {
-                                                    player2.setPlayerPet(petsVector[1]);
-                                                    break;
-                                                }
-                                                else if (whichPet == '3')
-                                                {
-                                                    player2.setPlayerPet(petsVector[2]);
-                                                    break;
-                                                }
-                                                else
-                                                {
-                                                    cout << endl;
-                                                    cout << "Invalid input. Please enter a valid option." << endl;
-                                                    cin.clear();
-                                                    cin.ignore(1000, '\n');
-                                                }
-                                            }
+                                            cout << endl;
+                                            cout << player2.getName() << " does have an advisor." << endl;
+                                            player2.printAdvisor();
                                             break;
                                         }
                                         else
                                         {
                                             cout << endl;
-                                            cout << "Invalid input. Please enter a valid option." << endl;
-                                            cin.clear();
-                                            cin.ignore(1000, '\n');
+                                            cout << player2.getName() << " does not have an advisor" << endl;
+                                            break;
                                         }
-                                    }
-                                    break;
-                                }
-                                if (companionChoice == '2')
-                                {
-                                    if (player2.getHasAdvisor() == true)
-                                    {
-                                        cout << endl;
-                                        cout << player2.getName() << " does have an advisor." << endl;
-                                        player2.printAdvisor();
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        cout << endl;
-                                        cout << player2.getName() << " does not have an advisor" << endl;
-                                        break;
                                     }
                                 }
                             }
@@ -1255,7 +1282,6 @@ int main()
                                 cout << endl;
                                 cout << "Invalid input. Please enter a valid option." << endl;
                                 cin.clear();
-                                cin.ignore(1000, '\n');
                             }
                         }
                         break;
@@ -1282,7 +1308,7 @@ int main()
                             player2Board.blue(player2);
                             break;
                         case 'P': // pink
-                            player2Board.pink(player2, advisorsVector, characterChoice);
+                            player2Board.pink(player2, advisorsVector, pinkAdvisorChoice);
                             break;
                         case 'N': // brown
                             player2Board.brown(player2, tempPosition);

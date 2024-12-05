@@ -609,15 +609,18 @@ void Board::brown(Player player, int pos)
 Player settingAdvisor(Player player, char characterChoice, vector<advisors> advisorsVector)
 {
     cout << player.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), Sarafina (5)" << endl;
-    cout << endl;                                            // skip a line
+    cout << endl;
+
     for (unsigned int i = 0; i < advisorsVector.size(); i++) // printing the advisor options from the array
     {
         cout << "Name: " << advisorsVector[i].name << ", Power: " << advisorsVector[i].power << ", Description: " << advisorsVector[i].description << endl;
     }
-    while (cin >> characterChoice)
+    string characterChoiceString;
+    while (getline(cin, characterChoiceString))
     {
-        if (characterChoice == '1' || characterChoice == '2' || characterChoice == '3' || characterChoice == '4' || characterChoice == '5')
+        if (characterChoiceString == "1" || characterChoiceString == "2" || characterChoiceString == "3" || characterChoiceString == "4" || characterChoiceString == "5")
         {
+            characterChoice = characterChoiceString[0];
             switch (characterChoice)
             {
             case '1':
@@ -643,7 +646,6 @@ Player settingAdvisor(Player player, char characterChoice, vector<advisors> advi
             cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
             cin.clear();
-            cin.ignore(1000, '\n');
         }
     }
     return player;
