@@ -573,7 +573,7 @@ void Board::purple(Player player, vector<riddles> riddlesVector, int randomRiddl
     {
         randomRiddleIndex = rand() % riddlesVector.size();
         cout << "Answer with one word in all lowercase: " << riddlesVector[randomRiddleIndex].riddleQuestion << endl;
-        cin >> riddleAnswer;
+        getline(cin, riddleAnswer);
         cout << endl; // skip a line
         if (riddleAnswer == riddlesVector[randomRiddleIndex].answer)
         {
@@ -585,6 +585,7 @@ void Board::purple(Player player, vector<riddles> riddlesVector, int randomRiddl
             cout << "Incorrect. Better luck next time." << endl;
         }
         cout << endl; // skip a line
+        cin.clear();
     }
 }
 
