@@ -285,11 +285,12 @@ int main()
     srand(time(0)); // seed random function
     cout << endl;
     cout << "Welcome to the Lands of Africa!" << endl;
-    cout << "Players will journey across the African Savannah, each as a young lion eager to prove they are ready to step up as the next Pride Leader after Simba's retirement." << endl;
-    cout << "Along the way, they will make strategic decisions, face unexpected challenges, and collect Pride Points as they grow and refine their Leadership Traits—Stamina, Strength, and Wisdom." << endl;
+    cout << endl;
+    cout << "Journey across the African Savannah as a young lion to prove you are ready to step up as the next Pride Leader after Simba's retirement." << endl;
+    cout << "Along the way, you will make strategic decisions, face unexpected challenges, and collect Pride Points as you grow and refine your Leadership Traits: Stamina, Strength, and Wisdom." << endl;
     cout << endl;
     cout << "Rules: " << endl;
-    cout << "1. You will choose one of two paths: Through cub training or straight to the Pride Lands." << endl;
+    cout << "1. You will choose one of two paths: Through Cub Training or straight to the Pride Lands." << endl;
     cout << "2. Lead your character to pride rock as fast as possible. The player who collects the most pride points by demonstrating leadership traits will win the game!" << endl;
     cout << "3. Navigate through the game by entering numbers corresponding to actions." << endl;
     cout << "4. When it is your turn, you will move a random number of spaces 1-6" << endl;
@@ -315,6 +316,7 @@ int main()
     string characterChoiceString;
     char characterChoice;
     cout << player1.getName() << ", choose your character: " << endl;
+    cout << endl;
     cout << "Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo (6), name your own character with random attributes (7), or view characters ranked according to their age (8). " << endl;
     cout << "Please choose an option using the corresponding number." << endl;
     cout << endl; // skip a line
@@ -508,6 +510,7 @@ int main()
 
     cout << endl; // skip a line
     cout << player2.getName() << ", choose your character: " << endl;
+    cout << endl;
     for (unsigned int i = 0; i < charactersVector.size(); i++)
     {
         cout << charactersVector[i].name << " (" << i + 1 << "), ";
@@ -685,7 +688,7 @@ int main()
                 vector<characters> tempArr = charactersVector;
                 sortCharactersByAge(tempArr);
                 cout << endl;
-                cout << "Choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo(6), name your own character with random attributes(7) or see ranking again (8)" << endl;
+                cout << "Choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo(6), name your own character with random attributes (7) or see ranking again (8)" << endl;
                 sameCharacter = false;
                 break;
             }
@@ -773,7 +776,7 @@ int main()
             else if (pridelandsChoice == '2')
             {
                 cout << endl; // skip a line
-                cout << player1.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), Sarafina (5)" << endl;
+                cout << player1.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), or Sarafina (5)" << endl;
                 cout << endl;
 
                 for (unsigned int i = 0; i < advisorsVector.size(); i++) // printing the advisor options from the array
@@ -853,7 +856,7 @@ int main()
             else if (pridelandsChoice == '2')
             {
                 cout << endl; // skip a line
-                cout << player2.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), Sarafina (5)" << endl;
+                cout << player2.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), or Sarafina (5)" << endl;
                 cout << endl;
 
                 for (unsigned int i = 0; i < advisorsVector.size(); i++) // printing the advisor options from the array
@@ -975,7 +978,6 @@ int main()
             if (validInput)
             {
                 cout << player1.getName() << "'s turn." << endl;
-                cout << endl;
             }
         }
         else // Player 2's turn
@@ -990,7 +992,6 @@ int main()
             if (validInput)
             {
                 cout << player2.getName() << "'s turn." << endl;
-                cout << endl;
             }
         }
 
@@ -1054,14 +1055,15 @@ int main()
                                         cout << endl;
                                         player1.setStamina(player1.getStamina() - 100);
                                         player1.setAge(player1.getAge() - 1);
-                                        cout << endl;
-                                        cout << player1.getName() << ", your new age is: " << player1.getAge() << " and your new stamina is: " << player1.getStamina();
+                                        cout << player1.getName() << ", your new age is: " << player1.getAge() << ", and your new stamina is: " << player1.getStamina();
                                         cout << endl;
                                         break;
                                     }
+                                    ageChoiceString = "";
                                 }
                                 else if (ageChoice == '2')
                                 {
+                                    ageChoiceString = "";
                                     break;
                                 }
                             }
@@ -1208,7 +1210,7 @@ int main()
                         tempPosition = player1Board.getPlayerPosition();
                         randSpace = (rand() % 6) + 1;
                         player1Board.movePlayer(randSpace);
-                        cout << player1.getName() << " moved " << randSpace << " spaces." << endl;
+                        cout << player1.getName() << " moved " << randSpace << " space(s)." << endl;
                         switch (player1Board.getPositionTile(player1Board.getPlayerPosition()).getColor())
                         {
                         case 'R': // red
@@ -1241,6 +1243,8 @@ int main()
                             break;
                         case 'P': // pink
                             cout << endl;
+                            player1Board.displayBoard(player1, false);
+                            player2Board.displayBoard(player2, false);
                             cout << "Welcome to the land of enrichment - when landing on this tile, your Stamina, Strength, and Wisdom Points increase by 300, and you get to choose an advisor from the available list of advisors. If you already have an advisor, you can switch your advisor out for a different one from the list or keep your original advisor. Don’t forget - an advisor can protect you from random events that negatively impact your Pride Points." << endl;
                             player1.setStrength(player1.getStrength() + 300);
                             player1.setWisdom(player1.getWisdom() + 300);
@@ -1273,7 +1277,8 @@ int main()
                                         else if (changeAdvisorChoice == '2')
                                         {
                                             player1.setHasAdvisor(true);
-                                            cout << player1.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), Sarafina (5)" << endl;
+                                            cout << endl; // skip a line
+                                            cout << player1.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), or Sarafina (5)" << endl;
                                             cout << endl;
 
                                             for (unsigned int i = 0; i < advisorsVector.size(); i++) // printing the advisor options from the array
@@ -1291,27 +1296,22 @@ int main()
                                                     case '1':
                                                         player1.setAdvisor(advisorsVector[0]);
                                                         cout << endl;
-                                                        cout << "Your advisor is " << player1.getAdvisor().name << "." << endl;
                                                         break;
                                                     case '2':
                                                         player1.setAdvisor(advisorsVector[1]);
                                                         cout << endl;
-                                                        cout << "Your advisor is " << player1.getAdvisor().name << "." << endl;
                                                         break;
                                                     case '3':
                                                         player1.setAdvisor(advisorsVector[2]);
                                                         cout << endl;
-                                                        cout << "Your advisor is " << player1.getAdvisor().name << "." << endl;
                                                         break;
                                                     case '4':
                                                         player1.setAdvisor(advisorsVector[3]);
                                                         cout << endl;
-                                                        cout << "Your advisor is " << player1.getAdvisor().name << "." << endl;
                                                         break;
                                                     case '5':
                                                         player1.setAdvisor(advisorsVector[4]);
                                                         cout << endl;
-                                                        cout << "Your advisor is " << player1.getAdvisor().name << "." << endl;
                                                         break;
                                                     }
                                                     break;
@@ -1323,7 +1323,6 @@ int main()
                                                     cin.clear();
                                                 }
                                             }
-                                            cout << endl; // skip a line
                                             cout << "Your advisor is " << player1.getAdvisor().name << "." << endl;
                                             playerAdvisorHasChanged = true;
                                             playerFirstAdvisorRun = false;
@@ -1348,7 +1347,7 @@ int main()
                             }
                             else
                             {
-                                cout << player1.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), Sarafina (5)" << endl;
+                                cout << player1.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), or Sarafina (5)" << endl;
                                 cout << endl;
 
                                 for (unsigned int i = 0; i < advisorsVector.size(); i++) // printing the advisor options from the array
@@ -1403,7 +1402,7 @@ int main()
                             break;
                         case 'N': // brown
                             cout << endl;
-                            cout << "Hyenas are on the prowl! They drag you back to where you were last, and the journey comes at a cost. You will be returned to your previous position. In addition, your Stamina Points decrease by 300 Points." << endl;
+                            cout << "Hyenas are on the prowl!" << endl;
                             cout << endl;
                             if (player1.getPlayerPet().getName() == "Jerry")
                             {
@@ -1412,6 +1411,7 @@ int main()
                             }
                             else
                             {
+                                cout << "They drag you back to where you were last, and the journey comes at a cost. You will be returned to your previous position. In addition, your Stamina Points decrease by 300 Points." << endl;
                                 player1.setStamina(player1.getStamina() - 300);
                                 player1Board.setPlayerPos(tempPosition);
                                 cout << endl; // skip a line
@@ -1419,7 +1419,7 @@ int main()
                             break;
                         case 'U': // purple
                             cout << endl;
-                            cout << "Time for a test of wits! Answer correctly, and you will earn a boost of 500 Wisdom Points. Think carefully, your cleverness will pay off!" << endl;
+                            cout << "Time for a test of wits! Answer correctly, and you will earn a boost of 500 Wisdom Points." << endl;
                             cout << endl; // skip a line
                             if (player1.getPlayerPet().getName() == "Richard")
                             {
@@ -1428,6 +1428,7 @@ int main()
                             }
                             else
                             {
+                                cout << "Think carefully, your cleverness will pay off!" << endl;
                                 randomRiddleIndex = rand() % riddlesVector.size();
                                 cout << "Answer with one word in all lowercase: " << riddlesVector[randomRiddleIndex].riddleQuestion << endl;
                                 getline(cin, riddleAnswer);
@@ -1625,7 +1626,7 @@ int main()
                             if (ageChoiceString == "1" || ageChoiceString == "2")
                             {
                                 ageChoice = ageChoiceString[0];
-                                if (ageChoice == '2')
+                                if (ageChoice == '1')
                                 {
                                     if (player2.getStamina() < 100)
                                     {
@@ -1643,14 +1644,15 @@ int main()
                                         cout << endl;
                                         player2.setStamina(player2.getStamina() - 100);
                                         player2.setAge(player2.getAge() - 1);
-                                        cout << endl;
-                                        cout << player2.getName() << ", your new age is: " << player2.getAge() << " and your new stamina is: " << player2.getStamina();
+                                        cout << player2.getName() << ", your new age is: " << player2.getAge() << ", and your new stamina is: " << player2.getStamina();
                                         cout << endl;
                                         break;
                                     }
+                                    ageChoiceString = "";
                                 }
                                 else if (ageChoice == '2')
                                 {
+                                    ageChoiceString = "";
                                     break;
                                 }
                             }
@@ -1779,7 +1781,6 @@ int main()
                             }
                             else
                             {
-                                cout << "4" << endl;
                                 cout << endl;
                                 cout << "Invalid input. Please enter a valid option." << endl;
                                 cin.clear();
@@ -1799,7 +1800,7 @@ int main()
                         tempPosition = player2Board.getPlayerPosition();
                         randSpace = (rand() % 6) + 1;
                         player2Board.movePlayer(randSpace);
-                        cout << player2.getName() << " moved " << randSpace << " spaces." << endl;
+                        cout << player2.getName() << " moved " << randSpace << " space(s)." << endl;
                         switch (player2Board.getPositionTile(player2Board.getPlayerPosition()).getColor())
                         {
                         case 'R': // red
@@ -1832,6 +1833,8 @@ int main()
                             break;
                         case 'P': // pink
                             cout << endl;
+                            player1Board.displayBoard(player1, false);
+                            player2Board.displayBoard(player2, false);
                             cout << "Welcome to the land of enrichment - when landing on this tile, your Stamina, Strength, and Wisdom Points increase by 300, and you get to choose an advisor from the available list of advisors. If you already have an advisor, you can switch your advisor out for a different one from the list or keep your original advisor. Don’t forget - an advisor can protect you from random events that negatively impact your Pride Points." << endl;
                             player2.setStrength(player2.getStrength() + 300);
                             player2.setWisdom(player2.getWisdom() + 300);
@@ -1864,7 +1867,8 @@ int main()
                                         else if (changeAdvisorChoice == '2')
                                         {
                                             player2.setHasAdvisor(true);
-                                            cout << player2.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), Sarafina (5)" << endl;
+                                            cout << endl; // skip a line
+                                            cout << player2.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), or Sarafina (5)" << endl;
                                             cout << endl;
 
                                             for (unsigned int i = 0; i < advisorsVector.size(); i++) // printing the advisor options from the array
@@ -1882,27 +1886,22 @@ int main()
                                                     case '1':
                                                         player2.setAdvisor(advisorsVector[0]);
                                                         cout << endl;
-                                                        cout << "Your advisor is " << player2.getAdvisor().name << "." << endl;
                                                         break;
                                                     case '2':
                                                         player2.setAdvisor(advisorsVector[1]);
                                                         cout << endl;
-                                                        cout << "Your advisor is " << player2.getAdvisor().name << "." << endl;
                                                         break;
                                                     case '3':
                                                         player2.setAdvisor(advisorsVector[2]);
                                                         cout << endl;
-                                                        cout << "Your advisor is " << player2.getAdvisor().name << "." << endl;
                                                         break;
                                                     case '4':
                                                         player2.setAdvisor(advisorsVector[3]);
                                                         cout << endl;
-                                                        cout << "Your advisor is " << player2.getAdvisor().name << "." << endl;
                                                         break;
                                                     case '5':
                                                         player2.setAdvisor(advisorsVector[4]);
                                                         cout << endl;
-                                                        cout << "Your advisor is " << player2.getAdvisor().name << "." << endl;
                                                         break;
                                                     }
                                                     break;
@@ -1914,7 +1913,6 @@ int main()
                                                     cin.clear();
                                                 }
                                             }
-                                            cout << endl; // skip a line
                                             cout << "Your advisor is " << player2.getAdvisor().name << "." << endl;
                                             playerAdvisorHasChanged = true;
                                             playerFirstAdvisorRun = false;
@@ -1939,7 +1937,7 @@ int main()
                             }
                             else
                             {
-                                cout << player2.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), Sarafina (5)" << endl;
+                                cout << player2.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), or Sarafina (5)" << endl;
                                 cout << endl;
 
                                 for (unsigned int i = 0; i < advisorsVector.size(); i++) // printing the advisor options from the array
@@ -1994,7 +1992,7 @@ int main()
                             break;
                         case 'N': // brown
                             cout << endl;
-                            cout << "Hyenas are on the prowl! They drag you back to where you were last, and the journey comes at a cost. You will be returned to your previous position. In addition, your Stamina Points decrease by 300 Points." << endl;
+                            cout << "Hyenas are on the prowl!" << endl;
                             cout << endl;
                             if (player2.getPlayerPet().getName() == "Jerry")
                             {
@@ -2003,6 +2001,7 @@ int main()
                             }
                             else
                             {
+                                cout << "They drag you back to where you were last, and the journey comes at a cost. You will be returned to your previous position. In addition, your Stamina Points decrease by 300 Points." << endl;
                                 player2.setStamina(player2.getStamina() - 300);
                                 player2Board.setPlayerPos(tempPosition);
                                 cout << endl; // skip a line
@@ -2010,7 +2009,7 @@ int main()
                             break;
                         case 'U': // purple
                             cout << endl;
-                            cout << "Time for a test of wits! Answer correctly, and you will earn a boost of 500 Wisdom Points. Think carefully, your cleverness will pay off!" << endl;
+                            cout << "Time for a test of wits! Answer correctly, and you will earn a boost of 500 Wisdom Points." << endl;
                             cout << endl; // skip a line
                             if (player2.getPlayerPet().getName() == "Richard")
                             {
@@ -2019,6 +2018,7 @@ int main()
                             }
                             else
                             {
+                                cout << "Think carefully, your cleverness will pay off!" << endl;
                                 randomRiddleIndex = rand() % riddlesVector.size();
                                 cout << "Answer with one word in all lowercase: " << riddlesVector[randomRiddleIndex].riddleQuestion << endl;
                                 getline(cin, riddleAnswer);

@@ -285,7 +285,7 @@ void Board::displayBoard(Player player, bool first)
         }
         else
         {
-            cout << player.getName() << " has chosen cub training:" << endl;
+            cout << player.getName() << " has chosen Cub Training:" << endl;
             cout << endl;
         }
     }
