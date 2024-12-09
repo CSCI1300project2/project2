@@ -208,5 +208,7 @@ Pets Player::getPlayerPet(){
 }
 
 void Player::displayPet(){
-    cout << _name << " Pet: " << pet.getName() << " Description: "<< pet.getDescription()<<endl;
+    cout << " Pet: " << pet.getName() << endl;
+    cout << " Species: " << pet.getSpecies() << endl;
+    cout << " Description: "<< pet.getDescription() << endl;
 }
