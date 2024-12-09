@@ -314,7 +314,9 @@ int main()
     cout << endl; // skip a line
     string characterChoiceString;
     char characterChoice;
-    cout << player1.getName() << ", choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo (6), name your own character with random attributes (7), or view characters ranked according to their age (8). Please choose an option using the corresponding number." << endl;
+    cout << player1.getName() << ", choose your character: " << endl;
+    cout << "Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo (6), name your own character with random attributes (7), or view characters ranked according to their age (8). " << endl;
+    cout << "Please choose an option using the corresponding number." << endl;
     cout << endl; // skip a line
     // print the attributes of each character in the characters vector
     for (unsigned int i = 0; i < charactersVector.size(); i++)
@@ -505,12 +507,13 @@ int main()
     }
 
     cout << endl; // skip a line
-    cout << player2.getName() << ", choose your character: ";
+    cout << player2.getName() << ", choose your character: " << endl;
     for (unsigned int i = 0; i < charactersVector.size(); i++)
     {
         cout << charactersVector[i].name << " (" << i + 1 << "), ";
     }
-    cout << "name your own character with random attributes (7), or view characters ranked according to their age (8). Please choose an option using the corresponding number." << endl;
+    cout << "name your own character with random attributes (7), or view characters ranked according to their age (8). " << endl;
+    cout << "Please choose an option using the corresponding number." << endl;
     cout << endl; // skip a line
     // print the attributes of each character in the characters vector
     for (unsigned int i = 0; i < charactersVector.size(); i++)
