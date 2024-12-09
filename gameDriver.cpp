@@ -663,7 +663,6 @@ int main()
                 cout << endl; // skip a line
                 cout << "Enter character name: " << endl;
                 getline(cin, inputName);
-                cin.clear();
                 player2.setName(inputName);
                 player2.setAge(rand() % (20 - 1 + 1) + 1);
                 player2.setStamina((rand() % 10 + 1) * 100);
