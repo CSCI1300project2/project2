@@ -284,6 +284,8 @@ int main()
 
     srand(time(0)); // seed random function
     cout << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << endl;
     cout << "Welcome to the Lands of Africa!" << endl;
     cout << endl;
     cout << "Journey across the African Savannah as a young lion to prove you are ready to step up as the next Pride Leader after Simba's retirement." << endl;
@@ -297,6 +299,8 @@ int main()
     cout << "5. Finish the game before your character dies of old age at 30 years old!" << endl;
     cout << endl; // skip a line
     // set both players names to user input
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << endl;
     string playerName;
     cout << "Enter Player 1's name: " << endl;
     getline(cin, playerName);
@@ -312,7 +316,10 @@ int main()
     player2.setName(playerName);
     player2.setPlayerNumber(2);
 
+    cout << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << endl; // skip a line
+
     string characterChoiceString;
     char characterChoice;
     cout << player1.getName() << ", choose your character: " << endl;
@@ -415,7 +422,7 @@ int main()
                 getline(cin, inputName);
                 cin.clear();
                 player1.setName(inputName);
-                player1.setAge(rand() % (20 - 1 + 1) + 1);
+                player1.setAge(rand() % (15 - 3 + 1) + 3);
                 player1.setStamina((rand() % 10 + 1) * 100);
                 player1.setWisdom((rand() % 10 + 1) * 100);
                 player1.setStrength((rand() % 10 + 1) * 100);
@@ -512,7 +519,10 @@ int main()
         }
     }
 
+    cout << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << endl; // skip a line
+    
     cout << player2.getName() << ", choose your character: " << endl;
     cout << endl;
     for (unsigned int i = 0; i < charactersVector.size(); i++)
@@ -676,7 +686,7 @@ int main()
                 cout << "Enter character name: " << endl;
                 getline(cin, inputName);
                 player2.setName(inputName);
-                player2.setAge(rand() % (20 - 1 + 1) + 1);
+                player2.setAge(rand() % (15 - 3 + 1) + 3);
                 player2.setStamina((rand() % 10 + 1) * 100);
                 player2.setWisdom((rand() % 10 + 1) * 100);
                 player2.setStrength((rand() % 10 + 1) * 100);
@@ -770,6 +780,8 @@ int main()
     char pridelandsChoice;
     string pridelandsChoiceString;
     cout << endl; // skip a line
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << endl;
     cout << player1.getName() << ", would you like to go to the pridelands (1) or begin Cub Training (2)?" << endl;
     while (getline(cin, pridelandsChoiceString))
     {
@@ -1039,6 +1051,8 @@ int main()
                     case '1':
                         validInput = false;
                         player1.printStats();
+                        cout << endl;
+                        cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
                         break;
                     case '2':
                         validInput = false;
@@ -1088,6 +1102,8 @@ int main()
                                 cin.clear();
                             }
                         }
+                        cout << endl;
+                        cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
                         break;
                     case '3':
                         validInput = true;
@@ -1190,7 +1206,6 @@ int main()
                                         if (player1.getHasAdvisor())
                                         {
                                             cout << endl;
-                                            cout << player1.getName() << " does have an advisor." << endl;
                                             player1.printAdvisor();
                                             break;
                                         }
@@ -1210,6 +1225,8 @@ int main()
                                 cin.clear();
                             }
                         }
+                        cout << endl;
+                        cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
                         break;
                     case '5':
                         validInput = true;
@@ -1445,9 +1462,8 @@ int main()
                             else
                             {
                                 randomRiddleIndex = rand() % riddlesVector.size();
-                                cout << riddlesVector[randomRiddleIndex].riddleQuestion << endl;
+                                cout << riddlesVector[randomRiddleIndex].riddleQuestion << "Answer with one word in all lowercase: ";
                                 cout << endl;
-                                cout << "Answer with one word in all lowercase: ";
                                 getline(cin, riddleAnswer);
                                 cout << endl; // skip a line
                                 if (riddleAnswer == riddlesVector[randomRiddleIndex].answer)
@@ -1631,6 +1647,8 @@ int main()
                     case '1':
                         validInput = false;
                         player2.printStats();
+                        cout << endl;
+                        cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
                         break;
                     case '2':
                         validInput = false;
@@ -1680,6 +1698,8 @@ int main()
                                 cin.clear();
                             }
                         }
+                        cout << endl;
+                        cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
                         break;
                     case '3':
                         validInput = true;
@@ -1783,7 +1803,6 @@ int main()
                                         if (player2.getHasAdvisor() == true)
                                         {
                                             cout << endl;
-                                            cout << player2.getName() << " does have an advisor." << endl;
                                             player2.printAdvisor();
                                             break;
                                         }
@@ -1803,6 +1822,8 @@ int main()
                                 cin.clear();
                             }
                         }
+                        cout << endl;
+                        cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
                         break;
                     case '5':
                         validInput = true;
@@ -2038,9 +2059,8 @@ int main()
                             else
                             {
                                 randomRiddleIndex = rand() % riddlesVector.size();
-                                cout << riddlesVector[randomRiddleIndex].riddleQuestion << endl;
+                                cout << riddlesVector[randomRiddleIndex].riddleQuestion << "Answer with one word in all lowercase: ";
                                 cout << endl;
-                                cout << "Answer with one word in all lowercase: ";
                                 getline(cin, riddleAnswer);
                                 cout << endl; // skip a line
                                 if (riddleAnswer == riddlesVector[randomRiddleIndex].answer)
