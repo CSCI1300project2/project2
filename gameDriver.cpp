@@ -22,7 +22,7 @@ void printMenu()
     cout << "4. Review your companions (4)" << endl;
     cout << "5. Move Forward (5)" << endl;
     cout << endl;
-    cout << "Please choose an option using the corresponding number:" << endl;
+    cout << "Please choose an option using the corresponding number: ";
 }
 
 struct characters
@@ -318,7 +318,6 @@ int main()
     cout << player1.getName() << ", choose your character: " << endl;
     cout << endl;
     cout << "Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo (6), name your own character with random attributes (7), or view characters ranked according to their age (8). " << endl;
-    cout << "Please choose an option using the corresponding number." << endl;
     cout << endl; // skip a line
     // print the attributes of each character in the characters vector
     for (unsigned int i = 0; i < charactersVector.size(); i++)
@@ -333,6 +332,8 @@ int main()
     }
     bool characterChosen = false;
     string inputName;
+    cout << endl;
+    cout << "Please choose an option using the corresponding number: ";
 
     while (!characterChosen)
     {
@@ -466,6 +467,9 @@ int main()
              << endl;
     }
 
+    cout << endl;
+    cout << "Please choose an option using the corresponding number: ";
+
     bool petChosen = false;
     // setting player1's pet based on user input
     while (!petChosen)
@@ -516,7 +520,6 @@ int main()
         cout << charactersVector[i].name << " (" << i + 1 << "), ";
     }
     cout << "name your own character with random attributes (7), or view characters ranked according to their age (8). " << endl;
-    cout << "Please choose an option using the corresponding number." << endl;
     cout << endl; // skip a line
     // print the attributes of each character in the characters vector
     for (unsigned int i = 0; i < charactersVector.size(); i++)
@@ -529,6 +532,9 @@ int main()
              << ", PridePoints: " << charactersVector[i].pridePoints
              << endl;
     }
+
+    cout << endl;
+    cout << "Please choose an option using the corresponding number: ";
 
     bool sameCharacter = false;
     while (!sameCharacter)
@@ -714,6 +720,9 @@ int main()
              << ", Ability: " << petsVector[i].getAbility()
              << endl;
     }
+
+    cout << endl;
+    cout << "Please choose an option using the corresponding number: ";
 
     petChosen = false;
     // setting player2's pet based on user input
@@ -957,9 +966,12 @@ int main()
     }
 
     // display board once before printing the first menu
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << endl;
     player1Board.displayBoard(player1, true);
     player2Board.displayBoard(player2, true);
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+
     cout << endl;
     bool validInput = true;
     bool validMenu = true;
@@ -1002,6 +1014,8 @@ int main()
         }
         while (getline(cin, menuChoiceString) && !ifMoved)
         {
+            cout << endl;
+            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
             char ageChoice;
             string ageChoiceString;
             char changePet;
@@ -1245,7 +1259,9 @@ int main()
                             cout << endl;
                             player1Board.displayBoard(player1, false);
                             player2Board.displayBoard(player2, false);
-                            cout << "Welcome to the land of enrichment - when landing on this tile, your Stamina, Strength, and Wisdom Points increase by 300, and you get to choose an advisor from the available list of advisors. If you already have an advisor, you can switch your advisor out for a different one from the list or keep your original advisor. Don’t forget - an advisor can protect you from random events that negatively impact your Pride Points." << endl;
+                            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+                            cout << endl;
+                            cout << "Welcome to the land of enrichment - Your Stamina, Strength, and Wisdom Points increase by 300, and you get to choose an advisor or keep your original if you already have one." << endl;
                             player1.setStrength(player1.getStrength() + 300);
                             player1.setWisdom(player1.getWisdom() + 300);
                             player1.setStamina(player1.getStamina() + 300);
@@ -1423,14 +1439,15 @@ int main()
                             cout << endl; // skip a line
                             if (player1.getPlayerPet().getName() == "Richard")
                             {
-                                cout << "Your pet, Richard is the undefeated riddle champion and already knows the answer. You gain 500 Wisdom Points" << endl;
+                                cout << "Your pet, Richard is the undefeated riddle champion and already knows the answer. You gain 500 Wisdom Points. Think carefully, your cleverness will pay off!" << endl;
                                 player1.setWisdom(player1.getWisdom() + 500);
                             }
                             else
                             {
-                                cout << "Think carefully, your cleverness will pay off!" << endl;
                                 randomRiddleIndex = rand() % riddlesVector.size();
-                                cout << "Answer with one word in all lowercase: " << riddlesVector[randomRiddleIndex].riddleQuestion << endl;
+                                cout << riddlesVector[randomRiddleIndex].riddleQuestion << endl;
+                                cout << endl;
+                                cout << "Answer with one word in all lowercase: ";
                                 getline(cin, riddleAnswer);
                                 cout << endl; // skip a line
                                 if (riddleAnswer == riddlesVector[randomRiddleIndex].answer)
@@ -1835,7 +1852,9 @@ int main()
                             cout << endl;
                             player1Board.displayBoard(player1, false);
                             player2Board.displayBoard(player2, false);
-                            cout << "Welcome to the land of enrichment - when landing on this tile, your Stamina, Strength, and Wisdom Points increase by 300, and you get to choose an advisor from the available list of advisors. If you already have an advisor, you can switch your advisor out for a different one from the list or keep your original advisor. Don’t forget - an advisor can protect you from random events that negatively impact your Pride Points." << endl;
+                            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+                            cout << endl;
+                            cout << "Welcome to the land of enrichment - Your Stamina, Strength, and Wisdom Points increase by 300, and you get to choose an advisor or keep your original if you already have one." << endl;
                             player2.setStrength(player2.getStrength() + 300);
                             player2.setWisdom(player2.getWisdom() + 300);
                             player2.setStamina(player2.getStamina() + 300);
@@ -2009,7 +2028,7 @@ int main()
                             break;
                         case 'U': // purple
                             cout << endl;
-                            cout << "Time for a test of wits! Answer correctly, and you will earn a boost of 500 Wisdom Points." << endl;
+                            cout << "Time for a test of wits! Answer correctly, and you will earn a boost of 500 Wisdom Points. Think carefully, your cleverness will pay off!" << endl;
                             cout << endl; // skip a line
                             if (player2.getPlayerPet().getName() == "Richard")
                             {
@@ -2018,9 +2037,10 @@ int main()
                             }
                             else
                             {
-                                cout << "Think carefully, your cleverness will pay off!" << endl;
                                 randomRiddleIndex = rand() % riddlesVector.size();
-                                cout << "Answer with one word in all lowercase: " << riddlesVector[randomRiddleIndex].riddleQuestion << endl;
+                                cout << riddlesVector[randomRiddleIndex].riddleQuestion << endl;
+                                cout << endl;
+                                cout << "Answer with one word in all lowercase: ";
                                 getline(cin, riddleAnswer);
                                 cout << endl; // skip a line
                                 if (riddleAnswer == riddlesVector[randomRiddleIndex].answer)
@@ -2203,6 +2223,7 @@ int main()
             cout << endl;
             player1Board.displayBoard(player1, false);
             player2Board.displayBoard(player2, false);
+            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
             cout << endl;
         }
 
