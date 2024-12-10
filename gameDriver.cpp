@@ -522,7 +522,7 @@ int main()
     cout << endl;
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << endl; // skip a line
-    
+
     cout << player2.getName() << ", choose your character: " << endl;
     cout << endl;
     for (unsigned int i = 0; i < charactersVector.size(); i++)
@@ -704,7 +704,7 @@ int main()
                 vector<characters> tempArr = charactersVector;
                 sortCharactersByAge(tempArr);
                 cout << endl;
-                cout << "Choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo(6), name your own character with random attributes (7) or see ranking again (8)" << endl;
+                cout << "Choose your character: Apollo (1), Mane (2), Elsa (3), Zuri (4), Roary (5), Robo (6), name your own character with random attributes (7) or see ranking again (8)" << endl;
                 sameCharacter = false;
                 break;
             }
@@ -1462,7 +1462,7 @@ int main()
                             else
                             {
                                 randomRiddleIndex = rand() % riddlesVector.size();
-                                cout << riddlesVector[randomRiddleIndex].riddleQuestion << "Answer with one word in all lowercase: ";
+                                cout << riddlesVector[randomRiddleIndex].riddleQuestion << " Answer with one word in all lowercase: ";
                                 cout << endl;
                                 getline(cin, riddleAnswer);
                                 cout << endl; // skip a line
@@ -2059,7 +2059,7 @@ int main()
                             else
                             {
                                 randomRiddleIndex = rand() % riddlesVector.size();
-                                cout << riddlesVector[randomRiddleIndex].riddleQuestion << "Answer with one word in all lowercase: ";
+                                cout << riddlesVector[randomRiddleIndex].riddleQuestion << " Answer with one word in all lowercase: ";
                                 cout << endl;
                                 getline(cin, riddleAnswer);
                                 cout << endl; // skip a line
