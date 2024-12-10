@@ -37,7 +37,7 @@ void Board::initializeTiles(bool pridelands)
         if (i == 0)
         {
             // Starting tile
-            temp.setColor('Y'); // Yellow (Starting tile)
+            temp.setColor('Y'); // Grey (Starting tile)
         }
         else if (i == _BOARD_SIZE - 1)
         {
