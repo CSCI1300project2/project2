@@ -25,6 +25,7 @@ void printMenu()
     cout << "Please choose an option using the corresponding number: ";
 }
 
+//struct characters to access traits in vector when called
 struct characters
 {
     string name;
@@ -35,6 +36,8 @@ struct characters
     int pridePoints;
 };
 
+//sorting algorithm where we implemented a function to sort characters in character vector based on age.
+//age was implemented to each character(if character age reaches a certain number, they die and other player wins the game)
 void sortCharactersByAge(vector<characters> charactersVector)
 {
     int n = charactersVector.size();
@@ -55,7 +58,7 @@ void sortCharactersByAge(vector<characters> charactersVector)
         // Swap the current element with the element at maxIndex
         if (maxIndex != i)
         {
-            swap(charactersVector[i], charactersVector[maxIndex]);
+            swap(charactersVector[i], charactersVector[maxIndex]); //swap function
         }
     }
 
@@ -69,6 +72,7 @@ void sortCharactersByAge(vector<characters> charactersVector)
 }
 
 // split function for reading from txt files
+//developed in previous homeworks and recitation assignments
 int split(string input_string, char separator, string arr[], const int ARR_SIZE)
 {
     int lastDelimiter = 0;
@@ -102,7 +106,7 @@ int main()
     // Close the file
     resultsFile.close();
 
-    // vectors to store character and advisor objects
+    // vectors to store character, advisor, riddle, and pet objects
     vector<characters> charactersVector;
     string charactersString[6];
     vector<advisors> advisorsVector;
@@ -180,7 +184,8 @@ int main()
 
             for (unsigned int j = 0; j < 6; j++)
             {
-                switch (j)
+                switch (j) //this switch assigns the tempcharacter to the character string that has been split
+                //This is then assigned to a player based on their user input
                 {
                 case 0:
                     tempCharacter.name = charactersString[j];
@@ -201,6 +206,7 @@ int main()
                     tempCharacter.pridePoints = stoi(charactersString[j]);
                     break;
                 }
+                //stoi function is used to correctly display character traits
             }
 
             // Add the new character to the vector
@@ -230,7 +236,8 @@ int main()
             advisors tempAdvisor;
             for (unsigned int j = 0; j < 3; j++)
             {
-                switch (j)
+                switch (j) //similar to what was done for character switch
+                //see line 187
                 {
                 case 0:
                     tempAdvisor.name = advisorsString[j];
@@ -251,6 +258,7 @@ int main()
 
     advisorsFile.close(); // close the advisors file
 
+    //opening riddles file and populates riddles vector with the riddles question and answer
     string riddleLine;
     ifstream riddlesFile("riddles.txt");
     firstLine = true;
@@ -283,6 +291,7 @@ int main()
     riddlesFile.close(); // close the riddles file
 
     srand(time(0)); // seed random function
+    //beginning of game is printed below along with rules and instructions
     cout << endl;
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << endl;
@@ -303,6 +312,9 @@ int main()
     cout << endl;
     string playerName;
     cout << "Enter Player 1's name: " << endl;
+    /*
+    Note: geline() is useful and should be used in place of cin>> to account for user error when getting input
+    */
     getline(cin, playerName);
     cin.clear();
     Player player1;
@@ -342,13 +354,16 @@ int main()
     cout << endl;
     cout << "Please choose an option using the corresponding number: ";
 
-    while (!characterChosen)
+    //loop for player 1 choosing character
+    while (!characterChosen) //while loop will terminate when character is chosen(characterChosen = true)
     {
         getline(cin, characterChoiceString);
         if (characterChoiceString == "1" || characterChoiceString == "2" || characterChoiceString == "3" || characterChoiceString == "4" || characterChoiceString == "5" || characterChoiceString == "6" || characterChoiceString == "7" || characterChoiceString == "8")
         {
             characterChoice = characterChoiceString[0];
             switch (characterChoice)
+            //cases are based on correlation to user input/character chosen
+            //player1 data members are then accessed and assigned to the appropiate character chosen
             {
             case '1':
                 player1.setName(charactersVector[0].name);
@@ -417,10 +432,12 @@ int main()
                 characterChosen = true;
                 break;
             case '7':
+                //special case for creating your own separate character and then assigning this created character to player1
                 cout << endl; // skip a line
                 cout << "Enter character name: " << endl;
                 getline(cin, inputName);
                 cin.clear();
+                //random stats are chosen and assigned to player 1 for fairness
                 player1.setName(inputName);
                 player1.setAge(rand() % (15 - 3 + 1) + 3);
                 player1.setStamina((rand() % 10 + 1) * 100);
@@ -437,6 +454,7 @@ int main()
                 characterChosen = true;
                 break;
             case '8':
+                //case 8 is to see the ranking again which calls the sortCharactersByAge function and then couts the avaialable characters
                 vector<characters> tempArr = charactersVector;
                 sortCharactersByAge(tempArr);
                 cout << endl;
@@ -452,7 +470,7 @@ int main()
         }
         else
         {
-            cin.clear();
+            cin.clear(); //cin.clear() is used to clear the cin and wipe the memory, useful for multiple inputs 
             cout << endl;
             cout << "Invalid Input. Please enter a valid option." << endl;
         }
@@ -520,9 +538,13 @@ int main()
     }
 
     cout << endl;
+    //borders used for better readability
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << endl; // skip a line
 
+
+    //repeat steps above but with player2
+    //only difference is to create an invalid input if player2 tries choosing the same character that player1 selected before
     cout << player2.getName() << ", choose your character: " << endl;
     cout << endl;
     for (unsigned int i = 0; i < charactersVector.size(); i++)
@@ -547,7 +569,7 @@ int main()
     cout << "Please choose an option using the corresponding number: ";
 
     bool sameCharacter = false;
-    while (!sameCharacter)
+    while (!sameCharacter) //while loop to check same player boolean variable as described above
     {
         getline(cin, characterChoiceString);
         if (characterChoiceString == "1" || characterChoiceString == "2" || characterChoiceString == "3" || characterChoiceString == "4" || characterChoiceString == "5" || characterChoiceString == "6" || characterChoiceString == "7" || characterChoiceString == "8")
@@ -736,7 +758,7 @@ int main()
 
     petChosen = false;
     // setting player2's pet based on user input
-    while (!petChosen)
+    while (!petChosen) //similar to setting character to player above, each player gets to choose a pet that they will bring alon in their journey
     {
         getline(cin, petChoiceString);
         if (petChoiceString == "1" || petChoiceString == "2" || petChoiceString == "3")
@@ -783,6 +805,7 @@ int main()
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << endl;
     cout << player1.getName() << ", would you like to go to the pridelands (1) or begin Cub Training (2)?" << endl;
+    //initialize board based on choosing whether or not the player goes to pridelands
     while (getline(cin, pridelandsChoiceString))
     {
         if (pridelandsChoiceString == "1" || pridelandsChoiceString == "2")
@@ -791,10 +814,10 @@ int main()
             if (pridelandsChoice == '1')
             {
                 player1.setPridelands(true);
-                player1.toPrideLands();
+                player1.toPrideLands(); //sets stats to specific values because went straight to pridelands
                 break;
             }
-            else if (pridelandsChoice == '2')
+            else if (pridelandsChoice == '2') //else it lets player select and advisor similar to selecting a pet and character shown above
             {
                 cout << endl; // skip a line
                 cout << player1.getName() << ", choose your advisor: Rafiki (1), Nala (2), Sarabi (3), Zazu (4), or Sarafina (5)" << endl;
@@ -988,7 +1011,7 @@ int main()
     bool validInput = true;
     bool validMenu = true;
 
-    while ((!player1Finished || !player2Finished))
+    while ((!player1Finished || !player2Finished)) //loop that runs until one player has reached the finish. Loop will only terminate before if one player's character dies of old age
     {
         ifMoved = false;
         if (turnCount % 2 == 0) // Player 1's turn
@@ -1019,12 +1042,12 @@ int main()
             }
         }
 
-        if (validMenu)
+        if (validMenu) //checking if needing to print menu from a boolean
         {
             cout << endl;
             printMenu();
         }
-        while (getline(cin, menuChoiceString) && !ifMoved)
+        while (getline(cin, menuChoiceString) && !ifMoved) //loop running while there is a menu choice and the player has not moved yet
         {
             cout << endl;
             cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
@@ -1040,8 +1063,9 @@ int main()
             bool playerFirstAdvisorRun = true;
             bool playerAdvisorHasChanged = false;
             cout << endl; // skip a line
-            if (turnCount % 2 == 0)
+            if (turnCount % 2 == 0) //checking if it player 1 or 2 turn
             {
+                //checking for menu options
                 if (menuChoiceString == "1" || menuChoiceString == "2" || menuChoiceString == "3" || menuChoiceString == "4" || menuChoiceString == "5")
                 {
                     validMenu = true;
@@ -1154,7 +1178,8 @@ int main()
                                                         if (whichPetString == "1" || whichPetString == "2" || whichPetString == "3")
                                                         {
                                                             whichPet = whichPetString[0];
-                                                            switch (whichPet)
+                                                            switch (whichPet)//changing pet option to other pet in the array
+                                                            //note that both players can have same pet at the same time
                                                             {
                                                             case '1':
                                                                 player1.setPlayerPet(petsVector[0]);
@@ -1231,7 +1256,7 @@ int main()
                     case '5':
                         validInput = true;
                         player1.setAge(player1.getAge() + 1);
-                        if (player1.getAge() > 30)
+                        if (player1.getAge() > 30) //checking if players' age exceeds 30 which will then cause that character to "die" and the other player wins the game
                         {
                             cout << player1.getName() << " is " << player1.getAge() << " years old, and has died from old age.";
                             cout << endl;
@@ -1242,7 +1267,8 @@ int main()
                         randSpace = (rand() % 6) + 1;
                         player1Board.movePlayer(randSpace);
                         cout << player1.getName() << " moved " << randSpace << " space(s)." << endl;
-                        switch (player1Board.getPositionTile(player1Board.getPlayerPosition()).getColor())
+                        switch (player1Board.getPositionTile(player1Board.getPlayerPosition()).getColor()) 
+                        //switch statement checks the player's position on the board and grabs the tile they are on and then checks tile color to see if an event is going to be encountered by each player
                         {
                         case 'R': // red
                             cout << endl;
@@ -1283,7 +1309,7 @@ int main()
                             player1.setWisdom(player1.getWisdom() + 300);
                             player1.setStamina(player1.getStamina() + 300);
                             cout << endl; // skip a line
-                            if (player1.getHasAdvisor())
+                            if (player1.getHasAdvisor()) //checking if player1 has an advisor
                             {
                                 char changeAdvisorChoice;
                                 string changeAdvisorStringChoice;
@@ -1484,7 +1510,7 @@ int main()
                             {
                                 if (player1.getPridelands())
                                 {
-                                    switch (rand() % 5)
+                                    switch (rand() % 5) //random event 1-4
                                     {
                                     case 0:
                                         cout << endl; // skip a line
@@ -1638,6 +1664,7 @@ int main()
             }
             else
             {
+                //does everything describe above but for player2 this time
                 if (menuChoiceString == "1" || menuChoiceString == "2" || menuChoiceString == "3" || menuChoiceString == "4" || menuChoiceString == "5")
                 {
                     validMenu = true;
@@ -2260,7 +2287,8 @@ int main()
             }
         }
     }
-
+    //converts attributes to pridepoints to check to see who the winner is 
+    //this only applies if both players reach end without dying of old age
     if (player1Finished && player2Finished && player1.getAge() > 10 && player2.getAge() > 10)
     {
         player1.setPridePoints(player1.getPridePoints() + (player1.getStamina() / 100) * 1000);
@@ -2269,7 +2297,7 @@ int main()
         player2.setPridePoints(player2.getPridePoints() + (player2.getStamina() / 100) * 1000);
         player2.setPridePoints(player2.getPridePoints() + (player2.getWisdom() / 100) * 1000);
         player2.setPridePoints(player2.getPridePoints() + (player2.getStrength() / 100) * 1000);
-
+        //writes to the winners text file named result
         ofstream resultsWritingFile("results.txt");
         string resultsLine;
 
